@@ -2,6 +2,7 @@
 // Modules
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,9 @@ import { HomeTilesComponent } from './pages/home/home-tiles/home-tiles.component
 import { AboutComponent } from './pages/about/about.component';
 
 // Services
-import { TestimonialService, TeacherService } from 'app/services/_index';
+import { AuthService, ContactMessageService, FAQService, GalleryService
+  , LiveChatService, ResourceService, SignupService, TestimonialService
+  , TeacherService, UserService } from 'app/services/_index';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 
@@ -96,8 +99,17 @@ const routes: Routes = [
     RouterModule.forRoot(routes)     
   ],
   providers: [
-    TestimonialService, 
-    TeacherService
+    AuthService,
+    AngularFireAuth,
+    ContactMessageService,
+    FAQService,
+    GalleryService,
+    LiveChatService,
+    ResourceService,
+    SignupService,
+    TestimonialService,
+    TeacherService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

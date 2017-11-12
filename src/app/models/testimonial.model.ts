@@ -7,7 +7,9 @@ export class Testimonial {
           public qualifications: string = '',
           public instrument: string = '',
           public itemUrl: string = '',
-          public isActive: boolean = true
+          public isActive: boolean = true,
+          public createdAt: Date = new Date(),
+          public updatedAt: Date = new Date()
         ) {}
     }
     

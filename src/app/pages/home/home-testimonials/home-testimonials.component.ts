@@ -15,10 +15,11 @@ import 'rxjs/add/operator/switchMap'
   encapsulation: ViewEncapsulation.None
 })
 export class HomeTestimonialsComponent implements OnInit {
-  testimonials: AngularFirestoreCollection<Testimonial>;
+  // testimonials: AngularFirestoreCollection<Testimonial>;
+  testimonials: Observable<Testimonial[]>;
   
   constructor(private afs: AngularFirestore, private testServ: TestimonialService) { 
-    this.testimonials = this.testServ.testimonials;
+    this.testimonials = this.testServ.testimonials.valueChanges();
   }
 
   ngOnInit() {

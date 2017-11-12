@@ -18,7 +18,8 @@
 </div>
 
 <!-- core/navbar.component.html -->
- <nav class="navbar navbar-default navbar-static-top header-bar hidden-md hidden-lg" [@apparateAnimation]='state'>
+ <!-- <nav class="navbar navbar-default navbar-static-top header-bar hidden-md hidden-lg" [@apparateAnimation]='state'> -->
+  <nav class="navbar navbar-default navbar-static-top header-bar hidden-md hidden-lg">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" (click)="toggleState()">
       <span class="sr-only">Toggle navigation</span>
@@ -28,8 +29,10 @@
     </button>
     <a class="navbar-brand" routerLink="/home" (click)="toggleState()">OCMS</a>
   </div>
-  <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }" [@apparateAnimation]='state'>
-    <ul class="nav navbar-nav" [@apparateAnimation]='state' *ngIf="isIn">
+  <!-- <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }" [@apparateAnimation]='state'> -->
+    <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
+    <!-- <ul class="nav navbar-nav" [@apparateAnimation]='state' *ngIf="isIn"> -->
+      <ul class="nav navbar-nav" *ngIf="isIn">
       <li><a routerLink="/home" (click)="toggleState()">Home</a></li>
       <li><a routerLink="/gallery" (click)="toggleState()">Gallery</a></li>
       <li><a routerLink="/teachers" (click)="toggleState()">Teachers</a></li>

@@ -5,7 +5,9 @@ export class LiveChatMessage {
           public dateTime: string ='',
           public invertedDate: number = -1,
           public fromAdmin: boolean = false,
-          public read: boolean = false
+          public read: boolean = false,
+          public createdAt: Date = new Date(),
+          public updatedAt: Date = new Date()
         ) {}
     }
     

@@ -15,10 +15,10 @@ import 'rxjs/add/operator/switchMap'
   encapsulation: ViewEncapsulation.None
 })
 export class HomeTeachersComponent implements OnInit {
-  teachers: AngularFirestoreCollection<Teacher>;
+  teachers: Observable<Teacher[]>;
 
-  constructor(private afs: AngularFirestore, private sTeachers: TeacherService) { 
-    this.teachers = this.afs.collection('teachers');
+  constructor(private afs: AngularFirestore, private teacherService: TeacherService) { 
+    this.teachers = this.teacherService.teachers.valueChanges();
   }
 
   ngOnInit() {
