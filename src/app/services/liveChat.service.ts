@@ -9,9 +9,14 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class LiveChatService {
   liveChats: AngularFirestoreCollection<LiveChat>;
+  liveChatsByDateNonArchived: AngularFirestoreCollection<LiveChat>;
   
   constructor(private afs: AngularFirestore) { 
     this.liveChats = this.afs.collection('liveChats');
+    this.afs.collection('liveChats', ref => 
+      ref.orderBy("createdDate", "desc")
+      .where("archived", "==", "false")
+    )
   }
 
   save(t: LiveChat): Promise<firebase.firestore.DocumentReference>  {

@@ -1,0 +1,47 @@
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Signup } from 'app/models/_index';
+import { SignupService } from 'app/services/_index';
+import {  } from 'app/models/_index';
+import {
+  ReactiveFormsModule,
+  FormsModule,
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+  NgForm
+} from '@angular/forms';
+
+@Component({
+  selector: 'app-learntoplay',
+  templateUrl: './learntoplay.component.html',
+  styleUrls: ['./learntoplay.component.css'],
+  encapsulation: ViewEncapsulation.None
+})
+export class LearntoplayComponent implements OnInit {
+  private model = new Signup();
+  id: string;
+  private sub: any;
+  ltpForm: FormGroup;
+
+  constructor(private signupService: SignupService, private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.model = new Signup('', '' , '', '', this.id, false, null, null);
+   });
+  }
+
+  saveLTP(f: NgForm) {
+    console.log('new ltp: ', this.model);
+    this.signupService.save(this.model);
+    f.reset();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+}

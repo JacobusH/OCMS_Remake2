@@ -6,10 +6,9 @@ export class LiveChat {
         public key:string = '',
         public name: string = '',
         public email: string ='',
-        public dateTime: string ='',
-        public dateUnix: number = 0,
-        public invertedDate: number = -1,
+        public createdDate: Date = new Date(),
         public isActive: boolean = true,
+        public archived: boolean = false,
         public messages: Array<LiveChatMessage> = []
       ) {}
   }

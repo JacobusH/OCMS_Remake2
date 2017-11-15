@@ -1,10 +1,12 @@
 
 // Modules
+import { AccordionModule } from 'ngx-accordion';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -18,6 +20,7 @@ import { HomeTeachersComponent } from './pages/home/home-teachers/home-teachers.
 import { HomeTestimonialsComponent } from './pages/home/home-testimonials/home-testimonials.component';
 import { HomeTilesComponent } from './pages/home/home-tiles/home-tiles.component';
 import { AboutComponent } from './pages/about/about.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
 
 // Services
 import { AuthService, ContactMessageService, FAQService, GalleryService
@@ -25,6 +28,18 @@ import { AuthService, ContactMessageService, FAQService, GalleryService
   , TeacherService, UserService } from 'app/services/_index';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { ThanksComponent } from './pages/contact/thanks/thanks.component';
+import { FaqComponent } from './pages/faq/faq.component';
+import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
+
+// pipes
+import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
+import { LearntoplayComponent } from './pages/learntoplay/learntoplay.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LiveChatComponent } from './components/live-chat/live-chat.component';
+import { ManagerComponent } from './components/live-chat/manager/manager.component';
+import { WindowComponent } from './components/live-chat/window/window.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -48,14 +63,14 @@ const routes: Routes = [
   // ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
-  // { path: 'contact', component: ContactComponent },
-  // { path: 'faq', component: FAQComponent },
-  // { path: 'gallery', component: GalleryComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'faq', component: FaqComponent },
+  { path: 'gallery', component: GalleryComponent },
   // { path: 'gallery/image/:id', component: ImageGalleryDetailComponent },
   // { path: 'home', component: HomeComponent },
   // { path: 'home/:id', component: HomeComponent },
-  // { path: 'learntoplay', component: LearntoplayComponent },
-  // { path: 'learntoplay/:id', component: LearntoplayComponent },
+  { path: 'learntoplay', component: LearntoplayComponent },
+  { path: 'learntoplay/:id', component: LearntoplayComponent },
   // { path: 'login', component: LoginComponent },
   // { path: 'profile', component: ProfileComponent },
   // { path: 'resources', component: ResourcesComponent },
@@ -73,7 +88,7 @@ const routes: Routes = [
   // { path: 'testing/upload', component: UploadComponent },
   // { path: 'testing/tree', component: TreeComponent },
   // { path: 'contact/thanks', component: ThanksComponent },
-  // { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 
 ];
 
@@ -89,20 +104,35 @@ const routes: Routes = [
     HomeTilesComponent,
     AboutComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    ContactComponent,
+    ThanksComponent,
+    FaqComponent,
+    ImageGalleryComponent,
+    GalleryComponent,
+    ImageFilterPipe,
+    LearntoplayComponent,
+    PageNotFoundComponent,
+    LiveChatComponent,
+    ManagerComponent,
+    WindowComponent
   ],
   imports: [
+    AccordionModule, 
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFirestoreModule,
+    BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)     
   ],
   providers: [
-    AuthService,
+    AuthService, 
     AngularFireAuth,
     ContactMessageService,
     FAQService,
+    FormsModule,
     GalleryService,
     LiveChatService,
     ResourceService,
