@@ -6,6 +6,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'angular-calendar';
+import { DragAndDropModule } from 'angular-draggable-droppable';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -40,6 +42,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { LiveChatComponent } from './components/live-chat/live-chat.component';
 import { ManagerComponent } from './components/live-chat/manager/manager.component';
 import { WindowComponent } from './components/live-chat/window/window.component';
+import { PlaygroundComponent } from './pages/playground/playground.component';
+import { CalendarHeaderComponent } from './components/calendar-header/calendar-header.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -71,6 +75,7 @@ const routes: Routes = [
   // { path: 'home/:id', component: HomeComponent },
   { path: 'learntoplay', component: LearntoplayComponent },
   { path: 'learntoplay/:id', component: LearntoplayComponent },
+  { path: 'playground', component: PlaygroundComponent },
   // { path: 'login', component: LoginComponent },
   // { path: 'profile', component: ProfileComponent },
   // { path: 'resources', component: ResourcesComponent },
@@ -115,7 +120,9 @@ const routes: Routes = [
     PageNotFoundComponent,
     LiveChatComponent,
     ManagerComponent,
-    WindowComponent
+    WindowComponent,
+    PlaygroundComponent,
+    CalendarHeaderComponent
   ],
   imports: [
     AccordionModule, 
@@ -123,6 +130,8 @@ const routes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    CalendarModule.forRoot(),
+    DragAndDropModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)     

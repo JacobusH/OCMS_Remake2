@@ -47,13 +47,13 @@ export class WindowComponent extends LiveChatComponent implements OnInit, AfterV
     this.userName = this.model.name;
 
     // let chatMsg = new LiveChatMessage(test.message, this.af.getCurrentDateTime(), this.af.getInvertedDate(), false, false);
-    let chatMsg = new LiveChatMessage();
-    let chatMsg = new LiveChatMessage(test.message, this.af.getCurrentDateTime(), this.af.getInvertedDate(), false, false);
-    let liveChatToSave = new LiveChat('', this.model.name, this.model.email, '', 0, -1, true, true, new Array<LiveChatMessage>(chatMsg));
-    this.currentChatKey = this.af.saveLivechat(liveChatToSave);
+    // let chatMsg = new LiveChatMessage();
+    // let chatMsg = new LiveChatMessage(test.message, this.af.getCurrentDateTime(), this.af.getInvertedDate(), false, false);
+    // let liveChatToSave = new LiveChat('', this.model.name, this.model.email, '', 0, -1, true, true, new Array<LiveChatMessage>(chatMsg));
+    // this.currentChatKey = this.af.saveLivechat(liveChatToSave);
     
-    this.liveChatMessages = this.af.getLiveChatMessagesByParentKey(this.currentChatKey);
-    console.log(this.liveChatMessages);
+    // this.liveChatMessages = this.af.getLiveChatMessagesByParentKey(this.currentChatKey);
+    // console.log(this.liveChatMessages);
 
 
     this.model = new LiveChat();
