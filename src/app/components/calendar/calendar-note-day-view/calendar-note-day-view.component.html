@@ -1,0 +1,13 @@
+<p>
+  calendar-note-day-view works!
+</p>
+<p>
+  Check out what Day this is: {{ viewDate }}
+</p>
+<p>
+  Check out our events on this day:
+</p>
+  <div *ngFor="let ev of events">
+    {{ ev.title }}
+    {{ ev.cssClass }}
+  </div>

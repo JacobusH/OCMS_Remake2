@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -43,7 +44,11 @@ import { LiveChatComponent } from './components/live-chat/live-chat.component';
 import { ManagerComponent } from './components/live-chat/manager/manager.component';
 import { WindowComponent } from './components/live-chat/window/window.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
-import { CalendarHeaderComponent } from './components/calendar-header/calendar-header.component';
+import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
+import { TodoerComponent } from './components/todoer/todoer.component';
+import { CalendoerComponent } from './components/calendoer/calendoer.component';
+import { DateTimePickerComponent } from './components/calendar/date-time-picker/date-time-picker.component';
+import { CalendarNoteDayViewComponent } from './components/calendar/calendar-note-day-view/calendar-note-day-view.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -122,7 +127,11 @@ const routes: Routes = [
     ManagerComponent,
     WindowComponent,
     PlaygroundComponent,
-    CalendarHeaderComponent
+    CalendarHeaderComponent,
+    TodoerComponent,
+    CalendoerComponent,
+    DateTimePickerComponent,
+    CalendarNoteDayViewComponent
   ],
   imports: [
     AccordionModule, 
@@ -133,6 +142,8 @@ const routes: Routes = [
     CalendarModule.forRoot(),
     DragAndDropModule.forRoot(),
     FormsModule,
+    NgbModule.forRoot(),
+    NgbModalModule.forRoot(),
     ReactiveFormsModule,
     RouterModule.forRoot(routes)     
   ],

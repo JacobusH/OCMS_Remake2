@@ -1,0 +1,60 @@
+
+<app-calendar-header
+[(view)]="view"
+[(viewDate)]="viewDate">
+</app-calendar-header>
+
+<div class="alert alert-info">
+  Click on a day on the view.
+  <strong *ngIf="clickedDate">You clicked on this day: {{ clickedDate | date:'medium' }}</strong>
+</div>
+
+<div [ngSwitch]="view">
+<mwl-calendar-month-view
+  *ngSwitchCase="'month'"
+  [activeDayIsOpen]="activeDayIsOpen"
+  [events]="events"
+  [refresh]="refresh"
+  [viewDate]="viewDate"
+  (dayClicked)="monthDayClicked($event)"
+  (eventTimesChanged)="eventTimesChanged($event)"
+  (eventClicked)="eventClicked($event)">
+</mwl-calendar-month-view>
+<mwl-calendar-week-view
+  *ngSwitchCase="'week'"
+  [events]="events"
+  [refresh]="refresh"
+  [viewDate]="viewDate"
+  (dayHeaderClicked)="dayHeaderClicked($event)"
+  (eventTimesChanged)="eventTimesChanged($event)"
+  (eventClicked)="eventClicked($event)">
+</mwl-calendar-week-view>
+<app-calendar-note-day-view
+*ngSwitchCase="'day'"
+[events]="events"
+[viewDate]="viewDate"
+(eventTimesChanged)="eventTimesChanged($event)"
+(eventClicked)="eventClicked($event)">
+</app-calendar-note-day-view>
+<!-- <mwl-calendar-day-view
+  *ngSwitchCase="'day'"
+  [viewDate]="viewDate"
+  [events]="events"
+  [refresh]="refresh"
+  (eventTimesChanged)="eventTimesChanged($event)"
+  (eventClicked)="eventClicked($event)">
+</mwl-calendar-day-view> -->
+</div>
+
+
+
+<!-- <mwl-calendar-month-view
+*ngSwitchCase="'month'"
+[activeDayIsOpen]="activeDayIsOpen"
+[events]="events"
+[viewDate]="viewDate"
+(dayClicked)="monthDayClicked($event)"
+(eventTimesChanged)="eventTimesChanged($event)"
+(eventClicked)="eventClicked($event)">
+  <button (click)="monthDayClicked($event)">deets</button>
+</mwl-calendar-month-view> -->
