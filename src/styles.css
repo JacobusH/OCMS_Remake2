@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+@import '~angular-tree-component/dist/angular-tree-component.css';
 
 body {
     background:#e8e8e8;

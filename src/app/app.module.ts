@@ -8,10 +8,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { TreeModule } from 'angular-tree-component';
 
 // Components
 import { AppComponent } from './app.component';
@@ -145,7 +146,8 @@ const routes: Routes = [
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)     
+    RouterModule.forRoot(routes),
+    TreeModule  
   ],
   providers: [
     AuthService, 
