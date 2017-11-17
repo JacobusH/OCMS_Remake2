@@ -8,7 +8,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
+import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -140,11 +142,17 @@ const routes: Routes = [
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFirestoreModule,
     BrowserAnimationsModule,
+    ButtonModule,
     CalendarModule.forRoot(),
+    DialogModule,
     DragAndDropModule.forRoot(),
     FormsModule,
+    MatDialogModule,
+    MatMenuModule,
+    MenuModule,
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
+    OrderListModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     TreeModule  
