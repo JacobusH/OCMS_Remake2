@@ -8,7 +8,7 @@ import { UserService } from 'app/services/user.service';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
-
+import { provideForRootGuard } from '@angular/router/src/router_module';
 
 @Injectable()
 export class AuthService {
@@ -22,66 +22,58 @@ export class AuthService {
        this.user = this.afAuth.authState
        .switchMap(user => {
          if (user) {
-          //  return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-           return this.userService.users.doc(user.uid).valueChanges()
+           return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+          //  return this.userService.users.doc(user.uid).valueChanges()
          } else {
            return Observable.of(null)
          }
        })
     }
 
-    facebookLogin() {
+    googleLogin() {
+      const provider = new firebase.auth.GoogleAuthProvider()
+      return this.oAuthLogin(provider);
+    }
+
+    facebookLogin(): Promise<void> {
       const provider = new firebase.auth.FacebookAuthProvider()
       return this.oAuthLogin(provider);
     }
 
     oAuthLogin(provider) {
       return this.afAuth.auth.signInWithPopup(provider)
-        .then((credential) => {
-
-          const doc = this.userService.users.doc(credential.user.id).snapshotChanges(). take(1).toPromise()
-          doc.then(snap => {
-            snap.payload.exists ? this.updateUserData(credential.user) : this.setUserData(credential.user)
-          })
-
-          
-        })
+      .then((credential) => {
+        this.updateUserData(credential.user, provider)
+      })
+      .catch(err => {
+        console.log('login error: ' + err);
+      })
     }
 
-    updateUserData(userAuthCreds) {
-      // Sets user data to firestore on login
-      let user: User = new User(userAuthCreds.uid, '', userAuthCreds.displayName, userAuthCreds.displayName, userAuthCreds.photoURL, userAuthCreds.em, '',  );
-      // this.userService.save()
+    updateUserData(userAuthCreds, provider) {
+      const data: User = {
+        authID: userAuthCreds.uid,
+        authMethod: provider.providerId,
+        authDisplayName: userAuthCreds.displayName,
+        authPhotoUrl: userAuthCreds.photoURL,
+        key: userAuthCreds.uid,
+        name: userAuthCreds.displayName,
+        email: userAuthCreds.email,
+        password: '',
+        roles: ['student'],
+        isActive: true,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }
 
-      // const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-      // const data: User = {
-      //   uid: user.uid,
-      //   email: user.email,
-      //   displayName: user.displayName,
-      //   photoURL: user.photoURL
-      // }
-      // return userRef.set(data)
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${userAuthCreds.uid}`);
+      userRef.snapshotChanges().map(action => action.payload.exists)
+        .subscribe(exists => exists 
+          ? console.log('user exists')//userRef.update(data)
+          : userRef.set(data))
     }
 
-    setUserData(userAuthCreds) {
-      // Sets user data to firestore on login
-      let user: User = new User(userAuthCreds.uid
-        , ''
-        , userAuthCreds.displayName
-        , userAuthCreds.displayName
-        , userAuthCreds.photoURL
-        , userAuthCreds.email
-        , ''
-        , 'student'
-        , userAuthCreds.auth.provider);
-      this.userService.saveNewUser(user);
-    }
-
-    checkUserExists() {
-     
-    }
-
-    signOut() {
+    logout() {
       this.afAuth.auth.signOut().then(() => {
           this.router.navigate(['/']);
       });

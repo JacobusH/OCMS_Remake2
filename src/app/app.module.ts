@@ -17,6 +17,9 @@ import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
 
+// Guards
+import { AuthGuard } from 'app/guards/auth.guard';
+
 // Components
 import { AppComponent } from './app.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
@@ -30,7 +33,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 
 // Services
-import { AuthService, ContactMessageService, FAQService, GalleryService
+import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ResourceService, SignupService, TestimonialService
   , TeacherService, UserService } from 'app/services/_index';
 import { FooterComponent } from './components/shared/footer/footer.component';
@@ -53,6 +56,8 @@ import { TodoerComponent } from './components/todoer/todoer.component';
 import { CalendoerComponent } from './components/calendoer/calendoer.component';
 import { DateTimePickerComponent } from './components/calendar/date-time-picker/date-time-picker.component';
 import { CalendarNoteDayViewComponent } from './components/calendar/calendar-note-day-view/calendar-note-day-view.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AdministrationComponent } from './pages/administration/administration.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -67,25 +72,25 @@ var firebaseConfig = {
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  // { path: 'admin', canActivate: [AuthGuard], component: AdministrationComponent, children: [
-  //   { path: "messages", component: MessageManagerComponent},
-  //   { path: "chat", component: LivechatManagerComponent},
-  //   { path: "media", component: MediaManagerComponent},
-  //   { path: "signups", component: SignupManagerComponent},
-  //   { path: "users", component: UserManagerComponent},
-  // ] },
+  { path: 'admin', canActivate: [AuthGuard], component: AdministrationComponent, children: [
+    // { path: "messages", component: MessageManagerComponent},
+    // { path: "chat", component: LivechatManagerComponent},
+    // { path: "media", component: MediaManagerComponent},
+    // { path: "signups", component: SignupManagerComponent},
+    // { path: "users", component: UserManagerComponent},
+  ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   // { path: 'gallery/image/:id', component: ImageGalleryDetailComponent },
-  // { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   // { path: 'home/:id', component: HomeComponent },
   { path: 'learntoplay', component: LearntoplayComponent },
   { path: 'learntoplay/:id', component: LearntoplayComponent },
   { path: 'playground', component: PlaygroundComponent },
-  // { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   // { path: 'profile', component: ProfileComponent },
   // { path: 'resources', component: ResourcesComponent },
   // { path: 'register', component: RegisterComponent },
@@ -135,7 +140,9 @@ const routes: Routes = [
     TodoerComponent,
     CalendoerComponent,
     DateTimePickerComponent,
-    CalendarNoteDayViewComponent
+    CalendarNoteDayViewComponent,
+    LoginComponent,
+    AdministrationComponent
   ],
   imports: [
     AccordionModule, 
@@ -160,6 +167,9 @@ const routes: Routes = [
     TreeModule  
   ],
   providers: [
+    AuthGuard,
+    AlertService,
+    AlertMultiService,
     AuthService, 
     AngularFireAuth,
     ContactMessageService,
