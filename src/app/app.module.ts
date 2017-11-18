@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
+import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
 
@@ -144,6 +145,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule.forRoot(),
+    ContextMenuModule,
     DialogModule,
     DragAndDropModule.forRoot(),
     FormsModule,

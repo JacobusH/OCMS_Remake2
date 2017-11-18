@@ -72,8 +72,17 @@ export class CalendoerComponent implements OnInit {
   }
 
   /***************
-  ** GENERAL
+  ** EVENTS
   ***************/
+  addEvent(date: Date): void {
+    this.events.push({
+      start: date,
+      title: 'New event',
+      color: colors.red
+    });
+    this.refresh.next();
+  }
+
   eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
   }
@@ -118,7 +127,7 @@ export class CalendoerComponent implements OnInit {
     this.view = 'day'
   }
 
-  /***************
+  /*************** 
   ** DAY
   ***************/
 
