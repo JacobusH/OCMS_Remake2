@@ -1,3 +1,7 @@
+#header-bar, .site-logo {
+  text-align: center;
+}
+
 li > a {
   font-family: proxima-nova;
   font-weight: 700;
