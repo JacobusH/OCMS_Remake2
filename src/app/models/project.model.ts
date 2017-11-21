@@ -13,12 +13,12 @@ import{ Note, Task } from './_index';
 //   }
 
 
-  export interface Project {
-    key: string,
-    name: string,
-    tasks: Array<Task>,
-    notes: Array<Note>,
-    isActive: boolean,
-    createdAt: Date,
-    updatedAt: Date
-  }
+export interface Project {
+  key: string,
+  name: string,
+  tasks: Array<Task>,
+  notes: Array<Note>,
+  isActive: boolean,
+  createdAt: Date,
+  updatedAt: Date
+}

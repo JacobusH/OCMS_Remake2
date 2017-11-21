@@ -56,7 +56,7 @@ export class WindowComponent extends LiveChatComponent implements OnInit, AfterV
     // console.log(this.liveChatMessages);
 
 
-    this.model = new LiveChat();
+    // this.model = {};
     this.sessionRunning = true;
     f.reset();
   }

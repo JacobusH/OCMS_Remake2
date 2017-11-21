@@ -17,7 +17,7 @@ import 'rxjs/add/operator/switchMap'
   encapsulation: ViewEncapsulation.None
 })
 export class LiveChatComponent implements OnInit {
-  protected model = new LiveChat();
+  protected model: LiveChat;
 
   protected currentChatKey: string;
   protected liveChatMessages: AngularFirestoreCollection<LiveChat>; 
