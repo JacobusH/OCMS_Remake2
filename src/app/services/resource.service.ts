@@ -14,6 +14,18 @@ export class ResourceService {
     this.resources = this.afs.collection('resources');
   }
 
+  createNew(): Resource {
+    let data: Resource = {
+      key: '',
+      title: '',
+      categories: new Array,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: Resource): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.resources.add(t);
     promise.then(x => {

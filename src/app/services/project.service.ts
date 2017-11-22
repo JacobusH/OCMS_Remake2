@@ -14,6 +14,19 @@ export class ProjectService {
     this.faqs = this.afs.collection('projects');
   }
 
+  createNew(): Project {
+    let data: Project = {
+      key: '',
+      name: '',
+      tasks: new Array,
+      notes: new Array,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: Project): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.faqs.add(t);
     promise.then(x => {

@@ -14,6 +14,19 @@ export class NoteService {
     this.notes = this.afs.collection('notes');
   }
 
+  createNew(): Note {
+    let data: Note = {
+      key: '',
+      name: '',
+      freeText: '',
+      listItems: new Array,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: Note): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.notes.add(t);
     promise.then(x => {

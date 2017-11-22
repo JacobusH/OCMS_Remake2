@@ -20,7 +20,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class LearntoplayComponent implements OnInit {
-  private model = new Signup();
+  private model = this.signupService.createNew();
   id: string;
   private sub: any;
   ltpForm: FormGroup;
@@ -30,7 +30,8 @@ export class LearntoplayComponent implements OnInit {
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-      this.model = new Signup('', '' , '', '', this.id, false, null, null);
+      this.model = this.signupService.createNew();
+      this.model.instrument = this.id;
    });
   }
 

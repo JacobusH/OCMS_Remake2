@@ -14,6 +14,18 @@ export class FAQService {
     this.faqs = this.afs.collection('faqs');
   }
 
+  createNew(): FAQ {
+    let data: FAQ = {
+      key: '',
+      question: '',
+      answer: '',
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: FAQ): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.faqs.add(t);
     promise.then(x => {

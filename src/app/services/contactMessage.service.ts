@@ -14,6 +14,20 @@ export class ContactMessageService {
     this.contactMessages = this.afs.collection('contactMessages');
   }
 
+  createNew(): ContactMessage {
+    let data: ContactMessage = {
+      key: '',
+      name: '',
+      email: '',
+      message: '',
+      isActive: true,
+      read: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: ContactMessage): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.contactMessages.add(t);
     promise.then(x => {

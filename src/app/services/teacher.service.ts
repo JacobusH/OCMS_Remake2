@@ -14,6 +14,21 @@ export class TeacherService {
     this.teachers = this.afs.collection('teachers');
   }
 
+  createNew(): Teacher {
+    let data: Teacher = {
+      key: '',
+      name: '',
+      summary: '',
+      qualifications: '',
+      instrument: '',
+      imgUrl: '',
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: Teacher): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.teachers.add(t);
     promise.then(x => {

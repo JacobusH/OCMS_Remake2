@@ -14,6 +14,19 @@ export class GalleryService {
     this.gallery = this.afs.collection('gallery');
   }
 
+  createNew(): GalleryItem {
+    let data: GalleryItem = {
+      key: '',
+      caption: '',
+      categories: new Array,
+      imgUrl: '',
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: GalleryItem): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.gallery.add(t);
     promise.then(x => {

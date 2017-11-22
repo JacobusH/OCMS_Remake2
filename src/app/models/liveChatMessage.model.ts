@@ -14,9 +14,8 @@
 export interface LiveChatMessage {
   key: string,
   message: string,
-  categories: Array<String>,
-  isActive: boolean,
   fromAdmin: boolean,
+  isActive: boolean,
   createdAt: Date,
   updatedAt: Date
 }

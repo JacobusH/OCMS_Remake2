@@ -18,6 +18,7 @@ export interface Signup {
   name: string,
   email: string,
   about: string,
+  instrument: string,
   read: boolean,
   isActive: boolean,
   createdAt: Date,

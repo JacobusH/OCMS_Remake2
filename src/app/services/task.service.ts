@@ -14,6 +14,20 @@ export class TaskService {
     this.tasks = this.afs.collection('tasks');
   }
 
+  createNew(): Task {
+    let data: Task = {
+      key: '',
+      name: '',
+      descriptionHtml: '',
+      notes: new Array,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
+
   save(t: Task): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.tasks.add(t);
     promise.then(x => {

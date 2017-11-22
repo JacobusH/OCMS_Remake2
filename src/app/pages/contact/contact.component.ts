@@ -24,7 +24,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class ContactComponent implements OnInit {
-  private model = new ContactMessage();
+  private model = this.contactService.createNew();
 
   constructor(private contactService: ContactMessageService, private router: Router, private route:ActivatedRoute) { 
     
@@ -37,7 +37,7 @@ export class ContactComponent implements OnInit {
     let mm: ContactMessage = this.model;
     
     this.contactService.save(mm);
-    this.model = new ContactMessage();
+    this.model = this.contactService.createNew();
 
     form.reset();
     this.router.navigate(['thanks'], {relativeTo: this.route});

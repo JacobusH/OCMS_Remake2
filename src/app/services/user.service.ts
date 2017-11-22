@@ -14,6 +14,24 @@ export class UserService {
     this.users = this.afs.collection('testimonials');
   }
 
+  createNew(): User {
+    let data: User = {
+      authID: '',
+      authMethod: '',
+      authDisplayName: '' ,
+      authPhotoUrl: '',
+      key: '',
+      name: '',
+      email: '',
+      password: '',
+      roles: new Array,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   saveNewUser(t: User): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.users.add(t);
     promise.then(x => {

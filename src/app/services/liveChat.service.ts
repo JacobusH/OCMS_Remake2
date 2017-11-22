@@ -19,6 +19,19 @@ export class LiveChatService {
     )
   }
 
+  createNew(): LiveChat {
+    let data: LiveChat = {
+      key: '',
+      name: '',
+      email: '',
+      messages: new Array,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: LiveChat): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.liveChats.add(t);
     promise.then(x => {

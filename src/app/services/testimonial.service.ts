@@ -14,6 +14,18 @@ export class TestimonialService {
     this.testimonials = this.afs.collection<Testimonial>('testimonials');
   }
 
+  createNew(): Testimonial {
+    let data: Testimonial = {
+      key: '',
+      author: '',
+      text: '',
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
   save(t: Testimonial): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.testimonials.add(t);
     promise.then(x => {
