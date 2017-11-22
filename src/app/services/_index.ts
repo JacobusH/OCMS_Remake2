@@ -5,6 +5,7 @@ export * from './contactMessage.service';
 export * from './faq.service';
 export * from './gallery.service';
 export * from './liveChat.service';
+export * from './project.service';
 export * from './resource.service';
 export * from './signup.service';
 export * from './teacher.service';

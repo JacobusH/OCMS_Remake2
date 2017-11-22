@@ -9,6 +9,13 @@
   <strong *ngIf="clickedDate">You clicked on this day: {{ clickedDate | date:'medium' }}</strong>
 </div>
 
+
+<h2>Events</h2>
+<div *ngFor="let ev of events">
+{{ev.title}}
+{{ev.start}}
+</div>
+
 <div [ngSwitch]="view">
 <mwl-calendar-month-view
   *ngSwitchCase="'month'"
@@ -32,7 +39,7 @@
 </mwl-calendar-week-view>
 <app-calendar-note-day-view
 *ngSwitchCase="'day'"
-[events]="events"
+[events]="dayViewEvents"
 [viewDate]="viewDate"
 (eventTimesChanged)="eventTimesChanged($event)"
 (eventClicked)="eventClicked($event)">
@@ -83,11 +90,17 @@ let-eventClicked="eventClicked">
 
 <!-- CONTEXT MENU -->
 <context-menu #basicMenu>
-  <ng-template contextMenuItem (execute)="addEvent($event.item)">
+  <ng-template contextMenuItem (execute)="showModal($event.item)">
     Add Project
   </ng-template>
 </context-menu>
 
+<!-- DIALOG -->
+<p-dialog header="Projects" [(visible)]="displayModal">
+  <div *ngFor="let p of availableEvents">
+    <span (click)="addProject(p)">{{p.title}}</span>
+  </div>
+</p-dialog>
 
 
 <!-- <mwl-calendar-month-view

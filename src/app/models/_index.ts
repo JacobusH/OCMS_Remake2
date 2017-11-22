@@ -1,5 +1,6 @@
 export * from './alert.model';
 export * from './calendoer/calendoer.model';
+export * from './calendoer/calendoerEvent.model';
 export * from './calendoer/todoer.model';
 export * from './calendoer/treeNode.model';
 export * from './contactMessage.model';

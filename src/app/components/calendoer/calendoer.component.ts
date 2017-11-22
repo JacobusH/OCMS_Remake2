@@ -1,6 +1,10 @@
 import { Component, ChangeDetectionStrategy, OnInit, TemplateRef, ViewEncapsulation, ViewChild } from '@angular/core';
 import { CalendarEvent, CalendarEventTimesChangedEvent } from 'angular-calendar';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
+import { Project, CalendoerEvent, Calendoer } from 'app/models/_index';
+import { ProjectService } from 'app/services/_index';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { CalendoerEventModalComponent } from 'app/components/modals/calendoer-event-modal/calendoer-event-modal.component'; 
 import { Subject } from 'rxjs/Subject';
 
 export const colors: any = {
@@ -22,16 +26,21 @@ export const colors: any = {
   selector: 'app-calendoer',
   templateUrl: './calendoer.component.html',
   styleUrls: ['./calendoer.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  entryComponents: [ CalendoerEventModalComponent ]
 })
 export class CalendoerComponent implements OnInit {
   activeDayIsOpen: boolean = false;
   clickedDate: Date;
+  contextMenuDate: Date;
+  displayModal: boolean = false;
   view: string = 'month';
   viewDate: Date = new Date();
   refresh: Subject<any> = new Subject();
+
+  dayViewEvents: CalendoerEvent[];
   
-  extEvents: CalendarEvent[] = [
+  extEvents: CalendoerEvent[] = [
     {
       title: 'From Outside 1',
       color: colors.red,
@@ -47,7 +56,7 @@ export class CalendoerComponent implements OnInit {
       draggable: true
     }
   ];
-  events: CalendarEvent[] = [
+  events: CalendoerEvent[] = [
     {
       title: 'Click n Drag Me',
       color: colors.red,
@@ -62,8 +71,25 @@ export class CalendoerComponent implements OnInit {
       cssClass: 'calendar-event'
     }
   ];
+  availableEvents: CalendoerEvent[] = [
+    {
+      title: 'Event 1',
+      color: colors.red,
+      start: new Date(),
+      cssClass: 'calendar-event',
+      draggable: true
+    },
+    {
+      title: 'Event 2',
+      color: colors.blue,
+      start: new Date(),
+      cssClass: 'calendar-event'
+    }
+  ];
 
-  constructor() {
+
+
+  constructor(private projectService: ProjectService, public dialog: MatDialog) {
 
   }
 
@@ -74,17 +100,35 @@ export class CalendoerComponent implements OnInit {
   /***************
   ** EVENTS
   ***************/
-  addEvent(date: Date): void {
-    this.events.push({
-      start: date,
-      title: 'New event',
-      color: colors.red
-    });
+  showModal(date: Date): void {
+    // this.events.push({
+    //   start: date,
+    //   title: 'New event',
+    //   color: colors.red
+    // });
+
+    this.contextMenuDate = date;
+    this.displayModal = true;
+    this.refresh.next();
+  }
+
+  addProject(ev: CalendoerEvent) {
+    let evN: CalendoerEvent = {
+      title: ev.title,
+      color: ev.color,
+      start: this.contextMenuDate,
+      cssClass: ev.cssClass
+    }
+
+    this.displayModal = false;
+    this.events.push(evN);
     this.refresh.next();
   }
 
   eventClicked({ event }: { event: CalendarEvent }): void {
     console.log('Event clicked', event);
+    this.viewDate = event.start;
+    this.activeDayIsOpen = true;    
   }
 
   // catches time changes including drop events
@@ -109,6 +153,18 @@ export class CalendoerComponent implements OnInit {
     // this.refresh.next();
   }
 
+  openDialog(calendoerEvent: CalendoerEvent): void {
+    let dialogRef = this.dialog.open(CalendoerEventModalComponent, {
+      width: '250px',
+      data: { name: calendoerEvent.title }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+    });
+  }
+
   /***************
   ** MONTH
   ***************/
@@ -116,6 +172,8 @@ export class CalendoerComponent implements OnInit {
     this.clickedDate = event.day.date; 
     this.viewDate = event.day.date; 
     this.view = 'day'
+    this.dayViewEvents = event.day.events;
+    this.activeDayIsOpen = true;    
   }
 
   /***************

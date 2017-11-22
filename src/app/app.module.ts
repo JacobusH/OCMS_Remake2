@@ -10,7 +10,7 @@ import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ContextMenuModule } from 'ngx-contextmenu';
@@ -34,7 +34,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
 
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
-  , LiveChatService, ResourceService, SignupService, TestimonialService
+  , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
   , TeacherService, UserService } from 'app/services/_index';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -58,6 +58,7 @@ import { DateTimePickerComponent } from './components/calendar/date-time-picker/
 import { CalendarNoteDayViewComponent } from './components/calendar/calendar-note-day-view/calendar-note-day-view.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AdministrationComponent } from './pages/administration/administration.component';
+import { CalendoerEventModalComponent } from './components/modals/calendoer-event-modal/calendoer-event-modal.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -112,6 +113,9 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  entryComponents: [
+    CalendoerEventModalComponent
+  ],
   declarations: [
     AppComponent,
     UserProfileComponent,
@@ -142,7 +146,8 @@ const routes: Routes = [
     DateTimePickerComponent,
     CalendarNoteDayViewComponent,
     LoginComponent,
-    AdministrationComponent
+    AdministrationComponent,
+    CalendoerEventModalComponent
   ],
   imports: [
     AccordionModule, 
@@ -157,6 +162,7 @@ const routes: Routes = [
     DragAndDropModule.forRoot(),
     FormsModule,
     MatDialogModule,
+    MatFormFieldModule,
     MatMenuModule,
     MenuModule,
     NgbModule.forRoot(),
@@ -177,6 +183,7 @@ const routes: Routes = [
     FormsModule,
     GalleryService,
     LiveChatService,
+    ProjectService,
     ResourceService,
     SignupService,
     TestimonialService,

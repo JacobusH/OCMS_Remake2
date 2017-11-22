@@ -19,6 +19,7 @@ export class SignupService {
       key: '',
       name: '',
       email: '',
+      instrument: '',
       about: '',
       read: false,
       isActive: true,
