@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'app/models/user.model';
 import { UserService } from 'app/services/user.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as firebase from 'firebase/app';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
@@ -13,6 +14,7 @@ import { provideForRootGuard } from '@angular/router/src/router_module';
 @Injectable()
 export class AuthService {
   user: Observable<User>;
+  behUser: BehaviorSubject<User> = new BehaviorSubject(null);
 
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
@@ -28,6 +30,11 @@ export class AuthService {
            return Observable.of(null)
          }
        })
+
+    }
+
+    get isAdmin() {
+      return true;
     }
 
     googleLogin() {

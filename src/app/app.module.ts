@@ -19,6 +19,7 @@ import { TreeModule } from 'angular-tree-component';
 
 // Guards
 import { AuthGuard } from 'app/guards/auth.guard';
+import { AdminGuard } from 'app/guards/admin.guard';
 
 // Components
 import { AppComponent } from './app.component';
@@ -73,7 +74,7 @@ var firebaseConfig = {
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', canActivate: [AuthGuard], component: AdministrationComponent, children: [
+  { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
     // { path: "messages", component: MessageManagerComponent},
     // { path: "chat", component: LivechatManagerComponent},
     // { path: "media", component: MediaManagerComponent},
@@ -173,6 +174,7 @@ const routes: Routes = [
     TreeModule  
   ],
   providers: [
+    AdminGuard,
     AuthGuard,
     AlertService,
     AlertMultiService,

@@ -10,7 +10,7 @@ import 'rxjs/add/operator/take';
 import * as _ from 'lodash';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(private auth: AuthService, private router: Router, private userService: UserService) {}
 
   canActivate(): Observable<boolean> | boolean {
