@@ -1,3 +1,16 @@
-<p>
-  administration works!
-</p>
+
+
+<mat-sidenav-container class="sidenav-fab-container">
+  <mat-sidenav mode='side' opened='true'>
+    <!-- sidenav content -->
+    <ul>
+      <li><a routerLink="/admin/chat">LiveChat</a></li>
+      <li><a routerLink="/admin/messages">Contact Messages</a></li>
+      <li><a routerLink="/admin/media">Media</a></li>
+      <li><a routerLink="/admin/signups">Signups</a></li>
+      <li><a routerLink="/admin/teachers">Teachers</a></li>
+      <li><a routerLink="/admin/users">Users</a></li>
+    </ul>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

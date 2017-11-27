@@ -10,7 +10,7 @@ import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule, MatSidenavModule } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ContextMenuModule } from 'ngx-contextmenu';
@@ -23,15 +23,41 @@ import { AdminGuard } from 'app/guards/admin.guard';
 
 // Components
 import { AppComponent } from './app.component';
-import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { AboutComponent } from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeLearntoplayComponent } from './pages/home/home-learntoplay/home-learntoplay.component';
 import { HomeSplashComponent } from './pages/home/home-splash/home-splash.component';
 import { HomeTeachersComponent } from './pages/home/home-teachers/home-teachers.component';
 import { HomeTestimonialsComponent } from './pages/home/home-testimonials/home-testimonials.component';
 import { HomeTilesComponent } from './pages/home/home-tiles/home-tiles.component';
-import { AboutComponent } from './pages/about/about.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { LearntoplayComponent } from './pages/learntoplay/learntoplay.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LiveChatComponent } from './components/live-chat/live-chat.component';
+import { ManagerComponent } from './components/live-chat/manager/manager.component';
+import { LoginComponent } from './pages/login/login.component';
+import { TodoerComponent } from './components/todoer/todoer.component';
+import { PlaygroundComponent } from './pages/playground/playground.component';
+import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { WindowComponent } from './components/live-chat/window/window.component';
+// CALENDOER
+import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
+import { CalendoerComponent } from './components/calendoer/calendoer.component';
+import { CalendarNoteDayViewComponent } from './components/calendar/calendar-note-day-view/calendar-note-day-view.component';
+import { CalendoerEventModalComponent } from './components/modals/calendoer-event-modal/calendoer-event-modal.component';
+import { DateTimePickerComponent } from './components/calendar/date-time-picker/date-time-picker.component';
+// FORMS
+import { AdminFaqComponent } from './components/forms/admin-faq/admin-faq.component';
+import { AdminGalleryComponent } from './components/forms/admin-gallery/admin-gallery.component';
+import { AdminTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
+import { AdminUserComponent } from './components/forms/admin-user/admin-user.component';
+// ADMIN
+import { AdministrationComponent } from './pages/administration/administration.component';
+import { AdminHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
+import { HomepageComponent } from './pages/administration/homepage/homepage.component';
+import { SignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
+import { TeachersComponent } from './pages/administration/teachers/teachers.component';
+import { UsersComponent } from './pages/administration/users/users.component';
 
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
@@ -46,20 +72,8 @@ import { ImageGalleryComponent } from './components/image/image-gallery/image-ga
 
 // pipes
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
-import { LearntoplayComponent } from './pages/learntoplay/learntoplay.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { LiveChatComponent } from './components/live-chat/live-chat.component';
-import { ManagerComponent } from './components/live-chat/manager/manager.component';
-import { WindowComponent } from './components/live-chat/window/window.component';
-import { PlaygroundComponent } from './pages/playground/playground.component';
-import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
-import { TodoerComponent } from './components/todoer/todoer.component';
-import { CalendoerComponent } from './components/calendoer/calendoer.component';
-import { DateTimePickerComponent } from './components/calendar/date-time-picker/date-time-picker.component';
-import { CalendarNoteDayViewComponent } from './components/calendar/calendar-note-day-view/calendar-note-day-view.component';
-import { LoginComponent } from './pages/login/login.component';
-import { AdministrationComponent } from './pages/administration/administration.component';
-import { CalendoerEventModalComponent } from './components/modals/calendoer-event-modal/calendoer-event-modal.component';
+import { ContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
+import { MediaComponent } from './pages/administration/media/media.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -75,11 +89,12 @@ var firebaseConfig = {
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
-    // { path: "messages", component: MessageManagerComponent},
-    // { path: "chat", component: LivechatManagerComponent},
-    // { path: "media", component: MediaManagerComponent},
-    // { path: "signups", component: SignupManagerComponent},
-    // { path: "users", component: UserManagerComponent},
+    { path: "messages", component: ContactMessagesComponent},
+    { path: "chat", component: LiveChatComponent},
+    { path: "media", component: MediaComponent},
+    { path: "signups", component: SignUpsComponent},
+    { path: "teachers", component: TeachersComponent},
+    { path: "users", component: UsersComponent},
   ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
@@ -148,7 +163,18 @@ const routes: Routes = [
     CalendarNoteDayViewComponent,
     LoginComponent,
     AdministrationComponent,
-    CalendoerEventModalComponent
+    CalendoerEventModalComponent,
+    AdminUserComponent,
+    AdminGalleryComponent,
+    AdminTeacherComponent,
+    AdminFaqComponent,
+    AdminHomepageComponent,
+    SignUpsComponent,
+    HomepageComponent,
+    UsersComponent,
+    TeachersComponent,
+    ContactMessagesComponent,
+    MediaComponent
   ],
   imports: [
     AccordionModule, 
@@ -165,6 +191,7 @@ const routes: Routes = [
     MatDialogModule,
     MatFormFieldModule,
     MatMenuModule,
+    MatSidenavModule,
     MenuModule,
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
