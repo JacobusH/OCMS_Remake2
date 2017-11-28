@@ -11,7 +11,7 @@ export class UserService {
   users: AngularFirestoreCollection<User>;
   
   constructor(private afs: AngularFirestore) { 
-    this.users = this.afs.collection('testimonials');
+    this.users = this.afs.collection('users');
   }
 
   createNew(): User {

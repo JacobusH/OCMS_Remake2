@@ -74,32 +74,6 @@ export class AdminTeacherComponent implements OnInit {
     
   }
 
-  saveTeacherUpload(form: NgForm) {
-    // uploading new teacher with picture
-    if(this.selectedFiles != null) {
-      this.uploadSingleTeacher();
-
-      // let fileName = this.selectedFiles.item(0).name;
-      // let mm: TeacherUpload = this.model;
-      // mm.itemUrl = 'teacher/' + fileName;
-      
-      // this.af.saveTeacherUpload(mm);
-
-      this.model = this.teacherService.createNew();
-      
-      this.fileUploadVar.nativeElement.value = "";
-      form.reset();
-    }
-    // editing teacher
-    else if(this.selectedTeacher != null) {
-      this.teacherService.edit(this.selectedTeacher)
-
-      this.fileUploadVar.nativeElement.value = "";
-      form.reset();
-    }
-
-  }
-
   setNewTeacher() {
     this.selectedTeacher = null;
     this.model = this.teacherService.createNew();

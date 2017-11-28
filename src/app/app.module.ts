@@ -74,6 +74,7 @@ import { AuthService, AlertMultiService, AlertService, ContactMessageService, FA
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
 import { ContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
 import { MediaComponent } from './pages/administration/media/media.component';
+import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -174,7 +175,8 @@ const routes: Routes = [
     UsersComponent,
     TeachersComponent,
     ContactMessagesComponent,
-    MediaComponent
+    MediaComponent,
+    TileDisplayComponent
   ],
   imports: [
     AccordionModule, 

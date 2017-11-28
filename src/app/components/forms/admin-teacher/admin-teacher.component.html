@@ -2,7 +2,7 @@
   <!-- Select Teacher to Edit -->
   <div class="col-lg-6">
     <div class="teachers-select-container">
-      <button class="btn btn-info mB15" (click)="setNewTeacher()">New</button>
+      <button class="new-btn btn btn-info mB15" (click)="setNewTeacher()">New</button>
       <div class="teachers-container">
         <div class="teacher" (click)="setSelectedTeacher(teach)" *ngFor="let teach of teachers | async">
           <img src="{{teach.imgUrl}}" alt="teacher">
@@ -12,7 +12,6 @@
     </div>
   </div>
   <div class="col-lg-6">
-    <div class="container">
       <!-- Teacher Picture -->
       <img #imgTeacherSelected src="{{selectedPicture}}" />
     
@@ -26,7 +25,6 @@
       <label  class="AC">
           <input #fileUpload type="file" (change)="detectFiles($event)">
       </label>
-    </div>
     <!-- SAVE FORM -->
   <form (ngSubmit)="saveTeacher(teacherForm)" #teacherForm="ngForm">
       <div class="form-group">
@@ -96,7 +94,7 @@
               isActive is required
         </div> -->
       </div>
-      <button type="submit" class="btn btn-success" [disabled]="!teacherForm.form.valid">Send</button>
+      <button type="submit" class="btn btn-success" [disabled]="!teacherForm.form.valid">Save</button>
     </form> 
   </div>
 </div>
