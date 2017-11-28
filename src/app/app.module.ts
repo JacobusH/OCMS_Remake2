@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
+import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,6 +47,7 @@ import { WindowComponent } from './components/live-chat/window/window.component'
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
+import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
 // CALENDOER
 import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
 import { CalendoerComponent } from './components/calendoer/calendoer.component';
@@ -60,6 +62,8 @@ import { AdminUserComponent } from './components/forms/admin-user/admin-user.com
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
 import { AdminHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
+import { ContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
+import { MediaComponent } from './pages/administration/media/media.component';
 import { HomepageComponent } from './pages/administration/homepage/homepage.component';
 import { SignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
 import { TeachersComponent } from './pages/administration/teachers/teachers.component';
@@ -72,9 +76,8 @@ import { AuthService, AlertMultiService, AlertService, ContactMessageService, FA
 
 // pipes
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
-import { ContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
-import { MediaComponent } from './pages/administration/media/media.component';
-import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
+import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
+import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -151,6 +154,8 @@ const routes: Routes = [
     ImageGalleryComponent,
     GalleryComponent,
     ImageFilterPipe,
+    SignupFilterPipe,
+    ReadFilterPipe,
     LearntoplayComponent,
     PageNotFoundComponent,
     LiveChatComponent,
@@ -187,6 +192,7 @@ const routes: Routes = [
     ButtonModule,
     CalendarModule.forRoot(),
     ContextMenuModule,
+    Daterangepicker,
     DialogModule,
     DragAndDropModule.forRoot(),
     FormsModule,

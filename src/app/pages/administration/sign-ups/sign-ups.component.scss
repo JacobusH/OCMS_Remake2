@@ -1,0 +1,20 @@
+.signup-card {
+  display: inline-block;
+  border: 1px solid white;
+  background: #efefef;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  cursor: pointer;
+}
+
+.bottom .left {
+  float:left;
+  padding-right: 8px;
+}
+
+.bottom .right {
+  float:right;
+  padding-left: 8px;
+}

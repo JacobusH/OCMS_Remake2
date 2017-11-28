@@ -8,10 +8,10 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class SignupService {
-  testimonials: AngularFirestoreCollection<Signup>;
+  signups: AngularFirestoreCollection<Signup>;
   
   constructor(private afs: AngularFirestore) { 
-    this.testimonials = this.afs.collection('testimonials');
+    this.signups = this.afs.collection('signups');
   }
 
   createNew(): Signup {
@@ -30,7 +30,7 @@ export class SignupService {
   }
 
   save(t: Signup): Promise<firebase.firestore.DocumentReference>  {
-    let promise: Promise<firebase.firestore.DocumentReference> = this.testimonials.add(t);
+    let promise: Promise<firebase.firestore.DocumentReference> = this.signups.add(t);
     promise.then(x => {
       x.update({key: x.id});
     });
@@ -39,11 +39,11 @@ export class SignupService {
   }
 
   edit(item: Signup): Promise<void> {
-    return this.testimonials.doc(item.key).update(item);
+    return this.signups.doc(item.key).update(item);
   }
 
   delete(item: Signup): Promise<void> {
-    return this.testimonials.doc(item.key).delete();
+    return this.signups.doc(item.key).delete();
   }
 
 }
