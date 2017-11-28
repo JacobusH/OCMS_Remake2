@@ -24,6 +24,8 @@ import { AdminGuard } from 'app/guards/admin.guard';
 // Components
 import { AppComponent } from './app.component';
 import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { FaqComponent } from './pages/faq/faq.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeLearntoplayComponent } from './pages/home/home-learntoplay/home-learntoplay.component';
 import { HomeSplashComponent } from './pages/home/home-splash/home-splash.component';
@@ -39,7 +41,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { TodoerComponent } from './components/todoer/todoer.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { ThanksComponent } from './pages/contact/thanks/thanks.component';
 import { WindowComponent } from './components/live-chat/window/window.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 // CALENDOER
 import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
 import { CalendoerComponent } from './components/calendoer/calendoer.component';
@@ -62,13 +68,7 @@ import { UsersComponent } from './pages/administration/users/users.component';
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
-  , TeacherService, UserService } from 'app/services/_index';
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { HeaderComponent } from './components/shared/header/header.component';
-import { ContactComponent } from './pages/contact/contact.component';
-import { ThanksComponent } from './pages/contact/thanks/thanks.component';
-import { FaqComponent } from './pages/faq/faq.component';
-import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
+  , TeacherService, UserService, UploadService } from 'app/services/_index';
 
 // pipes
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
@@ -217,7 +217,8 @@ const routes: Routes = [
     SignupService,
     TestimonialService,
     TeacherService,
-    UserService
+    UserService,
+    UploadService
   ],
   bootstrap: [AppComponent]
 })

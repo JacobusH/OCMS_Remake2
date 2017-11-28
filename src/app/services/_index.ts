@@ -11,3 +11,4 @@ export * from './signup.service';
 export * from './teacher.service';
 export * from './testimonial.service';
 export * from './user.service';
+export * from './upload.service';

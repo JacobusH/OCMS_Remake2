@@ -1,3 +1,107 @@
-<p>
-  admin-teacher works!
-</p>
+<div class="row">
+  <!-- Select Teacher to Edit -->
+  <div class="col-lg-6">
+    <div class="teachers-select-container">
+      <button class="btn btn-info mB15" (click)="setNewTeacher()">New</button>
+      <div class="teachers-container">
+        <div class="teacher" (click)="setSelectedTeacher(teach)" *ngFor="let teach of teachers | async">
+          <img src="{{teach.imgUrl}}" alt="teacher">
+          <span>{{teach.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="container">
+      <!-- Teacher Picture -->
+      <img #imgTeacherSelected src="{{selectedPicture}}" />
+    
+      <!-- Teacher Upload File -->
+      <div *ngIf="currentUpload" class="AC">
+        <div class="progress">
+          <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+        </div>
+        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+      </div>
+      <label  class="AC">
+          <input #fileUpload type="file" (change)="detectFiles($event)">
+      </label>
+    </div>
+    <!-- SAVE FORM -->
+  <form (ngSubmit)="saveTeacher(teacherForm)" #teacherForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required
+          [(ngModel)]="model.name" name="name"
+          #name="ngModel"
+          [ngClass]="{
+            'has-success': name.valid,
+            'has-danger': !name.pristine && !name.valid
+          }">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="instrument">Instrument</label>
+        <input type="text" class="form-control" id="instrument" required
+          [(ngModel)]="model.instrument" name="instrument"
+          #instrument="ngModel"
+          [ngClass]="{
+            'has-success': instrument.valid,
+            'has-danger': !instrument.pristine && !instrument.valid
+          }">
+          <div [hidden]="instrument.valid || instrument.pristine" class="alert alert-danger">
+            Instrument is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="summary">Summary</label>
+        <textarea rows="3" class="form-control" id="summary" required
+          [(ngModel)]="model.summary" name="summary"
+          #summary="ngModel"
+          [ngClass]="{
+            'has-success': summary.valid,
+            'has-danger': !summary.pristine && !summary.valid
+          }">
+        </textarea>
+          <div [hidden]="summary.valid || summary.pristine" class="alert alert-danger">
+            Summary is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="qualifications">Qualifications</label>
+        <textarea rows="3" class="form-control" id="qualifications"
+          [(ngModel)]="model.qualifications" name="qualifications"
+          #qualifications="ngModel"
+          [ngClass]="{
+            'has-success': qualifications.valid,
+            'has-danger': !qualifications.pristine && !qualifications.valid
+          }">
+        </textarea>
+          <div [hidden]="qualifications.valid || qualifications.pristine" class="alert alert-danger">
+            Qualifications is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="isActive">Active</label>
+        <input [checked]="model.isActive" 
+        type="checkbox" 
+        name="isActive" 
+        id="isActive" 
+        #isActive
+        required>      
+          <!-- <div [hidden]="isActive.valid || isActive.pristine"
+              class="alert alert-danger">
+              isActive is required
+        </div> -->
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!teacherForm.form.valid">Send</button>
+    </form> 
+  </div>
+</div>
+
+
+
+
+

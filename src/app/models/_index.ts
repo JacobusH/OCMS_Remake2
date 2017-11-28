@@ -15,4 +15,5 @@ export * from './signup.model';
 export * from './task.model';
 export * from './teacher.model';
 export * from './testimonial.model';
+export * from './upload.model';
 export * from './user.model';

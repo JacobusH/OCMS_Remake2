@@ -2,14 +2,17 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Teacher } from 'app/models/_index';
+import { Teacher, Upload } from 'app/models/_index';
 import 'rxjs/add/operator/switchMap'
 import * as firebase from 'firebase/app';
 
 @Injectable()
 export class TeacherService {
   teachers: AngularFirestoreCollection<Teacher>;
-  
+  storage = firebase.storage();
+  storageRef = this.storage.ref();
+
+
   constructor(private afs: AngularFirestore) { 
     this.teachers = this.afs.collection('teachers');
   }
@@ -29,10 +32,19 @@ export class TeacherService {
       return data;
   }
 
-  save(t: Teacher): Promise<firebase.firestore.DocumentReference>  {
+  save(t: Teacher, up: Upload): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.teachers.add(t);
     promise.then(x => {
       x.update({key: x.id});
+
+      let teacherRef = this.storageRef.child('teacher/' + up.name);
+      teacherRef.getDownloadURL().then((url) => {
+        // this.selectedPicture = url;
+        this.teachers.doc(x.id).update({imgUrl: url});
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     });
 
     return promise;
