@@ -152,6 +152,9 @@ li > a {
   .navbar-toggle {
       display: block;
   }
+  #header-bar {
+    display:none;
+  }
   
 }
 
