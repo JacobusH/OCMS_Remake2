@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-gallery',
+  selector: 'app-admin-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class GalleryComponent implements OnInit {
+export class AdminGalleryComponent implements OnInit {
 
   constructor() { }
 

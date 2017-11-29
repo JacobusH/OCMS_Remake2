@@ -22,32 +22,37 @@ import { TreeModule } from 'angular-tree-component';
 import { AuthGuard } from 'app/guards/auth.guard';
 import { AdminGuard } from 'app/guards/admin.guard';
 
-// Components
-import { AppComponent } from './app.component';
+// Pages
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ThanksComponent } from './pages/contact/thanks/thanks.component';
 import { FaqComponent } from './pages/faq/faq.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeLearntoplayComponent } from './pages/home/home-learntoplay/home-learntoplay.component';
 import { HomeSplashComponent } from './pages/home/home-splash/home-splash.component';
 import { HomeTeachersComponent } from './pages/home/home-teachers/home-teachers.component';
 import { HomeTestimonialsComponent } from './pages/home/home-testimonials/home-testimonials.component';
 import { HomeTilesComponent } from './pages/home/home-tiles/home-tiles.component';
-import { GalleryComponent } from './pages/gallery/gallery.component';
 import { LearntoplayComponent } from './pages/learntoplay/learntoplay.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { LiveChatComponent } from './components/live-chat/live-chat.component';
-import { ManagerComponent } from './components/live-chat/manager/manager.component';
 import { LoginComponent } from './pages/login/login.component';
-import { TodoerComponent } from './components/todoer/todoer.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
+import { TeachersComponent } from './pages/teachers/teachers.component';
+import { TeacherDetailComponent } from './pages/teachers/detail/detail.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
-import { ThanksComponent } from './pages/contact/thanks/thanks.component';
+
+// Components
+import { AppComponent } from './app.component';
+import { LiveChatComponent } from './components/live-chat/live-chat.component';
+import { LiveChatManagerComponent } from './components/live-chat/manager/manager.component';
+import { TodoerComponent } from './components/todoer/todoer.component';
 import { WindowComponent } from './components/live-chat/window/window.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
+
 // CALENDOER
 import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
 import { CalendoerComponent } from './components/calendoer/calendoer.component';
@@ -55,19 +60,19 @@ import { CalendarNoteDayViewComponent } from './components/calendar/calendar-not
 import { CalendoerEventModalComponent } from './components/modals/calendoer-event-modal/calendoer-event-modal.component';
 import { DateTimePickerComponent } from './components/calendar/date-time-picker/date-time-picker.component';
 // FORMS
-import { AdminFaqComponent } from './components/forms/admin-faq/admin-faq.component';
-import { AdminGalleryComponent } from './components/forms/admin-gallery/admin-gallery.component';
-import { AdminTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
-import { AdminUserComponent } from './components/forms/admin-user/admin-user.component';
+import { AdminFormFaqComponent } from './components/forms/admin-faq/admin-faq.component';
+import { AdminFormGalleryComponent } from './components/forms/admin-gallery/admin-gallery.component';
+import { AdminFormHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
+import { AdminFormTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
+import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
-import { AdminHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
-import { ContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
-import { MediaComponent } from './pages/administration/media/media.component';
-import { HomepageComponent } from './pages/administration/homepage/homepage.component';
-import { SignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
-import { TeachersComponent } from './pages/administration/teachers/teachers.component';
-import { UsersComponent } from './pages/administration/users/users.component';
+import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
+import { AdminHomepageComponent } from './pages/administration/homepage/homepage.component';
+import { AdminMediaComponent } from './pages/administration/media/media.component';
+import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
+import { AdminTeachersComponent } from './pages/administration/teachers/teachers.component';
+import { AdminUsersComponent } from './pages/administration/users/users.component';
 
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
@@ -93,12 +98,12 @@ var firebaseConfig = {
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
-    { path: "messages", component: ContactMessagesComponent},
-    { path: "chat", component: LiveChatComponent},
-    { path: "media", component: MediaComponent},
-    { path: "signups", component: SignUpsComponent},
-    { path: "teachers", component: TeachersComponent},
-    { path: "users", component: UsersComponent},
+    { path: "messages", component: AdminContactMessagesComponent},
+    { path: "chat", component: LiveChatManagerComponent},
+    { path: "media", component: AdminMediaComponent},
+    { path: "signups", component: AdminSignUpsComponent},
+    { path: "teachers", component: AdminTeachersComponent},
+    { path: "users", component: AdminUsersComponent},
   ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
@@ -115,8 +120,8 @@ const routes: Routes = [
   // { path: 'profile', component: ProfileComponent },
   // { path: 'resources', component: ResourcesComponent },
   // { path: 'register', component: RegisterComponent },
-  // { path: 'teachers', component: TeachersComponent },
-  // { path: 'teachers/:id', component: TeacherDetailComponent,
+  { path: 'teachers', component: TeachersComponent },
+  { path: 'teachers/:id', component: TeacherDetailComponent },
   //   // children: [
   //   //   { path: '', redirectTo: 'overview', pathMatch: 'full' },
   //     // { path: 'overview', component: Overview },
@@ -129,7 +134,7 @@ const routes: Routes = [
   // { path: 'testing/tree', component: TreeComponent },
   // { path: 'contact/thanks', component: ThanksComponent },
   { path: '**', component: PageNotFoundComponent }
-
+  
 ];
 
 @NgModule({
@@ -138,50 +143,52 @@ const routes: Routes = [
   ],
   declarations: [
     AppComponent,
-    UserProfileComponent,
+    AboutComponent,
+    AdministrationComponent,
+    AdminTeachersComponent,
+    AdminFormUserComponent,
+    AdminFormGalleryComponent,
+    AdminFormTeacherComponent,
+    AdminFormFaqComponent,
+    AdminHomepageComponent,
+    AdminSignUpsComponent,
+    AdminHomepageComponent,
+    AdminUsersComponent,
+    AdminContactMessagesComponent,
+    AdminMediaComponent,
+    CalendarHeaderComponent,
+    CalendoerComponent,
+    CalendarNoteDayViewComponent,
+    CalendoerEventModalComponent,
+    ContactComponent,
+    DateTimePickerComponent,
+    FaqComponent,
+    FooterComponent,
+    GalleryComponent,
+    HeaderComponent,
     HomeComponent,
     HomeLearntoplayComponent,
     HomeSplashComponent,
     HomeTeachersComponent,
     HomeTestimonialsComponent,
     HomeTilesComponent,
-    AboutComponent,
-    FooterComponent,
-    HeaderComponent,
-    ContactComponent,
-    ThanksComponent,
-    FaqComponent,
     ImageGalleryComponent,
-    GalleryComponent,
     ImageFilterPipe,
-    SignupFilterPipe,
-    ReadFilterPipe,
     LearntoplayComponent,
-    PageNotFoundComponent,
     LiveChatComponent,
-    ManagerComponent,
-    WindowComponent,
-    PlaygroundComponent,
-    CalendarHeaderComponent,
-    TodoerComponent,
-    CalendoerComponent,
-    DateTimePickerComponent,
-    CalendarNoteDayViewComponent,
+    LiveChatManagerComponent,
     LoginComponent,
-    AdministrationComponent,
-    CalendoerEventModalComponent,
-    AdminUserComponent,
-    AdminGalleryComponent,
-    AdminTeacherComponent,
-    AdminFaqComponent,
-    AdminHomepageComponent,
-    SignUpsComponent,
-    HomepageComponent,
-    UsersComponent,
+    PageNotFoundComponent,
+    PlaygroundComponent,
+    ReadFilterPipe,
+    SignupFilterPipe,
+    TeacherDetailComponent,
     TeachersComponent,
-    ContactMessagesComponent,
-    MediaComponent,
-    TileDisplayComponent
+    TodoerComponent,
+    ThanksComponent,
+    TileDisplayComponent,
+    UserProfileComponent,
+    WindowComponent
   ],
   imports: [
     AccordionModule, 

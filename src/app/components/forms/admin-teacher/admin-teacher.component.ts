@@ -16,12 +16,12 @@ import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-admin-teacher',
+  selector: 'app-admin-form-teacher',
   templateUrl: './admin-teacher.component.html',
   styleUrls: ['./admin-teacher.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminTeacherComponent implements OnInit {
+export class AdminFormTeacherComponent implements OnInit {
   private model = this.teacherService.createNew();
   @ViewChild('fileUpload') fileUploadVar: any;
   @ViewChild('imgTeacherSelected') imgTeacherSelected: any;

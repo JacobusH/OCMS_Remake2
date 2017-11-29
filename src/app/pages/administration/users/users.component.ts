@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'app-users',
+  selector: 'app-admin-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class UsersComponent implements OnInit {
+export class AdminUsersComponent implements OnInit {
 
   constructor() { }
 

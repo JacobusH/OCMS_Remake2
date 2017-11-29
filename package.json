@@ -32,9 +32,11 @@
     "core-js": "^2.4.1",
     "firebase": "^4.6.1",
     "lodash": "^4.17.4",
+    "ng2-daterangepicker": "^2.0.12",
     "ngx-accordion": "0.0.17",
     "ngx-bootstrap": "^2.0.0-beta.8",
     "ngx-contextmenu": "^2.0.0-beta.7",
+    "pretty-checkbox": "^3.0.3",
     "primeng": "^5.0.0-rc.0",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"

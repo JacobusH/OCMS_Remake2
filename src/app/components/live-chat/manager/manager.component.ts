@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./manager.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class ManagerComponent implements OnInit {
+export class LiveChatManagerComponent implements OnInit {
 
   constructor() { }
 

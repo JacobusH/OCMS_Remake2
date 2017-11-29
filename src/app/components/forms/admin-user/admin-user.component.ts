@@ -11,17 +11,17 @@ import {
   FormBuilder,
   NgForm
 } from '@angular/forms';
-import { TeachersComponent } from 'app/pages/administration/teachers/teachers.component';
+import { AdminTeachersComponent } from 'app/pages/administration/teachers/teachers.component';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-admin-user',
+  selector: 'app-admin-form-user',
   templateUrl: './admin-user.component.html',
   styleUrls: ['./admin-user.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AdminUserComponent implements OnInit {
+export class AdminFormUserComponent implements OnInit {
   @ViewChild('admin') isAdmin: any;
   @ViewChild('student') student: any;
   @ViewChild('teacher') teacher: any;

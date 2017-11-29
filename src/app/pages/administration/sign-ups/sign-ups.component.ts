@@ -13,18 +13,18 @@ import {
   FormBuilder,
   NgForm
 } from '@angular/forms';
-import { TeachersComponent } from 'app/pages/administration/teachers/teachers.component';
+import { AdminTeachersComponent } from 'app/pages/administration/teachers/teachers.component';
 import * as firebase from 'firebase/app';
 import * as moment from 'moment';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
-  selector: 'app-sign-ups',
+  selector: 'app-admin-sign-ups',
   templateUrl: './sign-ups.component.html',
   styleUrls: ['./sign-ups.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SignUpsComponent implements OnInit {
+export class AdminSignUpsComponent implements OnInit {
   @Input() filterBy?: string = 'all';
   @Input() readFilterBy?: string = 'all';
   public daterange: any = {};
