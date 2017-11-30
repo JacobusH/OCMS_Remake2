@@ -52,7 +52,6 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
-
 // CALENDOER
 import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
 import { CalendoerComponent } from './components/calendoer/calendoer.component';
@@ -65,6 +64,7 @@ import { AdminFormGalleryComponent } from './components/forms/admin-gallery/admi
 import { AdminFormHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
 import { AdminFormTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
 import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
+import { AdminFormTestimonialComponent } from './components/forms/admin-testimonial/admin-testimonial.component';
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
 import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
@@ -73,6 +73,7 @@ import { AdminMediaComponent } from './pages/administration/media/media.componen
 import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
 import { AdminTeachersComponent } from './pages/administration/teachers/teachers.component';
 import { AdminUsersComponent } from './pages/administration/users/users.component';
+import { AdminTestimonialsComponent } from './pages/administration/testimonials/testimonials.component';
 
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
@@ -83,6 +84,8 @@ import { AuthService, AlertMultiService, AlertService, ContactMessageService, FA
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
 import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
 import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
+import { DateRangePickerComponent } from './components/calendar/date-range-picker/date-range-picker.component';
+import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -102,6 +105,7 @@ const routes: Routes = [
     { path: "chat", component: LiveChatManagerComponent},
     { path: "media", component: AdminMediaComponent},
     { path: "signups", component: AdminSignUpsComponent},
+    { path: "testimonials", component: AdminTestimonialsComponent},
     { path: "teachers", component: AdminTeachersComponent},
     { path: "users", component: AdminUsersComponent},
   ] },
@@ -149,11 +153,13 @@ const routes: Routes = [
     AdminFormUserComponent,
     AdminFormGalleryComponent,
     AdminFormTeacherComponent,
+    AdminFormTestimonialComponent,
     AdminFormFaqComponent,
     AdminHomepageComponent,
     AdminSignUpsComponent,
     AdminHomepageComponent,
     AdminUsersComponent,
+    AdminTestimonialsComponent,
     AdminContactMessagesComponent,
     AdminMediaComponent,
     CalendarHeaderComponent,
@@ -188,7 +194,9 @@ const routes: Routes = [
     ThanksComponent,
     TileDisplayComponent,
     UserProfileComponent,
-    WindowComponent
+    WindowComponent,
+    DateRangePickerComponent,
+    SelectorSingleComponent
   ],
   imports: [
     AccordionModule, 

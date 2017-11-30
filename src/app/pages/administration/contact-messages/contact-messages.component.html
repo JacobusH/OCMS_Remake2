@@ -1,3 +1,24 @@
-<p>
-  contact-messages works!
-</p>
+<div class="filter-options container AC">
+  <app-selector-single 
+    [placeHolder]="'Filter Read'" 
+    [displayValues]="readFilter"
+    (valueSelected)="readFilterClicked($event)">
+  </app-selector-single>
+  <app-date-range-picker (dateRangeSelection)="selectedDate($event)"></app-date-range-picker>
+</div>
+
+
+<div *ngFor="let message of messages | async | readFilter:readFilterBy"
+[style.borderColor]="message.read ? 'green' : 'red'"
+(click)="readClicked($event, message)" 
+class="message-card">
+  <div class="top">
+      <div class="name">{{message.name}}</div>
+      <div class="email">{{message.email}}</div>
+      <div class="message">{{message.message}}</div>
+  </div>
+  <div class="bottom">
+      <div class="left createdAt">{{message.createdAt | date:'medium'}}</div>
+      <!-- <div class="right read">{{signup.read }}</div> -->
+  </div>
+</div>

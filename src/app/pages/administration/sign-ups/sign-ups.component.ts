@@ -2,7 +2,6 @@ import { Component, OnInit, ViewEncapsulation, ViewChild, Input } from '@angular
 import { DatePipe } from '@angular/common';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Signup, Upload } from 'app/models/_index';
-import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 import { SignupService, UploadService } from 'app/services/_index';
 import {
   ReactiveFormsModule,
@@ -26,21 +25,7 @@ import { Observable } from 'rxjs/Observable';
 export class AdminSignUpsComponent implements OnInit {
   @Input() filterBy?: string = 'all';
   @Input() readFilterBy?: string = 'all';
-  public daterange: any = {};
-  public dateInputs: any = [
-    {
-        start: moment().subtract(6, 'month'),
-        end: moment()
-    }
-  ];
-  public mainInput = {
-      start: moment().subtract(12, 'month'),
-      end: moment().subtract(6, 'month')
-  }
-  public options: any = {
-    locale: { format: 'YYYY-MM-DD' },
-    alwaysShowCalendars: false,
-  };
+  signups: Observable<{}[]>;
   instruments = [
     {value: 'all', viewValue: 'All'},  
     {value: 'Bass', viewValue: 'Bass'},  
@@ -51,7 +36,7 @@ export class AdminSignUpsComponent implements OnInit {
     {value: 'Guitar', viewValue: 'Guitar'},  
     {value: 'Piano', viewValue: 'Piano'},
     {value: 'Sax', viewValue: 'Saxophone'},  
-    {value: 'Singing', viewValue: 'Singing'},  
+    {value: 'Singing', viewValue: 'Singing'},
     {value: 'Trumpet', viewValue: 'Trumpet'},  
     {value: 'Ukulele', viewValue: 'Ukulele'},
     {value: 'Violin', viewValue: 'Violin'}
@@ -61,24 +46,9 @@ export class AdminSignUpsComponent implements OnInit {
     {value: 'Read', viewValue: 'Read'},  
     {value: 'Unread', viewValue: 'Unread'}
   ];
-  instSelectedValue;
-  readSelectedValue;
 
-  signups: Observable<{}[]>;
-
-  constructor(private signupService: SignupService, private daterangepickerOptions: DaterangepickerConfig, private afs: AngularFirestore) { 
+  constructor(private signupService: SignupService, private afs: AngularFirestore) { 
     this.signups = this.signupService.signups.valueChanges();
-
-    this.daterangepickerOptions.settings = {
-      locale: { format: 'YYYY-MM-DD' },
-      alwaysShowCalendars: false,
-      ranges: {
-        'Last Month': [moment().subtract(1, 'month'), moment().add(1, 'day')],
-        'Last 3 Months': [moment().subtract(4, 'month'), moment().add(1, 'day')],
-        'Last 6 Months': [moment().subtract(6, 'month'), moment().add(1, 'day')],
-        'Last 12 Months': [moment().subtract(12, 'month'), moment().add(1, 'day')],
-      }
-    };
   }
 
   ngOnInit() {
@@ -87,23 +57,20 @@ export class AdminSignUpsComponent implements OnInit {
   readClicked(event, msg: Signup) {
     msg.read = !msg.read;
     this.signupService.edit(msg);
-    // this.af.updateSignup(msg);
   }
 
-  filterClicked(filterApplied: string) {
-    this.filterBy = filterApplied; 
+  instrumentFilterClicked(sel: string) {
+    this.filterBy = sel; 
   }
 
-  readFilterClicked(filterApplied: string) {
-    this.readFilterBy = filterApplied; 
+  readFilterClicked(sel: string) {
+    this.readFilterBy = sel; 
   }
 
-  private selectedDate(value: any, dateInput: any) {
-    dateInput.start = value.start;
-    dateInput.end = value.end;
-    
-    this.signups = this.afs.collection('signups', ref => ref.where('createdAt', '>=', new Date(dateInput.start))
-    .where('createdAt', '<=', new Date(dateInput.end))).valueChanges();
+  private selectedDate(event) {
+    this.signups = this.afs.collection('signups', 
+      ref => ref.where('createdAt', '>=', new Date(event.start))
+        .where('createdAt', '<=', new Date(event.end))).valueChanges();
 
   }
 
