@@ -1,12 +1,17 @@
+:host {
+  width: 100%;
+}
+
 .signup-card {
   display: inline-block;
-  border: 1px solid white;
+  border: 2px solid white;
   background: #efefef;
-  padding: 3px;
+  padding: 1px;
   border-radius: 5px;
   box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
   text-align: center;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .bottom .left {
@@ -17,4 +22,24 @@
 .bottom .right {
   float:right;
   padding-left: 8px;
+}
+
+.top {
+  background: #fff;
+  padding:3px;
+  border-radius: 5px;
+}
+
+.filter-options form, .filter-options #datePicker {
+  display: inline-block;
+  margin: 5px 20px;
+}
+
+#datePicker {
+  width: 320px;
+  vertical-align: bottom;
+}
+
+.filter-options {
+  text-align: center;
 }

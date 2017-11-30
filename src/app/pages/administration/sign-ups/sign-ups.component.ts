@@ -21,8 +21,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-admin-sign-ups',
   templateUrl: './sign-ups.component.html',
-  styleUrls: ['./sign-ups.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./sign-ups.component.scss']
 })
 export class AdminSignUpsComponent implements OnInit {
   @Input() filterBy?: string = 'all';
@@ -65,9 +64,9 @@ export class AdminSignUpsComponent implements OnInit {
   instSelectedValue;
   readSelectedValue;
 
-  signups: Observable<Signup[]>;
+  signups: Observable<{}[]>;
 
-  constructor(private signupService: SignupService, private daterangepickerOptions: DaterangepickerConfig) { 
+  constructor(private signupService: SignupService, private daterangepickerOptions: DaterangepickerConfig, private afs: AngularFirestore) { 
     this.signups = this.signupService.signups.valueChanges();
 
     this.daterangepickerOptions.settings = {
@@ -102,8 +101,10 @@ export class AdminSignUpsComponent implements OnInit {
   private selectedDate(value: any, dateInput: any) {
     dateInput.start = value.start;
     dateInput.end = value.end;
+    
+    this.signups = this.afs.collection('signups', ref => ref.where('createdAt', '>=', new Date(dateInput.start))
+    .where('createdAt', '<=', new Date(dateInput.end))).valueChanges();
 
-    // this.signups = this.af.getSignupsByDateRange(value.start, value.end);
   }
 
 }

@@ -148,13 +148,28 @@ li > a {
   margin: 0px !important;
 }
 
-@media (min-width: 768px) {
-  .navbar-toggle {
-      display: block;
-  }
-  #header-bar {
+
+@media screen and (min-device-width: 1200px) /* Desktop */ {
+  /* #header-bar {
+    display:block;
+  } */
+}
+
+@media screen  and (max-device-width: 1199px) /* Tablet */ {
+  /* #header-bar {
     display:none;
   }
+  .navbar-toggle {
+    display: block;
+  } */
+}
+
+@media screen and (max-device-width: 720px) /* Mobile */ {
   
 }
 
+@media (min-width: 768px) {
+.navbar-toggle {
+    display: block;
+}
+}

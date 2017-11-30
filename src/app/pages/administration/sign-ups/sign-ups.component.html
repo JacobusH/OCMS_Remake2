@@ -1,12 +1,41 @@
+<div class="filter-options container AC">
+  <mat-form-field>
+    <mat-select placeholder="Filter Read" [(ngModel)]="readSelectedValue" name="read">
+      <mat-option *ngFor="let r of readFilter" [value]="r.value" (click)="readFilterClicked(readSelectedValue)">
+        {{r.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Instruments" [(ngModel)]="instSelectedValue" name="instrument">
+      <mat-option *ngFor="let instrument of instruments" [value]="instrument.value" (click)="filterClicked(instSelectedValue)">
+        {{instrument.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div id="datePicker" class="form-group" *ngFor="let dateInput of dateInputs">
+      <div class="input-group" daterangepicker [options]="{startDate:dateInput.start, endDate:dateInput.end }" (selected)="selectedDate($event, dateInput)" >
+        <span class="form-control uneditable-input"  name="daterange" >
+          {{ dateInput.start | date:'M/dd/y' }} - {{ dateInput.end| date:'M/dd/y' }}
+        </span>
+        <span class="input-group-btn">
+          <a type="button" class="btn btn-default"><i class="glyphicon glyphicon-calendar"></i></a>
+        </span>
+      </div>
+    </div>
+</div>
+
 <div *ngFor="let signup of signups | async | signupFilter:filterBy | readFilter:readFilterBy"
 [style.borderColor]="signup.read ? 'green' : 'red'"
 (click)="readClicked($event, signup)" 
 class="signup-card">
-  <div class="name">{{signup.name}}</div>
-  <div class="email">{{signup.email}}</div>
-  <div class="instrument">{{signup.instrument}}</div>
+  <div class="top">
+      <div class="name">{{signup.name}}</div>
+      <div class="email">{{signup.email}}</div>
+      <div class="instrument">{{signup.instrument}}</div>
+  </div>
   <div class="bottom">
       <div class="left createdAt">{{signup.createdAt | date:'medium'}}</div>
-      <div class="right read">{{signup.read}}</div>
+      <!-- <div class="right read">{{signup.read }}</div> -->
   </div>
 </div>

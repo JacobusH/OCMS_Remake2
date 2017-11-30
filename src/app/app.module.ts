@@ -11,7 +11,7 @@ import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule, MatSidenavModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule, MatSidenavModule, MatSelectModule } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { ContextMenuModule } from 'ngx-contextmenu';
@@ -205,6 +205,7 @@ const routes: Routes = [
     FormsModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatSelectModule,
     MatMenuModule,
     MatSidenavModule,
     MenuModule,
