@@ -9,7 +9,7 @@
    </div>
  </div> -->
 
- <div class="filter-buttons" >
+ <div class="filter-buttons AC" >
     <button 
       class="btn btn-lg btn-info" 
       [class.active]="filterBy == 'All'" 
@@ -24,9 +24,12 @@
       (click)="filterClicked(fil)" >{{fil}}
     </button>
   </div>
- <div class="gallery-img" *ngFor="let img of loadedImagesTest | async | imageFilter:filterBy">
-   <img [src]="img.imgUrl" />
- </div>
+  <div class="AC">
+    <div class="gallery-img" *ngFor="let img of loadedImagesTest | async | imageFilter:filterBy">
+      <img [src]="img.imgUrl" />
+    </div>
+  </div>
+
  
  <!-- NEW Static approach | working with OCMS_1-->
  <!-- <div class="gallery-container AC" [style.visibility]="(doneLoading == false) ? 'hidden' : 'visible' ">
