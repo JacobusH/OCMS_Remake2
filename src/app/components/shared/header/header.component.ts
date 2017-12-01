@@ -8,7 +8,7 @@ import { isDefaultChangeDetectionStrategy } from '@angular/core/src/change_detec
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;

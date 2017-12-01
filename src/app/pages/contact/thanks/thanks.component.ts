@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-thanks',
   templateUrl: './thanks.component.html',
   styleUrls: ['./thanks.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ThanksComponent implements OnInit {
 

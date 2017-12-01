@@ -11,7 +11,7 @@ import { GalleryService } from 'app/services/gallery.service';
   animations: [
     apparateTrigger
   ],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ImageGalleryComponent implements OnInit, OnChanges {
   @Input() filterBy?: string = 'all';

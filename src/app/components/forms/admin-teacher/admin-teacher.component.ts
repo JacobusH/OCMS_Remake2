@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-admin-form-teacher',
   templateUrl: './admin-teacher.component.html',
   styleUrls: ['./admin-teacher.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormTeacherComponent implements OnInit {
   private model = this.teacherService.createNew();

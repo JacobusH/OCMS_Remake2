@@ -5,7 +5,7 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-c
   selector: 'app-todoer',
   templateUrl: './todoer.component.html',
   styleUrls: ['./todoer.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class TodoerComponent implements OnInit {
   // Nodes / content

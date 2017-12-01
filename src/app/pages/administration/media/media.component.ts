@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-admin-media',
   templateUrl: './media.component.html',
   styleUrls: ['./media.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminMediaComponent implements OnInit {
 

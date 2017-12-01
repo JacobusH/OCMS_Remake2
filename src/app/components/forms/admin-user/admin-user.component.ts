@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-admin-form-user',
   templateUrl: './admin-user.component.html',
   styleUrls: ['./admin-user.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormUserComponent implements OnInit {
   @ViewChild('admin') isAdmin: any;

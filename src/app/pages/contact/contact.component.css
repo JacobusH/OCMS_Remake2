@@ -22,14 +22,6 @@
     background:#fff;
 }
 
-.alert {
-    background: #f2edda;
-    padding: 7px;
-    font-size: .9em;
-    margin-bottom: 20px;
-    display: inline-block;
-    animation: 2s alertAnim forwards;
-}
 
 .button {
     margin-top: 3rem;

@@ -7,7 +7,7 @@ import { CalendarEvent, CalendarEventTimesChangedEvent } from 'angular-calendar'
   selector: 'app-calendar-note-day-view',
   templateUrl: './calendar-note-day-view.component.html',
   styleUrls: ['./calendar-note-day-view.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CalendarNoteDayViewComponent implements OnInit {
   @Input('viewDate') viewDate: Date;

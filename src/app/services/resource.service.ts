@@ -18,7 +18,7 @@ export class ResourceService {
     let data: Resource = {
       key: '',
       title: '',
-      categories: new Array,
+      category: '',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

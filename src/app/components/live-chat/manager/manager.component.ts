@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-live-chat-manager',
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class LiveChatManagerComponent implements OnInit {
 

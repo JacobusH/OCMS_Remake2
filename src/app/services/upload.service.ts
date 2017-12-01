@@ -63,7 +63,7 @@ export class UploadService {
       let fileName = upload.name;
       model.imgUrl = 'gallery/' + fileName;
       
-      this.galleryService.save(model);
+      this.galleryService.save(model, upload);
     }});
   }
 

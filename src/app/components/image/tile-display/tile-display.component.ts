@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-tile-display',
   templateUrl: './tile-display.component.html',
   styleUrls: ['./tile-display.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class TileDisplayComponent implements OnInit {
 

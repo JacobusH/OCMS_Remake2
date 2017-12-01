@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-home-tiles',
   templateUrl: './home-tiles.component.html',
   styleUrls: ['./home-tiles.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeTilesComponent implements OnInit {
 

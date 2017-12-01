@@ -1,0 +1,14 @@
+.icon-box-image, .icon-box-image-hover{
+  width: 255px;
+  border-radius: 5px;
+  border:1px solid black;
+}
+
+.icon-box-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.icon-box-content {
+  font-size: 18px;
+}

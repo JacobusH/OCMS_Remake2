@@ -9,9 +9,11 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class FAQService {
   faqs: AngularFirestoreCollection<FAQ>;
+  faqsActive: AngularFirestoreCollection<FAQ>;
   
   constructor(private afs: AngularFirestore) { 
     this.faqs = this.afs.collection('faqs');
+    this.faqsActive = this.afs.collection('faqs', ref => ref.where('isActive', '==', 'true'));
   }
 
   createNew(): FAQ {

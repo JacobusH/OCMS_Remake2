@@ -19,7 +19,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-admin-form-testimonial',
   templateUrl: './admin-testimonial.component.html',
   styleUrls: ['./admin-testimonial.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormTestimonialComponent implements OnInit {
   private model = this.testimonialService.createNew();

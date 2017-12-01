@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-freetext-view',
   templateUrl: './freetext-view.component.html',
   styleUrls: ['./freetext-view.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class FreetextViewComponent implements OnInit {
 

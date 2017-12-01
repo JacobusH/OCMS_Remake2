@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/Observable';
   selector: 'app-admin-contact-messages',
   templateUrl: './contact-messages.component.html',
   styleUrls: ['./contact-messages.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminContactMessagesComponent implements OnInit {
   @Input() readFilterBy?: string = 'all';

@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } fro
   selector: 'app-selector-single',
   templateUrl: './selector-single.component.html',
   styleUrls: ['./selector-single.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class SelectorSingleComponent implements OnInit {
   @Input() placeHolder: string;

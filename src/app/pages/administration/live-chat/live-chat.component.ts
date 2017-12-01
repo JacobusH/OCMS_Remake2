@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-admin-live-chat',
   templateUrl: './live-chat.component.html',
   styleUrls: ['./live-chat.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminLiveChatComponent implements OnInit {
 

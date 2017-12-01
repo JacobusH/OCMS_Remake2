@@ -5,7 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   selector: 'app-calendoer-event-modal',
   templateUrl: './calendoer-event-modal.component.html',
   styleUrls: ['./calendoer-event-modal.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class CalendoerEventModalComponent implements OnInit {
 

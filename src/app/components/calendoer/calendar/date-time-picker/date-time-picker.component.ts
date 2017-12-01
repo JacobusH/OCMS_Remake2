@@ -26,7 +26,7 @@ export const DATE_TIME_PICKER_CONTROL_VALUE_ACCESSOR: any = {
   selector: 'app-date-time-picker',
   templateUrl: './date-time-picker.component.html',
   styleUrls: ['./date-time-picker.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class DateTimePickerComponent implements OnInit {
   @Input() placeholder: string;

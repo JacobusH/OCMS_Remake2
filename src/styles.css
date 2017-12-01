@@ -3,10 +3,22 @@
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+p {
+  font-size: 18px;
+  font-family:  'Raleway', sans-serif;;
+}
 
 body {
     background:#e8e8e8;
     font-family: 'Muli';
+}
+
+.IL {
+  display:inline-block;
+}
+
+.AC {
+  text-align: center;
 }
 
 /* CONTENT SECTIONS */

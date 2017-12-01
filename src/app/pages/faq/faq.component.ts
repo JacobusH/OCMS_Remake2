@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap'
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class FaqComponent implements OnInit {
   // testimonials: AngularFirestoreCollection<Testimonial>;

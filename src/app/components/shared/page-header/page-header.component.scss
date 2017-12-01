@@ -1,0 +1,22 @@
+
+#page-heading {
+  border-bottom: 1px solid #e5e5e5;
+  box-shadow: 0px -4px 0px rgba(0,0,0,0.025) inset;
+  margin-bottom: 15px;
+}
+
+#page-heading .wrap {
+  position: relative;
+  padding: 10px 0px 40px 0px;
+  text-align: center;
+}
+
+h1#page-title {
+  padding: 0px 0px;
+  margin-bottom: 0px;
+  font-family: 'Lato',Arial !important;
+  font-size: 36px;
+  line-height: 48px;
+  font-weight: 700;
+  text-transform: uppercase;
+}

@@ -17,7 +17,7 @@ import {
   selector: 'app-learntoplay',
   templateUrl: './learntoplay.component.html',
   styleUrls: ['./learntoplay.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class LearntoplayComponent implements OnInit {
   private model = this.signupService.createNew();

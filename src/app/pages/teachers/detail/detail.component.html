@@ -1,3 +1,10 @@
-<p>
-  detail works!
-</p>
+<app-page-header [title]='(teacher | async)?.name'></app-page-header>
+
+<div class="container">
+  <div class="photo"  *ngIf="teacher != null">
+    <img src="{{(teacher | async)?.imgUrl}}" class="attachment-thumb-cell-small size-thumb-cell-small wp-post-image" alt="">
+  </div>
+  <div class="info"  *ngIf="teacher != null">
+      <div innerHtml="{{(teacher | async)?.summary}}"></div>
+    </div>
+</div>

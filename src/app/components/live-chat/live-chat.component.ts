@@ -14,7 +14,7 @@ import 'rxjs/add/operator/switchMap'
   selector: 'app-live-chat',
   templateUrl: './live-chat.component.html',
   styleUrls: ['./live-chat.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class LiveChatComponent implements OnInit {
   protected model: LiveChat;

@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-home-splash',
   templateUrl: './home-splash.component.html',
   styleUrls: ['./home-splash.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeSplashComponent implements OnInit {
 

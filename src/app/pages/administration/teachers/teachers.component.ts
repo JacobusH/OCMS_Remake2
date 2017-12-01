@@ -4,7 +4,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   selector: 'app-admin-teachers',
   templateUrl: './teachers.component.html',
   styleUrls: ['./teachers.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminTeachersComponent implements OnInit {
 

@@ -1,3 +1,66 @@
-<p>
-  admin-faq works!
-</p>
+<div class="row">
+  <!-- Select FAQ to Edit -->
+  <div class="col-lg-6">
+    <div class="faq-select-container">
+      <button class="new-btn btn btn-info mB15" (click)="setNewFAQ()">New</button>
+      <div class="faq-container">
+        <div class="faq" (click)="setSelectedFAQ(faq)" *ngFor="let faq of faqs | async">
+          <span>{{ (faq.question.length > 15) ? (faq.question | slice:0:15) + '...' : (faq.question) }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <!-- SAVE FORM -->
+  <form (ngSubmit)="saveFAQ(faqForm)" #faqForm="ngForm">
+      <div class="form-group">
+        <label for="question">Question</label>
+        <textarea rows="3" class="form-control" id="text" required
+          [(ngModel)]="model.question" name="question"
+          #question="ngModel"
+          [ngClass]="{
+            'has-success': question.valid,
+            'has-danger': !question.pristine && !question.valid
+          }">
+        </textarea>
+          <div [hidden]="question.valid || question.pristine" class="alert alert-danger">
+            Question is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="answer">Answer</label>
+        <textarea  class="form-control" id="answer" required
+          [(ngModel)]="model.answer" name="answer"
+          #answer="ngModel"
+          [ngClass]="{
+            'has-success': answer.valid,
+            'has-danger': !answer.pristine && !answer.valid
+          }">
+          </textarea>
+          <div [hidden]="answer.valid || answer.pristine" class="alert alert-danger">
+            Answer is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="isActive">Active</label>
+        <input [checked]="model.isActive" 
+        [(ngModel)]="model.isActive" 
+        type="checkbox" 
+        name="isActive" 
+        id="isActive" 
+        #isActive
+        required>      
+          <!-- <div [hidden]="isActive.valid || isActive.pristine"
+              class="alert alert-danger">
+              isActive is required
+        </div> -->
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!faqForm.form.valid">Save</button>
+    </form> 
+  </div>
+</div>
+
+
+
+
+

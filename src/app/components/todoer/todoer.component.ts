@@ -7,7 +7,7 @@ import * as _ from 'lodash';
   selector: 'app-todoer',
   templateUrl: './todoer.component.html',
   styleUrls: ['./todoer.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class TodoerComponent implements OnInit {
   @ViewChild('todoer')

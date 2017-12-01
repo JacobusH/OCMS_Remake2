@@ -21,7 +21,7 @@ import {
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class ContactComponent implements OnInit {
   private model = this.contactService.createNew();

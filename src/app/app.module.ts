@@ -28,6 +28,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { ThanksComponent } from './pages/contact/thanks/thanks.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HomeLearntoplayComponent } from './pages/home/home-learntoplay/home-learntoplay.component';
 import { HomeSplashComponent } from './pages/home/home-splash/home-splash.component';
@@ -38,6 +39,7 @@ import { LearntoplayComponent } from './pages/learntoplay/learntoplay.component'
 import { LoginComponent } from './pages/login/login.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PlaygroundComponent } from './pages/playground/playground.component';
+import { ResourcesComponent } from './pages/resources/resources.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
 import { TeacherDetailComponent } from './pages/teachers/detail/detail.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
@@ -62,18 +64,21 @@ import { DateTimePickerComponent } from './components/calendar/date-time-picker/
 import { AdminFormFaqComponent } from './components/forms/admin-faq/admin-faq.component';
 import { AdminFormGalleryComponent } from './components/forms/admin-gallery/admin-gallery.component';
 import { AdminFormHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
+import { AdminFormResourceComponent } from './components/forms/admin-resource/admin-resource.component';
 import { AdminFormTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
-import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
 import { AdminFormTestimonialComponent } from './components/forms/admin-testimonial/admin-testimonial.component';
+import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
 import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
+import { AdminFaqComponent } from './pages/administration/faq/faq.component';
 import { AdminHomepageComponent } from './pages/administration/homepage/homepage.component';
 import { AdminMediaComponent } from './pages/administration/media/media.component';
 import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
 import { AdminTeachersComponent } from './pages/administration/teachers/teachers.component';
 import { AdminUsersComponent } from './pages/administration/users/users.component';
 import { AdminTestimonialsComponent } from './pages/administration/testimonials/testimonials.component';
+import { AdminResourcesComponent } from './pages/administration/resources/resources.component';
 
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
@@ -86,6 +91,9 @@ import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
 import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
 import { DateRangePickerComponent } from './components/calendar/date-range-picker/date-range-picker.component';
 import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
+import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
+import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
+import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -103,7 +111,9 @@ const routes: Routes = [
   { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
     { path: "messages", component: AdminContactMessagesComponent},
     { path: "chat", component: LiveChatManagerComponent},
+    { path: "faq", component: AdminFaqComponent},
     { path: "media", component: AdminMediaComponent},
+    { path: "resources", component: AdminResourcesComponent},
     { path: "signups", component: AdminSignUpsComponent},
     { path: "testimonials", component: AdminTestimonialsComponent},
     { path: "teachers", component: AdminTeachersComponent},
@@ -122,7 +132,7 @@ const routes: Routes = [
   { path: 'playground', component: PlaygroundComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'profile', component: ProfileComponent },
-  // { path: 'resources', component: ResourcesComponent },
+  { path: 'resources', component: ResourcesComponent },
   // { path: 'register', component: RegisterComponent },
   { path: 'teachers', component: TeachersComponent },
   { path: 'teachers/:id', component: TeacherDetailComponent },
@@ -132,7 +142,7 @@ const routes: Routes = [
   //     // { path: 'specs', component: Specs }
   //   // ]
   // },
-  // { path: 'testimonials', component: TestimonialsComponent },
+  { path: 'testimonials', component: TestimonialsComponent },
   // { path: 'testing/youtube', component: YoutubeComponent },
   // { path: 'testing/upload', component: UploadComponent },
   // { path: 'testing/tree', component: TreeComponent },
@@ -159,7 +169,10 @@ const routes: Routes = [
     AdminSignUpsComponent,
     AdminHomepageComponent,
     AdminUsersComponent,
+    AdminResourcesComponent,
+    AdminFaqComponent,
     AdminTestimonialsComponent,
+    TestimonialsComponent,
     AdminContactMessagesComponent,
     AdminMediaComponent,
     CalendarHeaderComponent,
@@ -196,7 +209,12 @@ const routes: Routes = [
     UserProfileComponent,
     WindowComponent,
     DateRangePickerComponent,
-    SelectorSingleComponent
+    SelectorSingleComponent,
+    PageHeaderComponent,
+    BaseTilesComponent,
+    TileTestimonialComponent,
+    AdminFormResourceComponent,
+    ResourcesComponent
   ],
   imports: [
     AccordionModule, 

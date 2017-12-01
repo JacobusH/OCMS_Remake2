@@ -26,7 +26,7 @@ export const colors: any = {
   selector: 'app-calendoer',
   templateUrl: './calendoer.component.html',
   styleUrls: ['./calendoer.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.Emulated,
   entryComponents: [ CalendoerEventModalComponent ]
 })
 export class CalendoerComponent implements OnInit {

@@ -17,7 +17,7 @@ import {
   selector: 'app-live-chat-window',
   templateUrl: './window.component.html',
   styleUrls: ['./window.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class WindowComponent extends LiveChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;

@@ -9,12 +9,14 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class TeacherService {
   teachers: AngularFirestoreCollection<Teacher>;
+  teachersActive: AngularFirestoreCollection<Teacher>;
   storage = firebase.storage();
   storageRef = this.storage.ref();
 
 
   constructor(private afs: AngularFirestore) { 
     this.teachers = this.afs.collection('teachers');
+    this.teachersActive = this.afs.collection('teachers', ref => ref.where('isActive', '==', true));
   }
 
   createNew(): Teacher {

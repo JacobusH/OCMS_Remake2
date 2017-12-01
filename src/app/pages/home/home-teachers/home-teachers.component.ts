@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap'
   selector: 'app-home-teachers',
   templateUrl: './home-teachers.component.html',
   styleUrls: ['./home-teachers.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class HomeTeachersComponent implements OnInit {
   teachers: Observable<Teacher[]>;

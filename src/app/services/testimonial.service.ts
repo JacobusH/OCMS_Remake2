@@ -9,9 +9,13 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class TestimonialService {
   testimonials: AngularFirestoreCollection<Testimonial>;
+  testimonialsActive: AngularFirestoreCollection<Testimonial>;
+  testimonialsFirst4: AngularFirestoreCollection<Testimonial>;
   
   constructor(private afs: AngularFirestore) { 
     this.testimonials = this.afs.collection<Testimonial>('testimonials');
+    this.testimonialsActive = this.afs.collection<Testimonial>('testimonials', ref => ref.where('isActive', '==', true));
+    this.testimonialsFirst4 = this.afs.collection<Testimonial>('testimonials', ref => ref.limit(4));
   }
 
   createNew(): Testimonial {
