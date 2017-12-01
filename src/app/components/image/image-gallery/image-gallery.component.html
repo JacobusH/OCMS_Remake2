@@ -11,13 +11,20 @@
 
  <div class="filter-buttons" >
     <button 
-    *ngFor="let fil of filterOptions" 
-    class="btn btn-lg btn-info" 
-    [class.active]="filterBy == fil" 
-    style="margin-right:15px;"
-    (click)="filterClicked(fil)" >{{fil}}</button>
+      class="btn btn-lg btn-info" 
+      [class.active]="filterBy == 'All'" 
+      style="margin-right:15px;"
+      (click)="filterClicked('All')" >All
+    </button>
+    <button 
+      *ngFor="let fil of filterOptions" 
+      class="btn btn-lg btn-info" 
+      [class.active]="filterBy == fil" 
+      style="margin-right:15px;"
+      (click)="filterClicked(fil)" >{{fil}}
+    </button>
   </div>
- <div *ngFor="let img of loadedImagesTest | async">
+ <div class="gallery-img" *ngFor="let img of loadedImagesTest | async | imageFilter:filterBy">
    <img [src]="img.imgUrl" />
  </div>
  

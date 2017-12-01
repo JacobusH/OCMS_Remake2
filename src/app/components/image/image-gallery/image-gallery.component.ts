@@ -29,7 +29,8 @@ export class ImageGalleryComponent implements OnInit, OnChanges {
   loadedImagesTest;
 
   constructor(private galleryService: GalleryService) { 
-    this.visibleImages = this.galleryService.gallery;
+    // this.visibleImages = this.galleryService.gallery;
+    // this.visibleImages = this.galleryService.galleryActive;
   }
 
   ngOnInit() {
@@ -38,7 +39,21 @@ export class ImageGalleryComponent implements OnInit, OnChanges {
     //   this.loadingTotal = x.val().count;
     // });
 
-    this.loadedImagesTest = this.galleryService.gallery.valueChanges();
+    this.loadedImagesTest = this.galleryService.galleryActive.valueChanges();
+
+    this.loadedImagesTest.subscribe(x => {
+
+      for(var i = 0; i < x.length; i++) {
+        let splits = x[i].categories.split(',');
+        for(var j = 0; j < splits.length; j++) {
+          var element = splits[j].replace(/\s/g, '');
+          if(this.filterOptions.indexOf(element) === -1) {
+            this.filterOptions.push(element);
+          }
+        }
+      }
+
+    })
 
     // this.galleryService.gallery.valueChanges().subscribe(imgArr => {
     //   // this.loadedImages.push(img);
