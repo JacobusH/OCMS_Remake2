@@ -1,15 +1,16 @@
+
+
 <div class="livechat-container" [@slideUpDownAnimation]='slideState'>
   <div class="show-chat" (click)="toggleAnimationState()"> <img class="chat-icon" src="assets/img/speech-bubble.png"> CHAT WITH US</div>
   <div class="chat-container">
     <div class="flip-container" *ngIf="sessionRunning; else showInfo_content">
       <div #scrollMe class="chat-messages-container">
-        <div *ngFor="let msg of liveChatMessages | async" [ngClass]="msg.fromAdmin ? 'bubble-right' : 'bubble-left'">
-          <div [ngClass]="msg.fromAdmin ? 'chat-info-right' : 'chat-info-left'">
-            {{ msg.dateTime  }}
-          </div>
-          <div>
-            <p>{{ msg.message }}</p>
-          </div>
+        <div *ngFor="let msg of windowLiveChatMessages | async">
+          <app-bubble 
+            [time]="msg.createdAt" 
+            [message]="msg.message" 
+            [bubbleClass]="msg.fromAdmin ? 'right' : 'left'">
+          </app-bubble>
         </div>
       </div>
       <div class="chat-newMsg-container">
@@ -27,7 +28,7 @@
       <button class="btn btn-lg btn-info"><a routerLink="/contact" style="color:white; text-decoration: none;">Contact</a></button>
     </div>
     <div *ngIf="switch" class="info-content">
-    <form (ngSubmit)="saveInfo(infoForm)" #infoForm="ngForm" class="info-form">
+    <form (ngSubmit)="beginChat(infoForm)" #infoForm="ngForm" class="info-form">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name" required

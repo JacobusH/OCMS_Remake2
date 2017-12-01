@@ -21,6 +21,37 @@ body {
   text-align: center;
 }
 
+/* TILES */
+.tile {
+  display: inline-block;
+  border: 2px solid white;
+  background: #fff;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  cursor: pointer;
+  font-size: 16px;
+  margin:5px;
+}
+
+.tile .top {
+  min-height: 25px;
+}
+
+.tile .top-left {
+  float:left;
+  margin-right:10px;
+}
+
+.tile .top-right {
+  float: right;
+}
+
+.tile .bottom {
+  background: #efefef;
+}
+
 /* CONTENT SECTIONS */
 .content-section{
 	position:relative;

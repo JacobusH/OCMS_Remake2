@@ -8,14 +8,18 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class LiveChatService {
+  private switchKey = 'dlpByXHMG3HEKvuh6r5c';
   liveChats: AngularFirestoreCollection<{}>;
-  liveChatsByDateNonArchived: AngularFirestoreCollection<{}>;
+  liveChatsByDate: AngularFirestoreCollection<{}>;
+  switchy: AngularFirestoreDocument<{'isActive': boolean}>;
   
   constructor(private afs: AngularFirestore) { 
     this.liveChats = this.afs.collection('liveChats');
-    this.liveChatsByDateNonArchived = this.afs.collection('liveChats', ref => 
-      ref.orderBy("createdDate", "desc")
-      .where("archived", "==", "false"));
+    this.liveChatsByDate = this.afs.collection('liveChats', ref => 
+      ref.orderBy("createdAt", "desc")
+      .where("isActive", "==", true));
+
+    this.switchy = this.afs.doc('liveChatSwitch/' + this.switchKey);
   }
 
   createNewLiveChat(): LiveChat {
@@ -23,8 +27,8 @@ export class LiveChatService {
       key: '',
       name: '',
       email: '',
-      messages: new Array,
       isActive: true,
+      hasUnreadMessages: true,
       createdAt: new Date(),
       updatedAt: new Date()
       };
@@ -44,8 +48,26 @@ export class LiveChatService {
   }
 
 
-  getLiveChatMessagesByKey(key: string) {
-    return this.afs.collection('liveChats/' + key + '/messages')
+  getLiveChatByKey(key: string) {
+    return this.afs.doc('liveChats/' + key);
+  }
+
+  getMessagesByKey(key: string) {
+    return this.afs.collection('liveChats/' + key + '/messages', ref => 
+      ref.orderBy("createdAt", "desc")
+    );
+  }
+
+  addLiveChatMessage(chatKey: string, msg: string, fromAdmin: boolean) {
+    let chatMsg = this.createNewLiveChatMessage();
+    chatMsg.message = msg;
+    chatMsg.fromAdmin = fromAdmin;
+
+    this.afs.collection("liveChats/" + chatKey + "/messages").add(chatMsg);
+  }
+
+  markLiveChatUnreadMessage(key: string, hasNewUnread: boolean) {
+    this.afs.doc("liveChats/" + key).update({hasUnreadMessage: hasNewUnread});
   }
 
   save(t: LiveChat): Promise<firebase.firestore.DocumentReference>  {
@@ -63,6 +85,11 @@ export class LiveChatService {
 
   delete(item: LiveChat): Promise<void> {
     return this.liveChats.doc(item.key).delete();
+  }
+
+  flipLiveChatSwitch(currentState: boolean) {
+    let newState = !currentState;
+    this.afs.doc('liveChatSwitch/' + this.switchKey).update({'isActive': newState});
   }
 
 }

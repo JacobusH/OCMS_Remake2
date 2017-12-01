@@ -1,9 +1,11 @@
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { DatePipe} from '@angular/common';
 import { LiveChatComponent } from 'app/components/live-chat/live-chat.component';  
 import { LiveChat, LiveChatMessage } from 'app/models/_index';
 import { LiveChatService } from 'app/services/_index';
 import { slideUpDownAnimation } from 'app/animations/slide-up-down.animation';
+import { Observable } from 'rxjs/Observable';
 import {
   ReactiveFormsModule,
   FormsModule,
@@ -26,17 +28,21 @@ import {
 export class WindowComponent extends LiveChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
   private model: LiveChat = this.liveChatService.createNewLiveChat();
-  private windowLiveChatMessages: AngularFirestoreCollection<LiveChatMessage>; 
+  private windowLiveChatMessages: Observable<{}[]>; 
   private slideState = 'up';
   private currentChatKey: string;
-  private liveChatMessages: AngularFirestoreCollection<LiveChat>; 
   private presence: string;
   private sessionRunning: boolean = false;
   private userEmail: string;
   private userName: string;
+  private switch;
 
   constructor(protected liveChatService: LiveChatService) { 
     super(liveChatService);
+
+    this.liveChatService.switchy.valueChanges().subscribe(x => {
+      this.switch = x.isActive;
+    })
   }
 
   ngOnInit() {
@@ -64,21 +70,27 @@ export class WindowComponent extends LiveChatComponent implements OnInit, AfterV
     let liveChatToSave = this.liveChatService.createNewLiveChat();
     liveChatToSave.email = test.email;
     liveChatToSave.name = test.name;
-    liveChatToSave.messages.push(chatMsg); 
 
     let promise = this.liveChatService.save(liveChatToSave);
     
     promise.then(x => {
       this.currentChatKey = x.id;
+
+      this.windowLiveChatMessages = this.liveChatService.liveChats.doc(x.id).collection('messages', ref => 
+        ref.orderBy('createdAt', 'asc')).valueChanges();
+      this.liveChatService.liveChats.doc(x.id).collection('messages').add(chatMsg);
     });
 
-    // this.liveChatMessages = this.af.getLiveChatMessagesByParentKey(this.currentChatKey);
-    // console.log(this.liveChatMessages);
-
-
-    // this.model = {};
     this.sessionRunning = true;
     f.reset();
+  }
+
+  sendMessage(msg: any) {
+    this.liveChatService.addLiveChatMessage(this.currentChatKey, msg, false);
+  }
+
+  markHasNewMessages() {
+    this.liveChatService.markLiveChatUnreadMessage(this.currentChatKey, true);
   }
 
   toggleAnimationState() {

@@ -1,4 +1,6 @@
 import { LiveChatMessage } from 'app/models/liveChatMessage.model';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+
 
 // export class LiveChat {
 
@@ -18,7 +20,7 @@ export interface LiveChat {
   name: string,
   email: string,
   isActive: boolean,
-  messages: Array<LiveChatMessage>,
+  hasUnreadMessages: boolean,
   createdAt: Date,
   updatedAt: Date
 }

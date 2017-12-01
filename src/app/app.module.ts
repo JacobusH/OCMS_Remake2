@@ -94,6 +94,7 @@ import { SelectorSingleComponent } from './components/selector-single/selector-s
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
+import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -214,7 +215,8 @@ const routes: Routes = [
     BaseTilesComponent,
     TileTestimonialComponent,
     AdminFormResourceComponent,
-    ResourcesComponent
+    ResourcesComponent,
+    BubbleComponent
   ],
   imports: [
     AccordionModule, 

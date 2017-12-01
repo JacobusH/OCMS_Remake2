@@ -32,7 +32,7 @@
     border-bottom: 1px solid #FF4500;
     cursor: pointer;
     background: #FF4500;
-    color: white;
+    color: #fff;
     border-radius: 5px;
   }
   
@@ -41,7 +41,7 @@
   }
   
   .info-content {
-    color:white;
+    color:#000;
   }
   
   .chat-messages-container {
@@ -72,6 +72,8 @@
   .chat-newMsg-container textarea {
     width: 100%;
     resize: none;
+    border: none;
+    border-top: 1px solid #FF4500;
   }
   
   .speech-bubble-left, .speech-bubble-right {

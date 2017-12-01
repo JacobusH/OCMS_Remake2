@@ -1,3 +1,41 @@
 <div class="manager-container">
-  
+  <button 
+    class="btn btn-success" 
+    (click)="flipSwitch()"
+    [ngClass]="liveChatSwitch ?'here': 'away'">{{liveChatSwitch == true ? 'Here' : 'Away'}}
+  </button>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div 
+        class="tile" 
+        *ngFor="let lc of liveChatsByDate | async"
+        (click)="setCurrentLiveChat(lc.key); markNoNewMessages();">
+        <div class="top">
+          <div class="top-left">{{lc.name}}</div>
+          <div class="top-right">{{lc.email}}</div>
+        </div>
+        <div class="bottom">
+          <!-- <div [innerHtml]="getMessagesByKey(lc.key)"></div> -->
+          Message Placeholder
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="chat-container">
+          <div #scrollMe class="chat-messages-container">
+          <div *ngFor="let msg of currentLiveChatMessages | async">
+            <app-bubble 
+              [time]="msg.createdAt" 
+              [message]="msg.message" 
+              [bubbleClass]="msg.fromAdmin ? 'left' : 'right'">
+            </app-bubble>
+          </div>
+        </div>
+        <div class="chat-newMsg-container">
+          <textarea name="newMsg" #newMsg cols="5" rows="3" (keydown.enter)="sendMessage(newMsg.value);newMsg.value = '';false"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
