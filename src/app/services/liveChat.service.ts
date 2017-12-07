@@ -53,9 +53,11 @@ export class LiveChatService {
   }
 
   getMessagesByKey(key: string) {
-    return this.afs.collection('liveChats/' + key + '/messages', ref => 
-      ref.orderBy("createdAt", "desc")
-    );
+    // return this.afs.collection('liveChats/' + key + '/messages', ref => 
+    //   ref.orderBy("createdAt", "desc")
+    // );
+
+    return this.afs.collection('liveChats/' + key + 'messages');
   }
 
   addLiveChatMessage(chatKey: string, msg: string, fromAdmin: boolean) {

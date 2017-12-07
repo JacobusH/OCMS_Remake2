@@ -18,16 +18,9 @@ export class LiveChatManagerComponent implements OnInit {
 
   constructor(private liveChatService: LiveChatService) { 
     this.liveChatsByDate = this.liveChatService.liveChatsByDate.valueChanges();
-
-    // this.liveChatsByDate.subscribe(x => console.log(x));
-
-
     this.liveChatService.switchy.valueChanges().subscribe(x => {
       this.liveChatSwitch = x.isActive;
     });
-
-    
-    
   }
 
   ngOnInit() {
@@ -36,15 +29,23 @@ export class LiveChatManagerComponent implements OnInit {
   setCurrentLiveChat(key: string) {
     this.currentLiveChatKey = key;
     this.currentLiveChat = this.liveChatService.getLiveChatByKey(key).valueChanges();
-    this.currentLiveChatMessages = this.liveChatService.getMessagesByKey(key).valueChanges();
+    this.currentLiveChatMessages = this.liveChatService.liveChats.doc(key).collection('messages', ref => 
+    ref.orderBy('createdAt', 'asc')).valueChanges();
   }
 
   markNoNewMessages() {
     this.liveChatService.markLiveChatUnreadMessage(this.currentLiveChatKey, false);
   }
 
-  getMessagesByKey(key: string) {
-    // this.liveChatService.getMessagesByKey(key).valueChanges().subscribe(x => console.log(x));
+  getFirstMessage(key: string): string {
+    // this.liveChatService.getMessagesByKey(key).snapshotChanges().subscribe(x => {
+    //   console.log(x);
+    // });
+
+    // this.liveChatService.liveChats.doc(key).collection('messages', ref => 
+    // ref.orderBy('createdAt', 'asc')).valueChanges().take(1).subscribe(x => console.log(x))
+
+    return "";
   }
 
   sendMessage(msg: string) {

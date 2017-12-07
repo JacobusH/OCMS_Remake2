@@ -1,5 +1,6 @@
 
 // Modules
+// import { EmptyTextModule } from 'calendoer';
 import { AccordionModule } from 'ngx-accordion';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -95,6 +96,7 @@ import { PageHeaderComponent } from './components/shared/page-header/page-header
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
+import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -216,7 +218,8 @@ const routes: Routes = [
     TileTestimonialComponent,
     AdminFormResourceComponent,
     ResourcesComponent,
-    BubbleComponent
+    BubbleComponent,
+    MenuPlusComponent
   ],
   imports: [
     AccordionModule, 
@@ -230,6 +233,7 @@ const routes: Routes = [
     Daterangepicker,
     DialogModule,
     DragAndDropModule.forRoot(),
+    // EmptyTextModule,
     FormsModule,
     MatDialogModule,
     MatFormFieldModule,
