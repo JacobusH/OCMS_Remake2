@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule, MatSidenavModule, MatSelectModule } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
+import { NgxGraphModule } from '@swimlane/ngx-graph'
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
@@ -97,6 +98,7 @@ import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.com
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
+import { GraphComponent } from './pages/playground/graph/graph.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -133,6 +135,7 @@ const routes: Routes = [
   { path: 'learntoplay', component: LearntoplayComponent },
   { path: 'learntoplay/:id', component: LearntoplayComponent },
   { path: 'playground', component: PlaygroundComponent },
+  { path: 'playground/graph', component: GraphComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'profile', component: ProfileComponent },
   { path: 'resources', component: ResourcesComponent },
@@ -219,7 +222,8 @@ const routes: Routes = [
     AdminFormResourceComponent,
     ResourcesComponent,
     BubbleComponent,
-    MenuPlusComponent
+    MenuPlusComponent,
+    GraphComponent
   ],
   imports: [
     AccordionModule, 
@@ -243,6 +247,7 @@ const routes: Routes = [
     MenuModule,
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
+    NgxGraphModule,
     OrderListModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
