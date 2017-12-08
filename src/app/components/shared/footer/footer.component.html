@@ -10,7 +10,7 @@
       <a routerLink="/testimonials">Testimonials</a>
       <a routerLink="/contact">Contact</a>
       <a *ngIf="!isLoggedIn;" routerLink="/login">Admin Login</a>
-      <a *ngIf="isLoggedIn;" routerLink="/admin">Administration</a>
+      <a *ngIf="isLoggedIn;" (click)="logout()" routerLink="/admin">Logout</a>
     </div>
     <div class="cleared"></div>
   </div>

@@ -87,6 +87,7 @@ import { AuthService, AlertMultiService, AlertService, ContactMessageService, FA
   , TeacherService, UserService, UploadService } from 'app/services/_index';
 
 // pipes
+import { ResourceCategoryPipe } from 'app/filters/resource-category-filter.pipe';
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
 import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
 import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
@@ -196,6 +197,7 @@ const routes: Routes = [
     HomeTilesComponent,
     ImageGalleryComponent,
     ImageFilterPipe,
+    ResourceCategoryPipe,
     LearntoplayComponent,
     LiveChatComponent,
     LiveChatManagerComponent,
