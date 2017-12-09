@@ -15,11 +15,14 @@ import { provideForRootGuard } from '@angular/router/src/router_module';
 export class AuthService {
   user: Observable<User>;
   behUser: BehaviorSubject<User> = new BehaviorSubject(null);
+  authstate: any;
 
   constructor(private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private userService: UserService,
     private router: Router) { 
+      this.authstate = this.afAuth.authState;
+
        //// Get auth data, then get firestore user document || null
        this.user = this.afAuth.authState
        .switchMap(user => {
