@@ -4,6 +4,7 @@ export * from './auth.service';
 export * from './contactMessage.service';
 export * from './faq.service';
 export * from './gallery.service';
+export * from './graph.service';
 export * from './liveChat.service';
 export * from './project.service';
 export * from './resource.service';

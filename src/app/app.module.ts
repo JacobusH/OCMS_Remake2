@@ -99,7 +99,7 @@ import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.com
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
-import { GraphComponent } from './pages/playground/graph/graph.component';
+import { VisualizerComponent } from './components/visualizer/visualizer.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -136,7 +136,6 @@ const routes: Routes = [
   { path: 'learntoplay', component: LearntoplayComponent },
   { path: 'learntoplay/:id', component: LearntoplayComponent },
   { path: 'playground', component: PlaygroundComponent },
-  { path: 'playground/graph', component: GraphComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'profile', component: ProfileComponent },
   { path: 'resources', component: ResourcesComponent },
@@ -225,7 +224,7 @@ const routes: Routes = [
     ResourcesComponent,
     BubbleComponent,
     MenuPlusComponent,
-    GraphComponent
+    VisualizerComponent
   ],
   imports: [
     AccordionModule, 

@@ -6,7 +6,7 @@ export * from './calendoer/treeNode.model';
 export * from './contactMessage.model';
 export * from './faq.model';
 export * from './galleryItem.model';
-export * from './graph.model';
+export * from './visualizer.model';
 export * from './graphLink.model';
 export * from './graphNode.model';
 export * from './liveChat.model';

@@ -12,11 +12,11 @@ import { GraphLink, GraphNode } from './_index';
 //     ) {}
 // }
 
-export interface Graph {
+export interface Visualizer {
   key: string,
   nodes: Array<GraphNode>,
   links: Array<GraphLink>,
   isActive: boolean,
   createdAt: Date,
-  updatedAt: Date
+  updatedAt?: Date
 }

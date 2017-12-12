@@ -4,13 +4,15 @@ import * as shape from 'd3-shape';
 import { colorSets } from './color-sets';
 import chartGroups from './chartTypes';
 import { id } from './id';
+import { VisualizerService } from 'app/services/visualizer.service';
+import { Visualizer } from 'app/models/_index';
 
 @Component({
-  selector: 'app-graph',
-  templateUrl: './graph.component.html',
-  styleUrls: ['./graph.component.scss']
+  selector: 'app-visualizer',
+  templateUrl: './visualizer.component.html',
+  styleUrls: ['./visualizer.component.scss']
 })
-export class GraphComponent implements OnInit {
+export class VisualizerComponent implements OnInit {
 
   version = 1;
   
@@ -20,8 +22,8 @@ export class GraphComponent implements OnInit {
     chart: any;
     realTimeData: boolean = false;
     countries: any[];
-    graph: { links: any[], nodes: any[] };
-    hierarchialGraph: { links: any[], nodes: any[] };
+    // hierarchialGraph: { links: any[], nodes: any[] };
+    visualizer: Visualizer;
   
     view: any[];
     width: number = 700;
@@ -61,7 +63,7 @@ export class GraphComponent implements OnInit {
     schemeType: string = 'ordinal';
     selectedColorScheme: string;
   
-    constructor() {
+    constructor(private vService: VisualizerService) {
       Object.assign(this, {
         colorSets,
         chartGroups,
@@ -82,7 +84,13 @@ export class GraphComponent implements OnInit {
       }
     }
 
+    save() {
+      this.vService.save(this.visualizer);
+    }
+
     getGraphData() {
+      
+
       let nodes = [
         {
           id: 'start',
