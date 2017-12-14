@@ -85,7 +85,7 @@ import { AdminResourcesComponent } from './pages/administration/resources/resour
 // Services
 import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
-  , TeacherService, UserService, UploadService } from 'app/services/_index';
+  , TeacherService, UserService, UploadService, VisualizerService } from 'app/services/_index';
 
 // pipes
 import { ResourceCategoryPipe } from 'app/filters/resource-category-filter.pipe';
@@ -272,7 +272,8 @@ const routes: Routes = [
     TestimonialService,
     TeacherService,
     UserService,
-    UploadService
+    UploadService,
+    VisualizerService
   ],
   bootstrap: [AppComponent]
 })

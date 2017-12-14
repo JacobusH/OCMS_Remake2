@@ -4,12 +4,12 @@
     <div style="position: absolute; top: 50px; left: 50px; right: 50px; bottom: 50px;">
       <ngx-graph
         class="chart-container"
-        [view]="view"
+        [view]="visualizer.options.view"
         [autoZoom]="autoZoom"
         [legend]="showLegend"
-        [links]="hierarchialGraph.links"
+        [links]="visualizer.links"
         (legendLabelClick)="onLegendLabelClick($event)"
-        [nodes]="hierarchialGraph.nodes"
+        [nodes]="visualizer.nodes"
         [scheme]="colorScheme"
         [orientation]="orientation"
         [curve]="curve"
@@ -52,6 +52,10 @@
       </ngx-graph>
     </div>
   </div>
+
+
+
+<!-- 
   <div class="sidebar">
     <h1>
       NGX-<strong>Graph</strong>
@@ -59,7 +63,6 @@
     </h1>
     <div class="sidebar-body">
       <h3>Functions</h3>
-      <!-- FUNCTIONS -->
       <button (click)="save()">Save</button>
       <h3>Theme</h3>
       <select
@@ -149,5 +152,13 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 </main>
+
+<mat-sidenav-container class="left-nav-container">
+  <mat-sidenav #sideNav mode="side" opened="true">
+    Sidenav content
+    <button mat-button (click)="sideNav.toggle()">sidenav.toggle()</button>
+  </mat-sidenav>
+  <mat-sidenav-content>Main content</mat-sidenav-content>
+</mat-sidenav-container>

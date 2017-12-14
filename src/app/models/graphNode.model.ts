@@ -11,10 +11,10 @@
 // }
 
 export interface GraphNode {
-  key: string,
-  id: string,
-  label: string,
-  isActive: boolean,
-  createdAt: Date,
-  updatedAt: Date
+  key?: string,
+  id?: string,
+  label?: string,
+  isActive?: boolean,
+  createdAt?: Date,
+  updatedAt?: Date
 }

@@ -11,11 +11,11 @@
 // }
 
 export interface GraphLink {
-  key: string,
-  source: string,
-  target: string,
-  label: string,
-  isActive: boolean,
-  createdAt: Date,
-  updatedAt: Date
+  key?: string,
+  source?: string,
+  target?: string,
+  label?: string,
+  isActive?: boolean,
+  createdAt?: Date,
+  updatedAt?: Date
 }
