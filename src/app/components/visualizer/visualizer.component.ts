@@ -1,11 +1,13 @@
 
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import * as shape from 'd3-shape';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { colorSets } from './color-sets';
 import chartGroups from './chartTypes';
 import { id } from './id';
 import { VisualizerService } from 'app/services/visualizer.service';
 import { Visualizer, VisualizerOptions } from 'app/models/_index';
+import { ContextMenuComponent } from 'ngx-contextmenu';
+import * as shape from 'd3-shape';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-visualizer',
@@ -13,6 +15,12 @@ import { Visualizer, VisualizerOptions } from 'app/models/_index';
   styleUrls: ['./visualizer.component.scss']
 })
 export class VisualizerComponent implements OnInit {
+  public items = [
+    { name: 'John', otherProperty: 'Foo' },
+    { name: 'Joe', otherProperty: 'Bar' }
+];
+// @ViewChild('basicMenu') public basicMenu: ContextMenuComponent;
+
   version = 1;
   theme = 'dark';
   chartGroups: any;
@@ -76,6 +84,34 @@ export class VisualizerComponent implements OnInit {
     if (!this.fitContainer) {
       this.applyDimensions();
     }
+  }
+
+  /***************
+  ** NODES
+  ***************/
+  showMessage(txt: string) {
+    console.log(txt);
+  }
+
+  nodeChangeName(ev,item) {
+    // console.log(ev.srcElement.value);
+    // console.log(item);
+
+    _.find(this.visualizer.nodes, o => {
+      if(o.id == item.id) {
+        console.log(o);
+        o.label = ev.srcElement.value;
+        console.log(o);
+      }
+    })
+
+    this.visualizer.nodes.push({id: '100', label: 'new test'});
+    this.visualizer.links.push({source: '1', target: '100', label: 'new test'})
+
+    this.visualizer.links = [...this.visualizer.links];
+    this.visualizer.nodes = [...this.visualizer.nodes];
+
+
   }
 
   save() {

@@ -1,3 +1,19 @@
+<ul>
+  <li *ngFor="let item of items" [contextMenu]="basicMenu" [contextMenuSubject]="item">Right Click: {{item?.name}}</li>
+</ul>
+<context-menu #basicMenu>
+<ng-template contextMenuItem let-item passive="true">
+  Rename to: <input type="text" class="context-input" (keyup.enter)="nodeChangeName($event, item)" />
+</ng-template>
+<ng-template contextMenuItem divider="true"></ng-template>
+<ng-template contextMenuItem let-item (execute)="showMessage($event.item.name + ' said: ' + $event.item.otherProperty)">
+  Bye, {{item}}
+</ng-template>
+<ng-template contextMenuItem passive="true">
+  Input something: <input type="text">
+</ng-template>
+</context-menu>
+
 
 <main [class]="theme">
   <div class="chart-col">
@@ -24,6 +40,7 @@
         <ng-template #nodeTemplate let-node>
           <svg:g class="node"
             ngx-tooltip
+            [contextMenu]="basicMenu" [contextMenuSubject]="node"
             >
             <svg:rect [attr.width]="node.width" [attr.height]="node.height" [attr.fill]="node.options.color" />
             <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.height / 2">{{node.label}}</svg:text>
@@ -160,5 +177,7 @@
     Sidenav content
     <button mat-button (click)="sideNav.toggle()">sidenav.toggle()</button>
   </mat-sidenav>
-  <mat-sidenav-content>Main content</mat-sidenav-content>
+  <mat-sidenav-content>
+    Main content
+  </mat-sidenav-content>
 </mat-sidenav-container>
