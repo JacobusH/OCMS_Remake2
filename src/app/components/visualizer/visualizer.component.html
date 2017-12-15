@@ -1,73 +1,26 @@
-<ul>
-  <li *ngFor="let item of items" [contextMenu]="basicMenu" [contextMenuSubject]="item">Right Click: {{item?.name}}</li>
-</ul>
+<!-- RIGHT CLICK MENU -->
 <context-menu #basicMenu>
-<ng-template contextMenuItem let-item passive="true">
-  Rename to: <input type="text" class="context-input" (keyup.enter)="nodeChangeName($event, item)" />
-</ng-template>
-<ng-template contextMenuItem divider="true"></ng-template>
-<ng-template contextMenuItem let-item (execute)="showMessage($event.item.name + ' said: ' + $event.item.otherProperty)">
-  Bye, {{item}}
-</ng-template>
-<ng-template contextMenuItem passive="true">
-  Input something: <input type="text">
-</ng-template>
+  <ng-template contextMenuItem let-item passive="true">
+    <form>
+      <mat-form-field>
+        <input matInput placeholder="Name" value="{{item.label}}" (keyup.enter)="nodeChangeName($event, item)" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Youtube Link" value="{{item.youtubeLink}}" (keyup.enter)="nodeChangeYoutubeLink($event, item)" />
+      </mat-form-field>
+    </form>
+  </ng-template>
+  <!-- <ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem let-item (execute)="showMessage($event.item.name + ' said: ' + $event.item.otherProperty)">
+    Bye, {{item}}
+  </ng-template> -->
 </context-menu>
 
 
-<main [class]="theme">
+<div id="main" [class]="theme">
   <div class="chart-col">
-    <div style="position: absolute; top: 50px; left: 50px; right: 50px; bottom: 50px;">
-      <ngx-graph
-        class="chart-container"
-        [view]="visualizer.options.view"
-        [autoZoom]="autoZoom"
-        [legend]="showLegend"
-        [links]="visualizer.links"
-        (legendLabelClick)="onLegendLabelClick($event)"
-        [nodes]="visualizer.nodes"
-        [scheme]="colorScheme"
-        [orientation]="orientation"
-        [curve]="curve"
-        (select)="select($event)">
-
-        <ng-template #defsTemplate>
-          <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
-            <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
-          </svg:marker>
-        </ng-template>
-
-        <ng-template #nodeTemplate let-node>
-          <svg:g class="node"
-            ngx-tooltip
-            [contextMenu]="basicMenu" [contextMenuSubject]="node"
-            >
-            <svg:rect [attr.width]="node.width" [attr.height]="node.height" [attr.fill]="node.options.color" />
-            <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.height / 2">{{node.label}}</svg:text>
-          </svg:g>
-        </ng-template>
-
-        <ng-template #linkTemplate let-link>
-          <svg:g class="edge">
-            <svg:path
-              class="line"
-              stroke-width="2"
-              marker-end="url(#arrow)" >
-            </svg:path>
-            <svg:text class="edge-label" text-anchor="middle">
-              <textPath
-                class="text-path"
-                [attr.href]="'#' + link.id"
-                [style.dominant-baseline]="link.dominantBaseline"
-                startOffset="50%">
-                {{link.label}}
-              </textPath>
-            </svg:text>
-          </svg:g>
-        </ng-template>
-
-      </ngx-graph>
-    </div>
+    <!-- <div style="position: absolute; top: 50px; left: 50px; right: 50px; bottom: 50px;"> -->
+    
   </div>
 
 
@@ -170,14 +123,71 @@
       </div>
     </div>
   </div> -->
-</main>
+</div>
 
 <mat-sidenav-container class="left-nav-container">
   <mat-sidenav #sideNav mode="side" opened="true">
-    Sidenav content
+    <button (click)="save()">Save</button>
+    <h3>Theme</h3>
+    <select
+      [ngModel]="theme"
+      (ngModelChange)="theme = $event">>
+      <option [value]="'dark'">Dark</option>
+      <option [value]="'light'">Light</option>
+    </select>
     <button mat-button (click)="sideNav.toggle()">sidenav.toggle()</button>
   </mat-sidenav>
   <mat-sidenav-content>
-    Main content
+      <div>
+          <ngx-graph
+            class="chart-container"
+            [view]="visualizer.options.view"
+            [autoZoom]="autoZoom"
+            [legend]="showLegend"
+            [links]="visualizer.links"
+            (legendLabelClick)="onLegendLabelClick($event)"
+            [nodes]="visualizer.nodes"
+            [scheme]="colorScheme"
+            [orientation]="orientation"
+            [curve]="curve"
+            (select)="select($event)">
+    
+            <ng-template #defsTemplate>
+              <svg:marker id="arrow" viewBox="0 -5 10 10" refX="8" refY="0" markerWidth="4" markerHeight="4" orient="auto">
+                <svg:path d="M0,-5L10,0L0,5" class="arrow-head" />
+              </svg:marker>
+            </ng-template>
+    
+            <ng-template #nodeTemplate let-node>
+              <svg:g class="node"
+                ngx-tooltip
+                [contextMenu]="basicMenu" [contextMenuSubject]="node"
+                >
+                <svg:rect [attr.width]="node.width" [attr.height]="node.height" [attr.fill]="node.options.color" />
+                <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.height / 2">{{node.label}}</svg:text>
+              </svg:g>
+            </ng-template>
+    
+            <ng-template #linkTemplate let-link>
+              <svg:g class="edge">
+                <svg:path
+                  class="line"
+                  stroke-width="2"
+                  marker-end="url(#arrow)" >
+                </svg:path>
+                <svg:text class="edge-label" text-anchor="middle">
+                  <textPath
+                    class="text-path"
+                    [attr.href]="'#' + link.id"
+                    [style.dominant-baseline]="link.dominantBaseline"
+                    startOffset="50%">
+                    {{link.label}}
+                  </textPath>
+                </svg:text>
+              </svg:g>
+            </ng-template>
+    
+          </ngx-graph>
+        </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

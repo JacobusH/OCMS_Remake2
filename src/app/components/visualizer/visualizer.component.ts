@@ -94,24 +94,23 @@ export class VisualizerComponent implements OnInit {
   }
 
   nodeChangeName(ev,item) {
-    // console.log(ev.srcElement.value);
-    // console.log(item);
-
-    _.find(this.visualizer.nodes, o => {
-      if(o.id == item.id) {
-        console.log(o);
-        o.label = ev.srcElement.value;
-        console.log(o);
+    _.find(this.visualizer.nodes, node => {
+      if(node.id == item.id) {
+        node.label = ev.srcElement.value;
       }
     })
 
-    this.visualizer.nodes.push({id: '100', label: 'new test'});
-    this.visualizer.links.push({source: '1', target: '100', label: 'new test'})
+    this.redrawVisualizer();
+  }
 
-    this.visualizer.links = [...this.visualizer.links];
-    this.visualizer.nodes = [...this.visualizer.nodes];
+  nodeChangeYoutubeLink(ev,item) {
+    _.find(this.visualizer.nodes, node => {
+      if(node.id == item.id) {
+        node.youtubeLink = ev.srcElement.value;
+      }
+    })
 
-
+    this.redrawVisualizer();
   }
 
   save() {
@@ -228,6 +227,11 @@ export class VisualizerComponent implements OnInit {
     if (curveType === 'Step Before') {
       this.curve = shape.curveStepBefore;
     }
+  }
+
+  redrawVisualizer() {
+    this.visualizer.nodes = [...this.visualizer.nodes];
+    this.visualizer.links = [...this.visualizer.links]
   }
 
   onLegendLabelClick(entry) {

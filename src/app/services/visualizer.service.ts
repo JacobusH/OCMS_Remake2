@@ -45,6 +45,7 @@ export class VisualizerService {
       key: '',
       id: '',
       label: '',
+      youtubeLink: '',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

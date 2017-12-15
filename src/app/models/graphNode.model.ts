@@ -14,6 +14,7 @@ export interface GraphNode {
   key?: string,
   id?: string,
   label?: string,
+  youtubeLink?: string,
   isActive?: boolean,
   createdAt?: Date,
   updatedAt?: Date
