@@ -3,6 +3,17 @@
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+button.mat-menu-item {
+  line-height: 24px !important;
+}
+a.mat-menu-item > mat-icon {
+  margin-bottom: 14px;
+}
+.mat-icon svg {
+  height: 24px;
+  width: 24px;
+}
+
 p {
   font-size: 18px;
   font-family:  'Raleway', sans-serif;;

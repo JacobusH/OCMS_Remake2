@@ -135,7 +135,10 @@
       <option [value]="'dark'">Dark</option>
       <option [value]="'light'">Light</option>
     </select>
-    <button mat-button (click)="sideNav.toggle()">sidenav.toggle()</button>
+    <button mat-button id="sidenav-button" (click)="sideNav.toggle()">
+        <mat-icon svgIcon="arrow-left-thick"></mat-icon>
+        View source
+      </button>
   </mat-sidenav>
   <mat-sidenav-content>
       <div>
