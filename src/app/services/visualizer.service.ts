@@ -31,11 +31,12 @@ export class VisualizerService {
   createNewVisualizerOptions(): VisualizerOptions {
     let data: VisualizerOptions = {
       orientation: 'TB', // TB, LR...
-      view: undefined, // width, height, undefined give autofit to container
+      view: null, // width, height, undefined give autofit to container
       autoZoom: false,
       legend: true, // show legend t/f
       scheme: 'picnic', // picnic etc. from color-sets.ts
-      curve: shape.curveLinear //shape.curveLinear etc. from d3-shape 
+      // curve: shape.curveLinear //shape.curveLinear etc. from d3-shape 
+      curve: null //shape.curveLinear etc. from d3-shape 
       };
       return data;
   }

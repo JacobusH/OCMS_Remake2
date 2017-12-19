@@ -3,127 +3,39 @@
   <ng-template contextMenuItem let-item passive="true">
     <form>
       <mat-form-field>
-        <input matInput placeholder="Name" value="{{item.label}}" (keyup.enter)="nodeChangeName($event, item)" />
+        <input matInput #labelChange placeholder="Name" value="{{item.label}}"/>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Youtube Link" value="{{item.youtubeLink}}" (keyup.enter)="nodeChangeYoutubeLink($event, item)" />
+        <input matInput #ytChange placeholder="Youtube Link" value="{{item.youtubeLink}}"/>
       </mat-form-field>
     </form>
   </ng-template>
-  <!-- <ng-template contextMenuItem divider="true"></ng-template>
-  <ng-template contextMenuItem let-item (execute)="showMessage($event.item.name + ' said: ' + $event.item.otherProperty)">
-    Bye, {{item}}
-  </ng-template> -->
+<ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem let-item passive="true">
+    <button mat-button (click)="nodeAddChild($event, item)">
+      <mat-icon svgIcon="add-box"></mat-icon>
+      Add Below
+    </button>
+    <button mat-button (click)="inCreateLink = true">
+      <mat-icon svgIcon="add-box"></mat-icon>
+      Create Link
+    </button>
+    <form *ngIf="inCreateLink">
+      <mat-form-field>
+        <input matInput #srcLinkID placeholder="Source" />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput #destLinkID placeholder="Destination" />
+      </mat-form-field>
+    </form>
+  </ng-template>
+<ng-template contextMenuItem divider="true"></ng-template>
+  <ng-template contextMenuItem let-item passive="true">
+    <button mat-button id="graph-update-btn" (click)="nodeUpdate($event, item)">
+      <mat-icon svgIcon="check"></mat-icon>
+    </button>
+  </ng-template>
 </context-menu>
-
-
-<div id="main" [class]="theme">
-  <div class="chart-col">
-    <!-- <div style="position: absolute; top: 50px; left: 50px; right: 50px; bottom: 50px;"> -->
-    
-  </div>
-
-
-
-<!-- 
-  <div class="sidebar">
-    <h1>
-      NGX-<strong>Graph</strong>
-      <small class="subtitle">Graph Visualization for Angular</small>
-    </h1>
-    <div class="sidebar-body">
-      <h3>Functions</h3>
-      <button (click)="save()">Save</button>
-      <h3>Theme</h3>
-      <select
-        [ngModel]="theme"
-        (ngModelChange)="theme = $event">>
-        <option [value]="'dark'">Dark</option>
-        <option [value]="'light'">Light</option>
-      </select>
-
-      <h3 (click)="dataVisable = !dataVisable" style="cursor: pointer">
-        <span
-          [class.arrow-down]="dataVisable"
-          [class.arrow-right]="!dataVisable">
-        </span>
-        <strong>Data</strong>
-      </h3>
-      <div [hidden]="!dataVisable" style="margin-left: 10px;">
-        <div>
-          <label>
-            <input type="checkbox" [checked]="realTimeData" (change)="realTimeData = $event.target.checked">
-            Real-time
-          </label>
-        </div>
-      </div>
-      <div>
-        <h3 (click)="dimVisiable = !dimVisiable" style="cursor: pointer">
-          <span
-            [class.arrow-down]="dimVisiable"
-            [class.arrow-right]="!dimVisiable">
-          </span>
-          <strong>Dimensions</strong>
-        </h3>
-        <div [hidden]="!dimVisiable" style="margin-left: 10px;">
-          <label>
-            <input type="checkbox" [checked]="fitContainer" (change)="toggleFitContainer($event.target.checked, autoZoom)">
-            Fit Container
-          </label> <br />
-          <div *ngIf="!fitContainer">
-            <label>Width:</label><br />
-            <input type="number" [(ngModel)]="width"><br />
-            <label>Height:</label><br />
-            <input type="number" [(ngModel)]="height"><br />
-            <button (click)="applyDimensions()">Apply dimensions</button>
-          </div> <br />
-          <label>
-            <input type="checkbox" [checked]="autoZoom" (change)="toggleFitContainer(fitContainer, $event.target.checked)">
-            Auto Zoom
-          </label>
-        </div>
-      </div>
-      <h3 (click)="colorVisible = !colorVisible" style="cursor: pointer">
-        <span
-          [class.arrow-down]="colorVisible"
-          [class.arrow-right]="!colorVisible">
-        </span>
-        <strong>Color Scheme</strong>
-      </h3>
-      <select
-        [hidden]="!colorVisible"
-        style="margin-left: 10px;"
-        [ngModel]="selectedColorScheme"
-        (ngModelChange)="setColorScheme($event)">
-        <option *ngFor="let scheme of colorSets" [value]="scheme.name">{{scheme.name}}</option>
-      </select>
-
-      <h3 (click)="optsVisible = !optsVisible" style="cursor: pointer">
-        <span
-          [class.arrow-down]="optsVisible"
-          [class.arrow-right]="!optsVisible">
-        </span>
-        <strong>Options</strong>
-      </h3>
-      <div [hidden]="!optsVisible" style="margin-left: 10px;">
-        <label>Orientation</label>
-        <select [(ngModel)]="orientation">
-          <option *ngFor="let orient of orientations" [value]="orient.value">{{orient.label}}</option>
-        </select>
-
-        <label>Line Interpolation</label>
-        <select
-          [ngModel]="curveType"
-          (ngModelChange)="setInterpolationType($event)">
-          <option *ngFor="let interpolationType of interpolationTypes" [value]="interpolationType">
-            {{interpolationType}}
-          </option>
-        </select>
-
-      </div>
-    </div>
-  </div> -->
-</div>
 
 <mat-sidenav-container class="left-nav-container">
   <mat-sidenav #sideNav mode="side" opened="true">
@@ -141,7 +53,7 @@
       </button>
   </mat-sidenav>
   <mat-sidenav-content>
-      <div>
+      <div style="height: 500px">
           <ngx-graph
             class="chart-container"
             [view]="visualizer.options.view"
@@ -168,6 +80,7 @@
                 >
                 <svg:rect [attr.width]="node.width" [attr.height]="node.height" [attr.fill]="node.options.color" />
                 <svg:text alignment-baseline="central" [attr.x]="10" [attr.y]="node.height / 2">{{node.label}}</svg:text>
+                <svg:text alignment-baseline="after-edge" *ngIf="inCreateLink">{{node.id}}</svg:text>
               </svg:g>
             </ng-template>
     

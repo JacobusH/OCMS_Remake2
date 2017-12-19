@@ -3,6 +3,7 @@ import { AuthService, UserService } from 'app/services/_index';
 import { Observable } from 'rxjs/Observable';
 import { User } from 'app/models/user.model';
 import { isDefaultChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as _ from 'lodash';
 
 @Component({
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit {
   currentUser: any;
 
 
-  constructor(private authService: AuthService, private userService: UserService) { 
+  constructor(private authService: AuthService, private userService: UserService, private route: Router) { 
     this.user = this.authService.user; // not logged in = null
     if(this.user) {
       this.isLoggedIn = true;
@@ -55,7 +56,10 @@ export class HeaderComponent implements OnInit {
         this.user = null;
         this.isLoggedIn = false;
       }
-  });
+    });
+
+    
+    
   }
 
   toggleState() {

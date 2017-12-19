@@ -34,6 +34,8 @@ export class AuthService {
          }
        })
 
+       console.log(this.router.url);
+
     }
 
     get isAdmin() {

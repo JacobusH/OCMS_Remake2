@@ -5,6 +5,7 @@ import {
 } from 'angular-calendar';
 import { Subject } from 'rxjs/Subject';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
+import { ActivatedRoute } from '@angular/router';
 // import { colors } from '../demo-utils/colors';
 
 export const colors: any = {
@@ -46,9 +47,10 @@ export class PlaygroundComponent implements OnInit {
     }
   ];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+   
   }
 
 }

@@ -1,5 +1,5 @@
 
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, OnChanges, ElementRef } from '@angular/core';
 import { colorSets } from './color-sets';
 import chartGroups from './chartTypes';
 import { id } from './id';
@@ -14,20 +14,24 @@ import * as _ from 'lodash';
   templateUrl: './visualizer.component.html',
   styleUrls: ['./visualizer.component.scss']
 })
-export class VisualizerComponent implements OnInit {
+export class VisualizerComponent implements OnInit, OnChanges {
   public items = [
     { name: 'John', otherProperty: 'Foo' },
     { name: 'Joe', otherProperty: 'Bar' }
 ];
-// @ViewChild('basicMenu') public basicMenu: ContextMenuComponent;
+@ViewChild('labelChange') public labelChange: ElementRef;
+@ViewChild('ytChange') public ytChange: ElementRef;
+@ViewChild('srcLinkID') public srcLinkID: ElementRef;
+@ViewChild('destLinkID') public destLinkID: ElementRef;
 
   version = 1;
   theme = 'dark';
   chartGroups: any;
   visualizer: Visualizer;
+  showId = false;
 
   width: number = 700;
-  height: number = 300;
+  height: number = 1000;
   fitContainer: boolean = true;
   autoZoom: boolean = false;
   
@@ -86,6 +90,10 @@ export class VisualizerComponent implements OnInit {
     }
   }
 
+  ngOnChanges() {
+    console.log('changed')
+  }
+
   /***************
   ** NODES
   ***************/
@@ -93,25 +101,48 @@ export class VisualizerComponent implements OnInit {
     console.log(txt);
   }
 
-  nodeChangeName(ev,item) {
+  nodeUpdate(ev, item) {
     _.find(this.visualizer.nodes, node => {
       if(node.id == item.id) {
-        node.label = ev.srcElement.value;
+        if(this.labelChange.nativeElement.value) {
+          node.label = this.labelChange.nativeElement.value;
+        }
+        if(this.ytChange.nativeElement.value) {
+          node.youtubeLink = this.ytChange.nativeElement.value;
+        }
       }
     })
+
+    if(this.srcLinkID.nativeElement.value && this.destLinkID.nativeElement.value) {
+      var newLink = this.vService.createNewLink();
+      newLink.source = this.srcLinkID.nativeElement.value ;
+      newLink.target = this.destLinkID.nativeElement.value
+      this.visualizer.links.push(newLink);
+    }
 
     this.redrawVisualizer();
   }
 
-  nodeChangeYoutubeLink(ev,item) {
-    _.find(this.visualizer.nodes, node => {
-      if(node.id == item.id) {
-        node.youtubeLink = ev.srcElement.value;
-      }
-    })
+  nodeAddChild(ev, item) {
+    var newNode = this.vService.createNewNode();
+    newNode.id = id();
+    newNode.label = "New Node";
+
+    var newLink = this.vService.createNewLink();
+    newLink.source = item.id;
+    newLink.target = newNode.id;
+
+    this.visualizer.nodes.push(newNode);
+    this.visualizer.links.push(newLink);
 
     this.redrawVisualizer();
   }
+
+  // nodeAddLink(ev, item) {
+  //   var newLink = this.vService.createNewLink();
+  //   newLink.source = item.id;
+  //   newLink.target = newNode.id;
+  // }
 
   save() {
     this.vService.save(this.visualizer);
