@@ -77,3 +77,30 @@
   border-top: 1px solid #FF4500;
 }
 
+.tile .top {
+  position: relative;
+}
+
+.tile-view {
+  font-size: 20px;
+  margin: 7px;
+  cursor: pointer;
+}
+
+.tile-view:nth-child(2n) {
+  background: lightgrey;
+}
+
+.action-btn-tile {
+  position: absolute;
+  right: -24px;
+  border-radius: 45px;
+  top: -24px;
+}
+
+
+.action-btn-list {
+  position: absolute;
+  right: 0px;
+  border-radius: 45px;
+}

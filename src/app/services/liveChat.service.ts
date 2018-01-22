@@ -89,6 +89,10 @@ export class LiveChatService {
     return this.liveChats.doc(item.key).delete();
   }
 
+  deleteByKey(key: string): Promise<void> {
+    return this.liveChats.doc(key).delete();
+  }
+
   flipLiveChatSwitch(currentState: boolean) {
     let newState = !currentState;
     this.afs.doc('liveChatSwitch/' + this.switchKey).update({'isActive': newState});

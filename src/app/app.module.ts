@@ -22,9 +22,11 @@ import { MatButtonModule, MatCheckboxModule
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph'
+import { NgxCarouselModule } from 'ngx-carousel';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
+import 'hammerjs';
 
 // Guards
 import { AuthGuard } from 'app/guards/auth.guard';
@@ -107,6 +109,7 @@ import { BubbleComponent } from './components/live-chat/bubble/bubble.component'
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
 import { VisualizerComponent } from './components/visualizer/visualizer.component';
 import { TileListViewswitchComponent } from './components/tile-list-viewswitch/tile-list-viewswitch.component';
+import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -232,7 +235,8 @@ const routes: Routes = [
     BubbleComponent,
     MenuPlusComponent,
     VisualizerComponent,
-    TileListViewswitchComponent
+    TileListViewswitchComponent,
+    TileCarouselComponent
   ],
   imports: [
     AccordionModule, 
@@ -262,6 +266,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
     NgxGraphModule,
+    NgxCarouselModule,
     OrderListModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),

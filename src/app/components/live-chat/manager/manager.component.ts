@@ -61,4 +61,8 @@ export class LiveChatManagerComponent implements OnInit {
     this.liveChatService.flipLiveChatSwitch(this.liveChatSwitch);
   }
 
+  deleteLivechat() {
+    this.liveChatService.deleteByKey(this.currentLiveChatKey);
+  }
+
 }
