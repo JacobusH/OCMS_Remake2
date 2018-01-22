@@ -1,19 +1,25 @@
 <app-page-header [title]="'Administration'"></app-page-header>
 
 <mat-sidenav-container class="sidenav-fab-container">
-  <mat-sidenav mode='side' opened='true'>
-    <!-- sidenav content -->
-    <ul>
-      <li><a routerLink="/admin/chat">LiveChat</a></li>
-      <li><a routerLink="/admin/faq">FAQs</a></li>
-      <li><a routerLink="/admin/messages">Contact Messages</a></li>
-      <li><a routerLink="/admin/media">Media</a></li>
-      <li><a routerLink="/admin/resources">Resources</a></li>
-      <li><a routerLink="/admin/signups">Signups</a></li>
-      <li><a routerLink="/admin/teachers">Teachers</a></li>
-      <li><a routerLink="/admin/testimonials">Testimonials</a></li>
-      <li><a routerLink="/admin/users">Users</a></li>
-    </ul>
-  </mat-sidenav>
-  <router-outlet></router-outlet>
-</mat-sidenav-container>
+    <mat-sidenav #sidenav [opened]="screenWidth > 840" [mode]="(screenWidth > 840) ? 'side' : 'over'">
+      <div class="sidenav-header">
+          <ul>
+              <li routerLink="/admin/chat"><a>LiveChat</a></li>
+              <li routerLink="/admin/faq"><a>FAQs</a></li>
+              <li routerLink="/admin/messages"><a>Contact Messages</a></li>
+              <li routerLink="/admin/media"><a>Media</a></li>
+              <li routerLink="/admin/resources"><a>Resources</a></li>
+              <li routerLink="/admin/signups"><a>Signups</a></li>
+              <li routerLink="/admin/teachers"><a>Teachers</a></li>
+              <li routerLink="/admin/testimonials"><a>Testimonials</a></li>
+              <li routerLink="/admin/users"><a>Users</a></li>
+            </ul>
+      </div>
+    </mat-sidenav>
+    <div [ngStyle]="{'display' : (screenWidth > 840) ? 'none' : 'block'}">
+      <button mat-button class="side-button" (click)="sidenav.open()">
+          <mat-icon svgIcon="menu"></mat-icon>
+        </button>
+    </div>
+    <router-outlet></router-outlet>
+  </mat-sidenav-container>

@@ -1,15 +1,25 @@
 <div class="manager-container">
-  <button 
-    class="btn btn-success" 
-    (click)="flipSwitch()"
-    [ngClass]="liveChatSwitch ?'here': 'away'">{{liveChatSwitch == true ? 'Here' : 'Away'}}
-  </button>
+<div class="row">
+  <div class="col-lg-12">
+    <button 
+      class="btn btn-success" 
+      (click)="flipSwitch()"
+      [ngClass]="liveChatSwitch ?'here': 'away'">{{liveChatSwitch == true ? 'Here' : 'Away'}}
+    </button>
+  </div>
+</div>
+  
+<div class="row">
+  <div class="col-lg-12">
+      <app-tile-list-viewswitch (viewSelected)="selectedView($event)">
+      </app-tile-list-viewswitch>
+  </div>
+</div>
 
-  <div class="row">
-    <div class="col-lg-6">
-      <div 
-        class="tile" 
-        *ngFor="let lc of liveChatsByDate | async"
+<div class="row">
+  <div class="col-lg-6">
+    <div *ngIf="tileOrList == 'tile'">
+      <div class="tile" *ngFor="let lc of liveChatsByDate | async"
         (click)="setCurrentLiveChat(lc.key); markNoNewMessages();">
         <div class="top">
           <div class="top-left">{{lc.name}}</div>
@@ -21,21 +31,30 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-6">
-      <div class="chat-container">
-          <div #scrollMe class="chat-messages-container">
-          <div *ngFor="let msg of currentLiveChatMessages | async">
-            <app-bubble 
-              [time]="msg.createdAt" 
-              [message]="msg.message" 
-              [bubbleClass]="msg.fromAdmin ? 'left' : 'right'">
-            </app-bubble>
-          </div>
+    <div  *ngIf="tileOrList == 'list'" >
+      <mat-grid-list cols="1" [rowHeight]="20">
+          <mat-grid-tile (click)="setCurrentLiveChat(lc.key); markNoNewMessages();" *ngFor="let lc of liveChatsByDate | async"> 
+              <span>{{ lc.name }}</span>
+              <span>{{ lc.email }}</span>
+          </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="chat-container">
+        <div #scrollMe class="chat-messages-container">
+        <div *ngFor="let msg of currentLiveChatMessages | async">
+          <app-bubble 
+            [time]="msg.createdAt" 
+            [message]="msg.message" 
+            [bubbleClass]="msg.fromAdmin ? 'left' : 'right'">
+          </app-bubble>
         </div>
-        <div class="chat-newMsg-container">
-          <textarea name="newMsg" #newMsg cols="5" rows="3" (keydown.enter)="sendMessage(newMsg.value);newMsg.value = '';false"></textarea>
-        </div>
+      </div>
+      <div class="chat-newMsg-container">
+        <textarea name="newMsg" #newMsg cols="5" rows="3" (keydown.enter)="sendMessage(newMsg.value);newMsg.value = '';false"></textarea>
       </div>
     </div>
   </div>
+</div>
 </div>

@@ -15,6 +15,7 @@ export class LiveChatManagerComponent implements OnInit {
   private currentLiveChat;
   private currentLiveChatKey;
   private currentLiveChatMessages;
+  private tileOrList = 'tile';
 
   constructor(private liveChatService: LiveChatService) { 
     this.liveChatsByDate = this.liveChatService.liveChatsByDate.valueChanges();
@@ -24,6 +25,10 @@ export class LiveChatManagerComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  selectedView(sel: string) {
+    this.tileOrList = sel;
   }
 
   setCurrentLiveChat(key: string) {

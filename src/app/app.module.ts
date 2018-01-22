@@ -1,4 +1,3 @@
-
 // Modules
 // import { EmptyTextModule } from 'calendoer';
 import { AccordionModule } from 'ngx-accordion';
@@ -13,7 +12,13 @@ import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule, MatDialogModule, MatMenuModule, MatFormFieldModule, MatSidenavModule, MatSelectModule, MatInputModule, MatIconModule, MatIconRegistry } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule
+  , MatDialogModule, MatMenuModule
+  , MatFormFieldModule, MatSidenavModule
+  , MatSelectModule, MatInputModule
+  , MatIconModule, MatIconRegistry 
+  , MatGridListModule, MatCardModule
+} from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph'
@@ -101,6 +106,7 @@ import { TileTestimonialComponent } from './components/tiles/tile-testimonial/ti
 import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
 import { VisualizerComponent } from './components/visualizer/visualizer.component';
+import { TileListViewswitchComponent } from './components/tile-list-viewswitch/tile-list-viewswitch.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -225,7 +231,8 @@ const routes: Routes = [
     ResourcesComponent,
     BubbleComponent,
     MenuPlusComponent,
-    VisualizerComponent
+    VisualizerComponent,
+    TileListViewswitchComponent
   ],
   imports: [
     AccordionModule, 
@@ -245,6 +252,8 @@ const routes: Routes = [
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatCardModule,
+    MatGridListModule,
     MatInputModule,
     MatIconModule,
     MatMenuModule,

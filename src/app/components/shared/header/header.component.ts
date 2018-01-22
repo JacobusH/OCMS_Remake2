@@ -10,7 +10,7 @@ import * as _ from 'lodash';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  encapsulation: ViewEncapsulation.Emulated
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;

@@ -1,16 +1,21 @@
 <div class="row">
   <!-- Select FAQ to Edit -->
-  <div class="col-lg-6">
+  <div class="col-lg-4">
     <div class="faq-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewFAQ()">New</button>
-      <div class="faq-container">
+      <!-- <div class="faq-container">
         <div class="faq" (click)="setSelectedFAQ(faq)" *ngFor="let faq of faqs | async">
           <span>{{ (faq.question.length > 15) ? (faq.question | slice:0:15) + '...' : (faq.question) }}</span>
         </div>
-      </div>
+      </div> -->
+        <mat-grid-list cols="1" [rowHeight]="20">
+          <mat-grid-tile (click)="setSelectedFAQ(faq)" *ngFor="let faq of faqs | async"> 
+              <span>{{ (faq.question.length > 25) ? (faq.question | slice:0:25) + '...' : (faq.question) }}</span>
+          </mat-grid-tile>
+        </mat-grid-list>
     </div>
   </div>
-  <div class="col-lg-6">
+  <div class="col-lg-8">
     <!-- SAVE FORM -->
   <form (ngSubmit)="saveFAQ(faqForm)" #faqForm="ngForm">
       <div class="form-group">
@@ -29,7 +34,7 @@
       </div>
       <div class="form-group">
         <label for="answer">Answer</label>
-        <textarea  class="form-control" id="answer" required
+        <textarea rows="5" class="form-control" id="answer" required
           [(ngModel)]="model.answer" name="answer"
           #answer="ngModel"
           [ngClass]="{

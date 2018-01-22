@@ -1,14 +1,16 @@
-<div class="tile" *ngFor="let item of data | async">
-  <div class="testimonials-content">
-    <span class="testimonials-arrow"></span>
-    <p innerHtml="{{item.text}}"></p>
-  </div>
-  <div class="testimonials-author">
-    <div class="testimonials-image">
-        <img alt="author" src="../assets/img/5stars.png"> 
-    </div>
-    <div class="testimonials-author-name">{{item.author}}</div>
-    <div class="cleared"></div>
+<div class="masonry-container">
+  <div class="masonry-brick" *ngFor="let item of data | async">
+      <div class="testimonials-content">
+          <span class="testimonials-arrow"></span>
+          <p innerHtml="{{item.text}}"></p>
+        </div>
+        <div class="testimonials-author">
+          <div class="testimonials-image">
+              <img alt="author" src="../assets/img/5stars.png"> 
+          </div>
+          <div class="testimonials-author-name">{{item.author}}</div>
+          <div class="cleared"></div>
+        </div>
   </div>
 </div>
 
