@@ -18,7 +18,7 @@ export class HomeTeachersComponent implements OnInit {
   teachers: Observable<Teacher[]>;
 
   constructor(private afs: AngularFirestore, private teacherService: TeacherService) { 
-    this.teachers = this.teacherService.teachers.valueChanges();
+    this.teachers = this.teacherService.teachersActive.valueChanges();
   }
 
   ngOnInit() {

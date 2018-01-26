@@ -1,4 +1,9 @@
 /* testimonials */
+
+.testimonials-cont {
+	text-align: center;
+}
+
 .testimonials{
   /* position:relative; */
   display: inline-block;
@@ -22,7 +27,7 @@
     font-style: italic;
     padding:32px 25px 35px 25px;
     position:relative;
-    color: #999999;
+    color: #000;
 }
 
 .testimonials-arrow{

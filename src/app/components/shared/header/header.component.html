@@ -16,7 +16,7 @@
     <div class="menu-main-menu-container">
       <ul id="menu-main-menu" class="menu">
         <li><a routerLink="/home">Home</a></li>
-        <li><a routerLink="/gallery">Gallery</a></li>
+        <!-- <li><a routerLink="/gallery">Gallery</a></li> -->
         <li><a routerLink="/teachers">Teachers</a></li>
         <li *ngIf="false; else showExplore_content"><a routerLink="/about">Explore</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="/admin" (click)="toggleState()">Administration</a></li> 
@@ -46,7 +46,7 @@
     <!-- <ul class="nav navbar-nav" [@apparateAnimation]='state' *ngIf="isIn"> -->
       <ul class="nav navbar-nav" *ngIf="isIn">
       <li><a routerLink="/home" (click)="toggleState()">Home</a></li>
-      <li><a routerLink="/gallery" (click)="toggleState()">Gallery</a></li>
+      <!-- <li><a routerLink="/gallery" (click)="toggleState()">Gallery</a></li> -->
       <li><a routerLink="/teachers" (click)="toggleState()">Teachers</a></li>
       <li *ngIf="false; else showExplore_content"><a routerLink="/about">Explore</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="/admin" (click)="toggleState()">Administration</a></li>

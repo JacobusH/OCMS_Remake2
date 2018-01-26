@@ -12,3 +12,8 @@
 img.icon-box-image, img.icon-box-image-hover  {
   width:55px;
 }
+
+.icon-box-name {
+  font-weight: bold;
+  font-size: 24px;
+}
