@@ -1,5 +1,6 @@
 // Modules
-// import { EmptyTextModule } from 'calendoer';
+// import { CalendoerModule } from 'calendoer';
+import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
@@ -26,6 +27,7 @@ import { NgxCarouselModule } from 'ngx-carousel';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 import 'hammerjs';
 
 // Guards
@@ -110,6 +112,7 @@ import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.compon
 import { VisualizerComponent } from './components/visualizer/visualizer.component';
 import { TileListViewswitchComponent } from './components/tile-list-viewswitch/tile-list-viewswitch.component';
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
+import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -236,9 +239,12 @@ const routes: Routes = [
     MenuPlusComponent,
     VisualizerComponent,
     TileListViewswitchComponent,
-    TileCarouselComponent
+    TileCarouselComponent,
+    HomeVideoComponent
   ],
   imports: [
+    // CalendoerModule,
+    SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig), 
@@ -270,7 +276,8 @@ const routes: Routes = [
     OrderListModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    TreeModule  
+    TreeModule,
+    YoutubePlayerModule 
   ],
   providers: [
     AdminGuard,
