@@ -1,4 +1,5 @@
 export * from './alert.model';
+export * from './announcement.model';
 export * from './calendoer/calendoer.model';
 export * from './calendoer/calendoerEvent.model';
 export * from './calendoer/todoer.model';

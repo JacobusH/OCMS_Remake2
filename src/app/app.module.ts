@@ -19,6 +19,7 @@ import { MatButtonModule, MatCheckboxModule
   , MatSelectModule, MatInputModule
   , MatIconModule, MatIconRegistry 
   , MatGridListModule, MatCardModule
+  , MatExpansionModule
 } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
@@ -80,6 +81,7 @@ import { AdminFormResourceComponent } from './components/forms/admin-resource/ad
 import { AdminFormTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
 import { AdminFormTestimonialComponent } from './components/forms/admin-testimonial/admin-testimonial.component';
 import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
+import { AdminFormAnnouncementsComponent } from './components/forms/admin-announcements/admin-announcements.component';
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
 import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
@@ -91,9 +93,10 @@ import { AdminTeachersComponent } from './pages/administration/teachers/teachers
 import { AdminUsersComponent } from './pages/administration/users/users.component';
 import { AdminTestimonialsComponent } from './pages/administration/testimonials/testimonials.component';
 import { AdminResourcesComponent } from './pages/administration/resources/resources.component';
+import { AdminAnnouncementsComponent } from './pages/administration/announcements/announcements.component';
 
 // Services
-import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
+import { AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
   , TeacherService, UserService, UploadService, VisualizerService } from 'app/services/_index';
 
@@ -113,6 +116,7 @@ import { VisualizerComponent } from './components/visualizer/visualizer.componen
 import { TileListViewswitchComponent } from './components/tile-list-viewswitch/tile-list-viewswitch.component';
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
 import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
+import { AnnouncementsComponent } from './components/announcements/announcements.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -128,6 +132,7 @@ var firebaseConfig = {
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
+    { path: "announcements", component: AdminAnnouncementsComponent},
     { path: "messages", component: AdminContactMessagesComponent},
     { path: "chat", component: LiveChatManagerComponent},
     { path: "faq", component: AdminFaqComponent},
@@ -240,7 +245,10 @@ const routes: Routes = [
     VisualizerComponent,
     TileListViewswitchComponent,
     TileCarouselComponent,
-    HomeVideoComponent
+    HomeVideoComponent,
+    AdminFormAnnouncementsComponent,
+    AdminAnnouncementsComponent,
+    AnnouncementsComponent
   ],
   imports: [
     // CalendoerModule,
@@ -267,6 +275,7 @@ const routes: Routes = [
     MatInputModule,
     MatIconModule,
     MatMenuModule,
+    MatExpansionModule,
     MatSidenavModule,
     MenuModule,
     NgbModule.forRoot(),
@@ -280,6 +289,7 @@ const routes: Routes = [
     YoutubePlayerModule 
   ],
   providers: [
+    AnnouncementService,
     AdminGuard,
     AuthGuard,
     AlertService,

@@ -1,4 +1,5 @@
 export * from './alert.service';
+export * from './announcement.service';
 export * from './alert-multi.service';
 export * from './auth.service';
 export * from './contactMessage.service';

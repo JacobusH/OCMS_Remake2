@@ -1,0 +1,52 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { Announcement } from 'app/models/_index';
+import 'rxjs/add/operator/switchMap'
+import * as firebase from 'firebase/app';
+import * as moment from 'moment';
+
+@Injectable()
+export class AnnouncementService {
+  announcements: AngularFirestoreCollection<Announcement>;
+  announcementsActive: AngularFirestoreCollection<Announcement>;
+  announcementsLastDay: AngularFirestoreCollection<Announcement>;
+  
+  constructor(private afs: AngularFirestore) { 
+    this.announcements = this.afs.collection('announcements');
+    this.announcementsActive = this.afs.collection('announcements', ref => ref.where('isActive', '==', 'true'));
+    this.announcementsLastDay = this.afs.collection('announcements', ref => ref.where('createdAt', '>=', new Date(Date.now() - 8.64e7)));
+  }
+
+  createNew(): Announcement {
+    let data: Announcement = {
+      key: '',
+      announcement: '',
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+      };
+      return data;
+  }
+
+  save(t: Announcement): Promise<firebase.firestore.DocumentReference>  {
+    let promise: Promise<firebase.firestore.DocumentReference> = this.announcements.add(t);
+    promise.then(x => {
+      x.update({key: x.id});
+    });
+
+    return promise;
+  }
+
+  edit(item: Announcement): Promise<void> {
+    return this.announcements.doc(item.key).update(item);
+  }
+  
+  delete(item: Announcement): Promise<void> {
+    return this.announcements.doc(item.key).delete();
+  }
+
+
+
+}
