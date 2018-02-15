@@ -20,4 +20,5 @@ export * from './teacher.model';
 export * from './testimonial.model';
 export * from './upload.model';
 export * from './user.model';
+export * from './videoItem.model';
 export * from './visualizer.model';

@@ -313,3 +313,17 @@ h2.content-section-subtitle{
 	margin-bottom:30px;
 
 }
+
+.panel-title a {
+	font-size:18px;
+	font-weight: bold;
+	text-decoration: none !important;
+}
+
+.panel-body {
+	font-size:18px;
+}
+
+.panel-heading {
+	cursor: pointer;
+}

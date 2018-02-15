@@ -171,7 +171,7 @@ const routes: Routes = [
   // { path: 'testing/youtube', component: YoutubeComponent },
   // { path: 'testing/upload', component: UploadComponent },
   // { path: 'testing/tree', component: TreeComponent },
-  // { path: 'contact/thanks', component: ThanksComponent },
+  { path: 'contact/thanks', component: ThanksComponent },
   { path: '**', component: PageNotFoundComponent }
   
 ];
