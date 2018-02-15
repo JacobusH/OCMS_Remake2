@@ -117,6 +117,7 @@ import { TileListViewswitchComponent } from './components/tile-list-viewswitch/t
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
 import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
+import { VideoItemComponent } from './components/video-item/video-item.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -248,7 +249,8 @@ const routes: Routes = [
     HomeVideoComponent,
     AdminFormAnnouncementsComponent,
     AdminAnnouncementsComponent,
-    AnnouncementsComponent
+    AnnouncementsComponent,
+    VideoItemComponent
   ],
   imports: [
     // CalendoerModule,

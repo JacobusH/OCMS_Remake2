@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class HomeVideoComponent implements OnInit {
   player: YT.Player;
-  private id: string = 'WxVIYxE9CEI';
+  private ids: Array<string> = ['WxVIYxE9CEI', 'DIIbPp6j12I'];
 
 	
 
