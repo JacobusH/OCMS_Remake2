@@ -1,0 +1,94 @@
+<div class="row">
+  <!-- Select Video to Edit -->
+  <div class="col-lg-6">
+    <div class="item-select-container">
+      <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
+      <div class="item-container">
+        <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
+          <app-video-item [videoId]="item.videoId" [title]="item.title" [caption]="item.caption" [smallTiles]="true"></app-video-item>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <!-- Video Picture -->
+    <div class="item">
+      <img *ngIf="selectedItem" #imgItemSelected [src]="selectedItem.imgUrl" />
+    </div>
+    <!-- SAVE FORM -->
+  <form (ngSubmit)="saveItem(itemForm)" #itemForm="ngForm">
+      <div class="form-group">
+        <label for="videoId">Video ID</label>
+        <input type="text" class="form-control" id="videoId" required
+          [(ngModel)]="model.videoId" name="videoId"
+          #videoId="ngModel"
+          [ngClass]="{
+            'has-success': videoId.valid,
+            'has-danger': !videoId.pristine && !videoId.valid
+          }">
+        <div [hidden]="videoId.valid || videoId.pristine" class="alert alert-danger">
+            Video ID is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" required
+          [(ngModel)]="model.title" name="title"
+          #title="ngModel"
+          [ngClass]="{
+            'has-success': title.valid,
+            'has-danger': !title.pristine && !title.valid
+          }">
+        <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+            Title is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="caption">Caption</label>
+        <input type="text" class="form-control" id="caption"
+          [(ngModel)]="model.caption" name="caption"
+          #caption="ngModel"
+          [ngClass]="{
+            'has-success': caption.valid,
+            'has-danger': !caption.pristine && !caption.valid
+          }">
+        <div [hidden]="caption.valid || caption.pristine" class="alert alert-danger">
+          Caption is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="categories">Categories</label>
+        <input type="text" class="form-control" id="categories" required
+          [(ngModel)]="model.categories" name="categories"
+          #categories="ngModel"
+          [ngClass]="{
+            'has-success': categories.valid,
+            'has-danger': !categories.pristine && !categories.valid
+          }">
+          <div [hidden]="categories.valid || categories.pristine" class="alert alert-danger">
+            Categories is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="isActive">Active</label>
+        <input [checked]="model.isActive" 
+        [(ngModel)]="model.isActive" 
+        type="checkbox" 
+        name="isActive" 
+        id="isActive" 
+        #isActive
+        >      
+          <!-- <div [hidden]="isActive.valid || isActive.pristine"
+              class="alert alert-danger">
+              isActive is required
+        </div> -->
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Save</button>
+    </form> 
+  </div>
+</div>
+
+
+
+
+

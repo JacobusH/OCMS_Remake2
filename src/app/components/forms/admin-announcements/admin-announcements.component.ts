@@ -11,7 +11,6 @@ import {
   FormBuilder,
   NgForm
 } from '@angular/forms';
-import { AdminTeachersComponent } from 'app/pages/administration/teachers/teachers.component';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 

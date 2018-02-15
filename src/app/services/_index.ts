@@ -14,3 +14,4 @@ export * from './testimonial.service';
 export * from './user.service';
 export * from './upload.service';
 export * from './visualizer.service';
+export * from './videoItem.service';

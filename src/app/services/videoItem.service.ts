@@ -22,6 +22,7 @@ export class VideoItemService {
       videoId: '',
       title: '',
       caption: '',
+      categories: new Array,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

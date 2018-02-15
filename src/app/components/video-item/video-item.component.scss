@@ -1,0 +1,30 @@
+.small-tiles /deep/ iframe {
+  width:100%;
+  height:50px;
+}
+
+.large-tiles /deep/ iframe {
+  width:100%;
+}
+
+.video-cont.small-tiles  {
+  max-width: 15%;
+}
+
+.video-cont.large-tiles  {
+  max-width: 20%;
+}
+
+.video-cont {
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px grey;
+  margin: 5px;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'trajan';
+}

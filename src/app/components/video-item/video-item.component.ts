@@ -7,13 +7,17 @@ import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class VideoItemComponent implements OnInit {
-  @Input('videoId') videoId:string = 'WxVIYxE9CEI'; 
+  @Input('videoId') videoId:string; 
+  @Input('title') title:string;
+  @Input('caption') caption:string;
+  @Input('smallTiles') smallTiles:boolean;
   player: YT.Player;
 
   constructor() { 
   }
 
   ngOnInit() {
+    
   }
 
   savePlayer (player) {

@@ -1,0 +1,6 @@
+<app-video-item 
+  *ngFor="let item of videosActive | async"
+  [videoId]="item.videoId" 
+  [title]="item.title" 
+  [caption]="item.caption">
+</app-video-item>

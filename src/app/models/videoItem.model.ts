@@ -15,6 +15,7 @@ export interface VideoItem {
   videoId: string,
   title: string,
   caption: string,
+  categories: Array<string>,
   isActive: boolean,
   createdAt: Date,
   updatedAt: Date
