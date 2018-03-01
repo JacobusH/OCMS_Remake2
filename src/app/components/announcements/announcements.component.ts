@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/Observable';
 export class AnnouncementsComponent implements OnInit {
   private announcements: Observable<{}[]>;
   private announcementsLastDay: Observable<{}[]>;
+  private announcementsActive: Observable<{}[]>;
   private isVisible:boolean = false;
   private doPulse: boolean = false;
 
@@ -18,6 +19,7 @@ export class AnnouncementsComponent implements OnInit {
   constructor(private announcementService: AnnouncementService) { 
     this.announcements = this.announcementService.announcements.valueChanges();
     this.announcementsLastDay = this.announcementService.announcementsLastDay.valueChanges();
+    this.announcementsActive = this.announcementService.announcementsActive.valueChanges();
   }
 
   ngOnInit() {

@@ -6,7 +6,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
   
-    <div *ngFor="let ann of announcements | async" (click)="isVisible = !isVisible">
+    <div *ngFor="let ann of announcementsActive | async" (click)="isVisible = !isVisible">
         <div>
           <span>{{ ann.createdDate }}</span>
           <span>{{ ann.announcement }}</span>

@@ -1,0 +1,21 @@
+#cont {
+  // display:flex;
+
+  #inner {
+    // align-items: center;
+    // max-width:
+  }
+}
+
+:host /deep/ .video-cont {
+  margin: 0 auto !important;
+  max-width: 100% !important;
+  width:25% !important;
+}
+
+@media (max-width: 768px) {
+  :host /deep/ .video-cont {
+    width:100% !important;
+  }
+}
+  
