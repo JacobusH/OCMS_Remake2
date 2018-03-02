@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnChanges, Input } from '@angular/core';
 import { VideoItem, Upload } from 'app/models/_index';
 import { VideoItemService } from 'app/services/_index';
 import { Observable } from 'rxjs/Observable';
@@ -9,14 +9,41 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./videos.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
-export class VideosComponent implements OnInit {
+export class VideosComponent implements OnInit, OnChanges {
+  @Input() filterBy?: string = 'all';
   videosActive: Observable<VideoItem[]>;
+  visibleVideos;
+  filterOptions: Array<string> = [];
 
   constructor(private videoService: VideoItemService) { 
     this.videosActive = this.videoService.videoItemsActive.valueChanges();
   }
 
   ngOnInit() {
+    this.videosActive = this.videoService.videoItemsActive.valueChanges();
+
+    this.videosActive.subscribe(x => {
+
+      for(var i = 0; i < x.length; i++) {
+        let splits = x[i].categories.split(',');
+        for(var j = 0; j < splits.length; j++) {
+          var element = splits[j].replace(/\s/g, '');
+          if(this.filterOptions.indexOf(element) === -1) {
+            this.filterOptions.push(element);
+          }
+        }
+      }
+
+    })
   }
+
+  ngOnChanges() {
+    this.visibleVideos = this.videoService.videoItemsActive;    
+  }
+
+  filterClicked(filterApplied: string) {
+    this.filterBy = filterApplied; 
+ }
+
 
 }

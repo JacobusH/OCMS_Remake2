@@ -1,6 +1,26 @@
-<app-video-item 
-  *ngFor="let item of videosActive | async"
-  [videoId]="item.videoId" 
-  [title]="item.title" 
-  [caption]="item.caption">
-</app-video-item>
+<div class="filter-buttons AC" >
+  <button 
+    class="btn btn-lg btn-info" 
+    [class.active]="filterBy == 'All'" 
+    style="margin-right:15px;"
+    (click)="filterClicked('All')" >All
+  </button>
+  <button 
+    *ngFor="let fil of filterOptions" 
+    class="btn btn-lg btn-info" 
+    [class.active]="filterBy == fil" 
+    style="margin-right:15px;"
+    (click)="filterClicked(fil)" >{{fil}}
+  </button>
+</div>
+
+<div style="display: flex; flex-flow: row wrap;">
+  <app-video-item 
+    *ngFor="let item of videosActive | async | imageFilter:filterBy"
+    [videoId]="item.videoId" 
+    [title]="item.title" 
+    [caption]="item.caption"
+    style="justify-items: center;">
+  </app-video-item>
+</div>
+
