@@ -10,7 +10,7 @@ export class VideoItemComponent implements OnInit {
   @Input('videoId') videoId:string; 
   @Input('title') title:string;
   @Input('caption') caption:string;
-  @Input('smallTiles') smallTiles:boolean;
+  @Input('tileSize') tileSize:string;
   player: YT.Player;
 
   constructor() { 
@@ -22,11 +22,11 @@ export class VideoItemComponent implements OnInit {
 
   savePlayer (player) {
     this.player = player;
-    console.log('player instance', player)
+    // console.log('player instance', player)
   }
   
   onStateChange(event){
-    console.log('player state', event.data);
+    // console.log('player state', event.data);
   }
 
 

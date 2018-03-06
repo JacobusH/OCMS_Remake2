@@ -1,11 +1,19 @@
 :host {
-  min-height: 100vh;
+  // min-height: 100vh;
+  min-height: 550px;
+}
+
+:host /deep/ .row {
+  margin: 0px;
 }
 
 .sidenav-fab-container {
   // width: 500px;
-  min-height: 300px;
+  // min-height: 300px;
   // border: 1px solid rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .sidenav-fab-container mat-sidenav {

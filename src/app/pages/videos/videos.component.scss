@@ -1,0 +1,9 @@
+.vid-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.vid-wrapper > .vid-item {
+    // justify-content: center;
+}

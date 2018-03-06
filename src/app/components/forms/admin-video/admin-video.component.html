@@ -5,7 +5,7 @@
       <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
       <div class="item-container">
         <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
-          <app-video-item [videoId]="item.videoId" [title]="item.title" [caption]="item.caption" [smallTiles]="true"></app-video-item>
+          <app-video-item [videoId]="item.videoId" [title]="item.title" [caption]="item.caption" [tileSize]="small-tiles"></app-video-item>
         </div>
       </div>
     </div>

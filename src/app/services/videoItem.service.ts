@@ -10,10 +10,21 @@ import * as firebase from 'firebase/app';
 export class VideoItemService {
   videoItems: AngularFirestoreCollection<VideoItem>;
   videoItemsActive: AngularFirestoreCollection<VideoItem>;
+  videoItemsFirst5: AngularFirestoreCollection<VideoItem>;
+  videoItemsRange: AngularFirestoreCollection<VideoItem>;
 
   constructor(private afs: AngularFirestore) { 
     this.videoItems = this.afs.collection('videos');
     this.videoItemsActive = this.afs.collection('videos', ref => ref.where('isActive', '==', true));
+    this.videoItemsFirst5 = this.afs.collection('videos', ref => ref.limit(5));
+  }
+
+  getRange(start, limit): AngularFirestoreCollection<VideoItem> {
+    return this.videoItemsRange = this.afs.collection('videos', ref => 
+      ref.where('isActive', '==', true)
+      .orderBy('title')
+      .startAt(start)
+      .limit(limit));
   }
 
   createNew(): VideoItem {
@@ -22,7 +33,7 @@ export class VideoItemService {
       videoId: '',
       title: '',
       caption: '',
-      categories: new Array,
+      categories: '',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

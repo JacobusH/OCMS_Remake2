@@ -25,6 +25,7 @@ import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph'
 import { NgxCarouselModule } from 'ngx-carousel';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
@@ -275,6 +276,7 @@ const routes: Routes = [
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
     NgxGraphModule,
+    NgxPaginationModule,
     NgxCarouselModule,
     OrderListModule,
     ReactiveFormsModule,
