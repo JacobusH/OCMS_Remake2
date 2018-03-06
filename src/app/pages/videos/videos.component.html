@@ -14,13 +14,16 @@
   </button>
 </div>
 
-<div style="display: flex; flex-flow: row wrap;">
+<span>Filter count: {{ (videosActive | async | imageFilter:filterBy)?.length }}</span>
+
+<div class="vid-wrapper">
   <app-video-item 
-    *ngFor="let item of videosActive | async | imageFilter:filterBy"
+    class="vid-item"
+    *ngFor="let item of videosActive | async | imageFilter:filterBy:filterMetadata"
     [videoId]="item.videoId" 
     [title]="item.title" 
     [caption]="item.caption"
-    style="justify-items: center;">
+    [tileSize]='full-tiles'>
   </app-video-item>
 </div>
 

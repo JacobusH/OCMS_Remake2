@@ -12,15 +12,15 @@ import { Observable } from 'rxjs/Observable';
 export class VideosComponent implements OnInit, OnChanges {
   @Input() filterBy?: string = 'all';
   videosActive: Observable<VideoItem[]>;
-  visibleVideos;
   filterOptions: Array<string> = [];
 
   constructor(private videoService: VideoItemService) { 
-    this.videosActive = this.videoService.videoItemsActive.valueChanges();
+    // this.videosActive = this.videoService.videoItemsActive.valueChanges();
   }
 
   ngOnInit() {
-    this.videosActive = this.videoService.videoItemsActive.valueChanges();
+    // this.videosActive = this.videoService.videoItemsActive.valueChanges();
+    this.videosActive = this.videoService.getRange(0, 10).valueChanges();
 
     this.videosActive.subscribe(x => {
 
@@ -38,7 +38,7 @@ export class VideosComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    this.visibleVideos = this.videoService.videoItemsActive;    
+
   }
 
   filterClicked(filterApplied: string) {

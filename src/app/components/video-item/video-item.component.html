@@ -1,6 +1,7 @@
 <div class="video-cont" [ngClass]="{
-  'small-tiles': smallTiles,
-  'large-tiles': !smallTiles
+  'small-tiles': tileSize === 'small-tiles',
+  'large-tiles': tileSize ===  'large-tiles',
+  'full-tiles': tileSize ===  'full-tiles'
 }">
   <youtube-player
         [videoId]="videoId"
@@ -8,5 +9,5 @@
         (change)="onStateChange($event)">
   </youtube-player>
   <div class='title'>{{title}}</div>
-  <div class='caption' [hidden]="smallTiles">{{caption}}</div>
+  <div class='caption' [hidden]="tilesize === 'small-Tiles'">{{caption}}</div>
 </div>
