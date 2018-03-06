@@ -1,0 +1,18 @@
+
+<mat-expansion-panel [ngClass]="{'pulse': doPulse}" (click)="isVisible = !isVisible" [style.width]="isVisible ? '250px' : '100px'">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          <mat-icon>announcement</mat-icon>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+  
+    <div *ngFor="let ann of announcements | async" (click)="isVisible = !isVisible">
+        <div>
+          <span>{{ ann.createdDate }}</span>
+          <span>{{ ann.announcement }}</span>
+        </div>
+      </div>
+  
+  </mat-expansion-panel>
+
+

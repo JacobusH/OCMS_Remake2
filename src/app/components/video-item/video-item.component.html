@@ -1,0 +1,12 @@
+<div class="video-cont" [ngClass]="{
+  'small-tiles': smallTiles,
+  'large-tiles': !smallTiles
+}">
+  <youtube-player
+        [videoId]="videoId"
+        (ready)="savePlayer($event)"
+        (change)="onStateChange($event)">
+  </youtube-player>
+  <div class='title'>{{title}}</div>
+  <div class='caption' [hidden]="smallTiles">{{caption}}</div>
+</div>

@@ -1,5 +1,6 @@
 // Modules
-// import { EmptyTextModule } from 'calendoer';
+// import { CalendoerModule } from 'calendoer';
+import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
@@ -18,6 +19,7 @@ import { MatButtonModule, MatCheckboxModule
   , MatSelectModule, MatInputModule
   , MatIconModule, MatIconRegistry 
   , MatGridListModule, MatCardModule
+  , MatExpansionModule
 } from '@angular/material';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
@@ -26,6 +28,7 @@ import { NgxCarouselModule } from 'ngx-carousel';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 import 'hammerjs';
 
 // Guards
@@ -78,22 +81,18 @@ import { AdminFormResourceComponent } from './components/forms/admin-resource/ad
 import { AdminFormTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
 import { AdminFormTestimonialComponent } from './components/forms/admin-testimonial/admin-testimonial.component';
 import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
+import { AdminFormAnnouncementsComponent } from './components/forms/admin-announcements/admin-announcements.component';
+import { AdminFormVideoComponent } from './components/forms/admin-video/admin-video.component';
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
 import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
-import { AdminFaqComponent } from './pages/administration/faq/faq.component';
 import { AdminHomepageComponent } from './pages/administration/homepage/homepage.component';
-import { AdminMediaComponent } from './pages/administration/media/media.component';
 import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
-import { AdminTeachersComponent } from './pages/administration/teachers/teachers.component';
-import { AdminUsersComponent } from './pages/administration/users/users.component';
-import { AdminTestimonialsComponent } from './pages/administration/testimonials/testimonials.component';
-import { AdminResourcesComponent } from './pages/administration/resources/resources.component';
 
 // Services
-import { AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
+import { AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
-  , TeacherService, UserService, UploadService, VisualizerService } from 'app/services/_index';
+  , TeacherService, UserService, UploadService, VisualizerService, VideoItemService } from 'app/services/_index';
 
 // pipes
 import { ResourceCategoryPipe } from 'app/filters/resource-category-filter.pipe';
@@ -110,6 +109,10 @@ import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.compon
 import { VisualizerComponent } from './components/visualizer/visualizer.component';
 import { TileListViewswitchComponent } from './components/tile-list-viewswitch/tile-list-viewswitch.component';
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
+import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
+import { AnnouncementsComponent } from './components/announcements/announcements.component';
+import { VideoItemComponent } from './components/video-item/video-item.component';
+import { VideosComponent } from './pages/videos/videos.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -125,15 +128,17 @@ var firebaseConfig = {
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
+    { path: "announcements", component: AdminFormAnnouncementsComponent},
     { path: "messages", component: AdminContactMessagesComponent},
     { path: "chat", component: LiveChatManagerComponent},
-    { path: "faq", component: AdminFaqComponent},
-    { path: "media", component: AdminMediaComponent},
-    { path: "resources", component: AdminResourcesComponent},
+    { path: "faq", component: AdminFormFaqComponent},
+    { path: "media", component: AdminFormGalleryComponent},
+    { path: "resources", component: AdminFormResourceComponent},
     { path: "signups", component: AdminSignUpsComponent},
-    { path: "testimonials", component: AdminTestimonialsComponent},
-    { path: "teachers", component: AdminTeachersComponent},
-    { path: "users", component: AdminUsersComponent},
+    { path: "testimonials", component: AdminFormTestimonialComponent},
+    { path: "teachers", component: AdminFormTeacherComponent},
+    { path: "users", component: AdminFormUserComponent},
+    { path: "videos", component: AdminFormVideoComponent},
   ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
@@ -162,6 +167,7 @@ const routes: Routes = [
   // { path: 'testing/youtube', component: YoutubeComponent },
   // { path: 'testing/upload', component: UploadComponent },
   // { path: 'testing/tree', component: TreeComponent },
+  { path: 'videos', component: VideosComponent },
   { path: 'contact/thanks', component: ThanksComponent },
   { path: '**', component: PageNotFoundComponent }
   
@@ -175,22 +181,17 @@ const routes: Routes = [
     AppComponent,
     AboutComponent,
     AdministrationComponent,
-    AdminTeachersComponent,
     AdminFormUserComponent,
     AdminFormGalleryComponent,
     AdminFormTeacherComponent,
     AdminFormTestimonialComponent,
     AdminFormFaqComponent,
+    AdminFormVideoComponent,
     AdminHomepageComponent,
     AdminSignUpsComponent,
     AdminHomepageComponent,
-    AdminUsersComponent,
-    AdminResourcesComponent,
-    AdminFaqComponent,
-    AdminTestimonialsComponent,
     TestimonialsComponent,
     AdminContactMessagesComponent,
-    AdminMediaComponent,
     CalendarHeaderComponent,
     CalendoerComponent,
     CalendarNoteDayViewComponent,
@@ -236,9 +237,16 @@ const routes: Routes = [
     MenuPlusComponent,
     VisualizerComponent,
     TileListViewswitchComponent,
-    TileCarouselComponent
+    TileCarouselComponent,
+    HomeVideoComponent,
+    AdminFormAnnouncementsComponent,
+    AnnouncementsComponent,
+    VideoItemComponent,
+    VideosComponent,
   ],
   imports: [
+    // CalendoerModule,
+    SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule,
     AngularFireModule.initializeApp(firebaseConfig), 
@@ -261,6 +269,7 @@ const routes: Routes = [
     MatInputModule,
     MatIconModule,
     MatMenuModule,
+    MatExpansionModule,
     MatSidenavModule,
     MenuModule,
     NgbModule.forRoot(),
@@ -270,9 +279,11 @@ const routes: Routes = [
     OrderListModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    TreeModule  
+    TreeModule,
+    YoutubePlayerModule 
   ],
   providers: [
+    AnnouncementService,
     AdminGuard,
     AuthGuard,
     AlertService,
@@ -291,7 +302,8 @@ const routes: Routes = [
     TeacherService,
     UserService,
     UploadService,
-    VisualizerService
+    VisualizerService,
+    VideoItemService
   ],
   bootstrap: [AppComponent]
 })

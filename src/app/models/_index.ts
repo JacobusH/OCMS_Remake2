@@ -1,4 +1,5 @@
 export * from './alert.model';
+export * from './announcement.model';
 export * from './calendoer/calendoer.model';
 export * from './calendoer/calendoerEvent.model';
 export * from './calendoer/todoer.model';
@@ -19,4 +20,5 @@ export * from './teacher.model';
 export * from './testimonial.model';
 export * from './upload.model';
 export * from './user.model';
+export * from './videoItem.model';
 export * from './visualizer.model';

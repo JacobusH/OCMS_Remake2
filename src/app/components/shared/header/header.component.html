@@ -2,9 +2,10 @@
 <div class="hidden-sm hidden-xs AC">
   <div class="site-logo">
     <h1>
-    <a class="logo-image" routerLink="/home">
-      <img class="logo-normal" alt="Orange County Music School" src="../assets/img/music-logo.svg">
-    </a>
+      <app-announcements></app-announcements>
+      <a class="logo-image" routerLink="/home">
+        <img class="logo-normal" alt="Orange County Music School" src="../assets/img/music-logo.svg">
+      </a>
     </h1>
   </div>
   <div class="cleared"></div>
@@ -16,7 +17,7 @@
     <div class="menu-main-menu-container">
       <ul id="menu-main-menu" class="menu">
         <li><a routerLink="/home">Home</a></li>
-        <!-- <li><a routerLink="/gallery">Gallery</a></li> -->
+        <li><a routerLink="/videos">Videos</a></li>
         <li><a routerLink="/teachers">Teachers</a></li>
         <li *ngIf="false; else showExplore_content"><a routerLink="/about">Explore</a></li>
         <li *ngIf="isLoggedIn"><a routerLink="/admin" (click)="toggleState()">Administration</a></li> 
@@ -30,7 +31,6 @@
 </div>
 
 <!-- core/navbar.component.html -->
- <!-- <nav class="navbar navbar-default navbar-static-top header-bar hidden-md hidden-lg" [@apparateAnimation]='state'> -->
   <nav class="navbar navbar-default navbar-static-top header-bar hidden-md hidden-lg">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle collapsed" (click)="toggleState()">
@@ -41,12 +41,10 @@
     </button>
     <a class="navbar-brand" routerLink="/home" (click)="toggleState()">OCMS</a>
   </div>
-  <!-- <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }" [@apparateAnimation]='state'> -->
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
-    <!-- <ul class="nav navbar-nav" [@apparateAnimation]='state' *ngIf="isIn"> -->
       <ul class="nav navbar-nav" *ngIf="isIn">
       <li><a routerLink="/home" (click)="toggleState()">Home</a></li>
-      <!-- <li><a routerLink="/gallery" (click)="toggleState()">Gallery</a></li> -->
+      <li><a routerLink="/videos">Videos</a></li>
       <li><a routerLink="/teachers" (click)="toggleState()">Teachers</a></li>
       <li *ngIf="false; else showExplore_content"><a routerLink="/about">Explore</a></li>
       <li *ngIf="isLoggedIn"><a routerLink="/admin" (click)="toggleState()">Administration</a></li>
