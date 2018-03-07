@@ -25,7 +25,6 @@ import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph'
 import { NgxCarouselModule } from 'ngx-carousel';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
@@ -100,6 +99,8 @@ import { ResourceCategoryPipe } from 'app/filters/resource-category-filter.pipe'
 import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
 import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
 import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
+import { TimesPipe } from 'app/filters/times-filter.pipe';
+import { RoundUpPipe } from 'app/filters/roundUp-filter.pipe';
 import { DateRangePickerComponent } from './components/calendar/date-range-picker/date-range-picker.component';
 import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
@@ -219,7 +220,9 @@ const routes: Routes = [
     PageNotFoundComponent,
     PlaygroundComponent,
     ReadFilterPipe,
+    RoundUpPipe,
     SignupFilterPipe,
+    TimesPipe,
     TeacherDetailComponent,
     TeachersComponent,
     TodoerComponent,
@@ -276,7 +279,6 @@ const routes: Routes = [
     NgbModule.forRoot(),
     NgbModalModule.forRoot(),
     NgxGraphModule,
-    NgxPaginationModule,
     NgxCarouselModule,
     OrderListModule,
     ReactiveFormsModule,

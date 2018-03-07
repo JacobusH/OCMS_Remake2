@@ -1,6 +1,5 @@
 <app-page-header [title]="'Videos'"></app-page-header>
 
-
 <div class="filter-buttons AC" >
   <button 
     class="btn btn-lg btn-info" 
@@ -17,10 +16,20 @@
   </button>
 </div>
 
-<button (click)="currentPage = 0">1</button>
-<button (click)="currentPage = 1">2</button>
-<button (click)="currentPage = 2">3</button>
-<span>Total: {{ (videosActive | async | imageFilter:filterBy)?.length }}</span>
+<div class="vid-totals AC">
+  <span>Page {{ currentPage + 1 }} of {{ ((videosActive | async | imageFilter:filterBy)?.length / pageSize) | roundUp }}</span>
+  <span>Total Videos: {{ (videosActive | async | imageFilter:filterBy)?.length }}</span>
+</div>
+<div class="vid-page-numbers">
+<button 
+  class="btn"
+  (click)="currentPage = i - 1" 
+  *ngFor="let i of ((videosActive | async | imageFilter:filterBy)?.length / pageSize) |timesPipe">
+  {{i}}
+</button>
+</div>
+
+
 
 <!-- <div class="vid-wrapper">
   <app-video-item 
@@ -35,7 +44,6 @@
 
 <div class="vid-wrapper">
   <div class="vid-item" *ngFor="let item of videosActive | async | imageFilter:filterBy:filterMetadata; let i = index">
-    {{i}}
     <app-video-item 
       *ngIf="i >= (currentPage * pageSize) && i < (currentPage * pageSize + 10)"
       [videoId]="item.videoId" 

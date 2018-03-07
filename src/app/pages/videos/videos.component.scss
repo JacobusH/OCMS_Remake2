@@ -7,3 +7,14 @@
 .vid-wrapper > .vid-item {
     // justify-content: center;
 }
+
+.vid-page-numbers {
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin:5px;
+
+  > button {
+    margin:5px;
+  }
+}
