@@ -1,5 +1,5 @@
 // Modules
-import { ArithmeticModule, SumService, ToDoComponent } from 'todo-module';
+import { ArithmeticModule, SumService, ToDoComponent } from '../../node_modules/todo-module/dist';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion';
 import { HttpClientModule } from '@angular/common/http';
@@ -181,7 +181,7 @@ const routes: Routes = [
     CalendoerEventModalComponent
   ],
   declarations: [
-    ToDoComponent,
+    // ToDoComponent,
     AppComponent,
     AboutComponent,
     AdministrationComponent,
