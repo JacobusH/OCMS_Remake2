@@ -14,7 +14,11 @@
 :host /deep/ .video-cont {
   margin: 0 auto !important;
   max-width: 100% !important;
-  width:25% !important;
+  width:20% !important;
+
+  iframe {
+    width: 100% !important;
+  }
 }
 
 @media (max-width: 768px) {

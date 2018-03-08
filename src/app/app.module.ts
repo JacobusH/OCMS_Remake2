@@ -1,5 +1,5 @@
 // Modules
-// import { CalendoerModule } from 'calendoer';
+import { ArithmeticModule, SumService, ToDoComponent } from 'todo-module';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion';
 import { HttpClientModule } from '@angular/common/http';
@@ -115,6 +115,7 @@ import { HomeVideoComponent } from './pages/home/home-video/home-video.component
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
 import { VideoItemComponent } from './components/video-item/video-item.component';
 import { VideosComponent } from './pages/videos/videos.component';
+import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -180,6 +181,7 @@ const routes: Routes = [
     CalendoerEventModalComponent
   ],
   declarations: [
+    ToDoComponent,
     AppComponent,
     AboutComponent,
     AdministrationComponent,
@@ -247,9 +249,10 @@ const routes: Routes = [
     AnnouncementsComponent,
     VideoItemComponent,
     VideosComponent,
+    DisplayTeacherComponent,
   ],
   imports: [
-    // CalendoerModule,
+    ArithmeticModule,
     SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule,
@@ -287,6 +290,7 @@ const routes: Routes = [
     YoutubePlayerModule 
   ],
   providers: [
+    SumService,
     AnnouncementService,
     AdminGuard,
     AuthGuard,

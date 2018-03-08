@@ -13,27 +13,8 @@
   </div>
 </div>
 <!-- TEACHERS -->
-<div class="row">
-  <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let teacher of teachers | async">
-    <div class="portfolio-cell ">
-      <div class="portfolio-cell-thumb">
-        <div class="portfolio-cell-bg"></div>
-        <a class="portfolio-cell-view" routerLink="/teachers/{{teacher.key}}">
-          <!-- <i class="fa fa-eye"></i> -->
-        </a>
-        <a routerLink="/teachers/{{teacher.key}}">
-          <img src="{{teacher.imgUrl}}}" class="attachment-thumb-cell-small size-thumb-cell-small wp-post-image" alt="">																								
-        </a>
-      </div>
-      <div class="portfolio-cell-data">
-        <div class="portfolio-cell-title">
-          <a routerLink="/teachers/{{teacher.key}}">{{teacher.name}}</a>
-        </div>
-        <div class="portfolio-cell-categories"><a routerLink="/instrument/{{teacher.instrument}}">{{teacher.instrument}}</a></div>
-      </div>
-    </div>		
-   </div>
-</div>
+<app-display-teacher></app-display-teacher>>
+
 
 <div class="container icon-box-link" style="text-align:center; margin-top:15px;">
   <a class="button big-button 1bbc9b-button" routerLink="/teachers"><i class="fa fa fa-ok"></i>See More Teachers</a>

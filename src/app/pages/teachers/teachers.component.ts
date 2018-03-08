@@ -10,10 +10,10 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class TeachersComponent implements OnInit {
-  private teachers: Observable<{}[]>;
+ 
 
-  constructor(private teacherService: TeacherService) { 
-    this.teachers = this.teacherService.teachersActive.valueChanges();
+  constructor() { 
+    
   }
 
   ngOnInit() {

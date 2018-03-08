@@ -6,7 +6,27 @@ import {
 import { Subject } from 'rxjs/Subject';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
 import { ActivatedRoute } from '@angular/router';
-// import { colors } from '../demo-utils/colors';
+import { SumService } from 'todo-module';
+
+@Component({
+  selector: 'app-playground',
+  templateUrl: './playground.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./playground.component.scss']
+})
+export class PlaygroundComponent implements OnInit {
+  private testNumber1:number = 1;
+  private testNumber2:number = 11;
+  private dispNumber:number;
+
+  constructor(private route: ActivatedRoute, private sumService:SumService) { }
+
+  ngOnInit() {
+    this.sumService.calculate(this.testNumber1, this.testNumber2);
+    this.dispNumber = this.sumService.sum;
+  }
+
+}
 
 export const colors: any = {
   red: {
@@ -22,36 +42,3 @@ export const colors: any = {
     secondary: '#FDF1BA'
   }
 };
-
-@Component({
-  selector: 'app-playground',
-  templateUrl: './playground.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./playground.component.scss']
-})
-export class PlaygroundComponent implements OnInit {
-  extEvents: CalendarEvent[] = [
-    {
-      title: 'From Outside 1',
-      color: colors.red,
-      start: new Date(),
-      cssClass: 'ext-calendar-event',
-      draggable: true
-    },
-    {
-      title: 'From Outside 2',
-      color: colors.red,
-      start: new Date(),
-      cssClass: 'ext-calendar-event',
-      draggable: true
-    }
-  ];
-
-  constructor(private route: ActivatedRoute) { }
-
-  ngOnInit() {
-   
-  }
-
-}
-
