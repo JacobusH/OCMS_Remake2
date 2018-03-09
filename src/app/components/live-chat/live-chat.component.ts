@@ -22,7 +22,7 @@ export class LiveChatComponent implements OnInit {
     // this.liveChatMessages = liveChatService.liveChatsByDateNonArchived;
    }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
 }

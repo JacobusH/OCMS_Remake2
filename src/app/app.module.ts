@@ -1,7 +1,7 @@
 // Modules
-import { ArithmeticModule, SumService, ToDoComponent } from '../../node_modules/todo-module/dist';
+import { ArithmeticModule, SumService } from '../../node_modules/todo-module/dist';
 import { SampleModule } from 'yocalendoer';
-import { AccordionModule } from 'ngx-accordion';
+import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
@@ -12,12 +12,12 @@ import { CalendarModule } from 'angular-calendar';
 import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatButtonModule, MatCheckboxModule
-  , MatDialogModule, MatMenuModule
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { MatButtonModule, MatCheckboxModule   
+  , MatDialogModule, MatMenuModule 
   , MatFormFieldModule, MatSidenavModule
   , MatSelectModule, MatInputModule
-  , MatIconModule, MatIconRegistry 
+  , MatIconModule, MatIconRegistry  
   , MatGridListModule, MatCardModule
   , MatExpansionModule
 } from '@angular/material';
@@ -88,6 +88,7 @@ import { AdministrationComponent } from './pages/administration/administration.c
 import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
 import { AdminHomepageComponent } from './pages/administration/homepage/homepage.component';
 import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
+import { AdminTodoComponent } from './pages/administration/todo/todo.component';
 
 // Services
 import { AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
@@ -140,6 +141,7 @@ const routes: Routes = [
     { path: "signups", component: AdminSignUpsComponent},
     { path: "testimonials", component: AdminFormTestimonialComponent},
     { path: "teachers", component: AdminFormTeacherComponent},
+    { path: "todo", component: AdminTodoComponent},
     { path: "users", component: AdminFormUserComponent},
     { path: "videos", component: AdminFormVideoComponent},
   ] },
@@ -185,6 +187,7 @@ const routes: Routes = [
     AppComponent,
     AboutComponent,
     AdministrationComponent,
+    AdminTodoComponent,
     AdminFormUserComponent,
     AdminFormGalleryComponent,
     AdminFormTeacherComponent,
@@ -249,20 +252,20 @@ const routes: Routes = [
     AnnouncementsComponent,
     VideoItemComponent,
     VideosComponent,
-    DisplayTeacherComponent,
+    DisplayTeacherComponent, 
   ],
-  imports: [
+  imports: [ 
     ArithmeticModule,
     SampleModule.forRoot(),
     AccordionModule, 
-    BrowserModule,
+    BrowserModule, 
     AngularFireModule.initializeApp(firebaseConfig), 
     AngularFirestoreModule,
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule.forRoot(),
     ContextMenuModule,
-    Daterangepicker,
+    Daterangepicker, 
     DialogModule,
     DragAndDropModule.forRoot(),
     // EmptyTextModule,

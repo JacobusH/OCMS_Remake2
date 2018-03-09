@@ -6,7 +6,7 @@ import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } fro
   styleUrls: ['./tile-list-viewswitch.component.scss']
 })
 export class TileListViewswitchComponent implements OnInit {
-  @Output() viewSelected: EventEmitter<string> = new EventEmitter
+  @Output() viewSelected: EventEmitter<string> = new EventEmitter;
 
   constructor() { }
 
