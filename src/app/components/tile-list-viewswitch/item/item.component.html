@@ -1,0 +1,20 @@
+<div *ngIf="view === 'tile'; else list">
+  <div class="tile">
+    <div class="top">
+      <div class="title">{{ title }}</div>
+      <div class="desc">{{ desc }}</div>
+    </div>
+    <div class="bottom">
+      <div class="left">{{ leftNote }}</div>
+      <div class="right">{{ rightNote }}</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- TEMPLATES -->
+<ng-template #list>
+  <div class="list">
+    <div>{{ title }} {{ desc }} {{ leftNote }} {{ rightNote }}</div>
+  </div>
+</ng-template>

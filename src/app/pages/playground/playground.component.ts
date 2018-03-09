@@ -6,7 +6,7 @@ import {
 import { Subject } from 'rxjs/Subject';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
 import { ActivatedRoute } from '@angular/router';
-import { SumService } from '../../../../node_modules/todo-module/dist';
+// import { SumService } from '../../../../node_modules/todo-module/dist';
 
 @Component({
   selector: 'app-playground',
@@ -19,12 +19,12 @@ export class PlaygroundComponent implements OnInit {
   private testNumber2:number = 11;
   private dispNumber:number;
 
-  constructor(private route: ActivatedRoute, private sumService:SumService) { }
-  // constructor(private route: ActivatedRoute) { }
+  // constructor(private route: ActivatedRoute, private sumService:SumService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.sumService.calculate(this.testNumber1, this.testNumber2);
-    this.dispNumber = this.sumService.sum;
+    // this.sumService.calculate(this.testNumber1, this.testNumber2);
+    // this.dispNumber = this.sumService.sum;
   }
 
 }

@@ -1,14 +1,26 @@
 <div class="row">
   <!-- Select ann to Edit -->
   <div class="col-lg-6">
-    <div class="ann-select-container">
+    <!-- <div class="ann-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewAnnouncement()">New</button>
       <div class="ann-container">
         <div class="ann" (click)="setSelectedAnnouncement(ann)" *ngFor="let ann of announcements | async">
           <span>{{ (ann.announcement.length > 15) ? (ann.announcement | slice:0:15) + '...' : (ann.announcement) }}</span>
         </div>
       </div>
+    </div> -->
+    <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
+    <div [ngClass]="{'list-view': view === 'list', 'tile-view': view === 'tile'}">
+      <app-tile-list-viewswitch-item
+        *ngFor="let ann of announcements | async" 
+        [view]="view"
+        [title]="ann.announcement"
+        [desc]=""
+        [leftNote]="ann.createdAt | date:'mediumDate'"
+        [rightNote]="">
+      </app-tile-list-viewswitch-item>
     </div>
+    
   </div>
   <div class="col-lg-6">
     <!-- SAVE FORM -->

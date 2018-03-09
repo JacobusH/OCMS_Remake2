@@ -1,5 +1,5 @@
 // Modules
-import { ArithmeticModule, SumService } from '../../node_modules/todo-module/dist';
+// import { ArithmeticModule, SumService } from '../../node_modules/todo-module/dist';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
@@ -117,6 +117,7 @@ import { AnnouncementsComponent } from './components/announcements/announcements
 import { VideoItemComponent } from './components/video-item/video-item.component';
 import { VideosComponent } from './pages/videos/videos.component';
 import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
+import { ItemComponent } from './components/tile-list-viewswitch/item/item.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -252,10 +253,11 @@ const routes: Routes = [
     AnnouncementsComponent,
     VideoItemComponent,
     VideosComponent,
-    DisplayTeacherComponent, 
+    DisplayTeacherComponent,
+    ItemComponent, 
   ],
   imports: [ 
-    ArithmeticModule,
+    // ArithmeticModule,
     SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule, 
@@ -293,7 +295,7 @@ const routes: Routes = [
     YoutubePlayerModule 
   ],
   providers: [
-    SumService,
+    // SumService,
     AnnouncementService,
     AdminGuard,
     AuthGuard,

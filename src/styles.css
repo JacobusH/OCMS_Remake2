@@ -3,6 +3,16 @@
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+.tile-view {
+    display: flex;
+    flex-basis: 200px;
+    flex-flow: row wrap;
+}
+
+.list-view {
+    
+}
+
 .mat-icon.md-14 {
   font-size: 14px;
 }
