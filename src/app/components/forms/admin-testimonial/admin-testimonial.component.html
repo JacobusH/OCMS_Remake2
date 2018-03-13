@@ -4,9 +4,20 @@
     <div class="testimonials-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewTestimonial()">New</button>
       <div class="testimonials-container">
-        <div class="testimonial" (click)="setSelectedTestimonial(test)" *ngFor="let test of testimonials | async">
-          <span>{{ (test.text.length > 15) ? (test.text | slice:0:15) + '...' : (test.text) }}</span>
+
+        <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
+        <div [ngClass]="{'list-view': view === 'list', 'tile-view': view === 'tile'}">
+          <app-tile-list-viewswitch-item
+            *ngFor="let test of testimonials | async; let i = index"
+            [view]="view"
+            [title]="(test.text.length > 45) ? (test.text | slice:0:45) + '...' : (test.text) "
+            [desc]="test.author"
+            [leftNote]="test.createdAt | date:'mediumDate'"
+            [rightNote]=""
+            (click)="setSelectedTestimonial(test)">
+          </app-tile-list-viewswitch-item>
         </div>
+
       </div>
     </div>
   </div>

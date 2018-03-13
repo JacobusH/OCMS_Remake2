@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, Input } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { VideoItem, Upload } from 'app/models/_index';
 import { VideoItemService } from 'app/services/_index';
@@ -26,13 +26,39 @@ export class AdminFormVideoComponent implements OnInit {
   selectedItem: VideoItem;
   private items: Observable<VideoItem[]>;
 
+  @Input() filterBy?: string = 'all';
+  filterOptions: Array<string> = [];
+
+  currentPage: number = 0;
+  totalPages: number = 1;
+  pageSize: number = 10;
+
 
   constructor(private videoService: VideoItemService) { 
-    this.items = this.videoService.videoItems.valueChanges();
+    
   }
 
   ngOnInit() {
+    this.items = this.videoService.videoItems.valueChanges();
+
+    this.items.subscribe(x => {
+
+      for(var i = 0; i < x.length; i++) {
+        let splits = x[i].categories.split(',');
+        for(var j = 0; j < splits.length; j++) {
+          var element = splits[j].replace(/\s/g, '');
+          if(this.filterOptions.indexOf(element) === -1) {
+            this.filterOptions.push(element);
+          }
+        }
+      }
+
+    })
   }
+
+  filterClicked(filterApplied: string) {
+    this.filterBy = filterApplied; 
+ }
 
   saveItem(form: NgForm) {
     // editing item

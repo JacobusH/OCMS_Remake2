@@ -1,6 +1,7 @@
 // Modules
 // import { ArithmeticModule, SumService } from '../../node_modules/todo-module/dist';
 // import { HeaderModule } from 'my-component-library';
+import { TodoModule } from 'rave-todo';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
@@ -260,6 +261,7 @@ const routes: Routes = [
   imports: [ 
     // ArithmeticModule,
     // HeaderModule, 
+    TodoModule,
     SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule, 

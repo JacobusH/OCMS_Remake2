@@ -12,12 +12,13 @@
     <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
     <div [ngClass]="{'list-view': view === 'list', 'tile-view': view === 'tile'}">
       <app-tile-list-viewswitch-item
-        *ngFor="let ann of announcements | async" 
+        *ngFor="let ann of announcements | async; let i = index" 
         [view]="view"
         [title]="ann.announcement"
         [desc]=""
         [leftNote]="ann.createdAt | date:'mediumDate'"
-        [rightNote]="">
+        [rightNote]=""
+        (click)="setSelectedAnnouncement(ann)">
       </app-tile-list-viewswitch-item>
     </div>
     

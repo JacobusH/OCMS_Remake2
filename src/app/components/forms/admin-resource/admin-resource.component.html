@@ -4,9 +4,21 @@
     <div class="resource-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewResource()">New</button>
       <div class="resource-container">
-        <div class="resource" (click)="setSelectedResource(resource)" *ngFor="let re of resources | async">
-          <span>{{ (re.title.length > 15) ? (re.title | slice:0:15) + '...' : (re.title) }}</span>
-        </div>
+        
+      <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
+      <div [ngClass]="{'list-view': view === 'list', 'tile-view': view === 'tile'}">
+        <app-tile-list-viewswitch-item
+          *ngFor="let res of resources | async; let i = index"
+          [view]="view"
+          [title]="(res.title.length > 45) ? (res.title | slice:0:45) + '...' : (res.title) "
+          [desc]="res.category"
+          [leftNote]="res.createdAt | date:'mediumDate'"
+          [rightNote]=""
+          (click)="setSelectedResource(res)">
+        </app-tile-list-viewswitch-item>
+      </div>
+
+
       </div>
     </div>
   </div>

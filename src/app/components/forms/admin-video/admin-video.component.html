@@ -4,9 +4,46 @@
     <div class="item-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
       <div class="item-container">
-        <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
+        <!-- <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
           <app-video-item [videoId]="item.videoId" [title]="item.title" [caption]="item.caption" [tileSize]="small-tiles"></app-video-item>
-        </div>
+        </div> -->
+
+        <div class="filter-buttons AC" >
+            <button 
+              class="btn btn-lg btn-info" 
+              [class.active]="filterBy == 'All'" 
+              style="margin-right:15px;"
+              (click)="filterClicked('All')" >All
+            </button>
+            <button 
+              *ngFor="let fil of filterOptions" 
+              class="btn btn-lg btn-info" 
+              [class.active]="filterBy == fil" 
+              style="margin-right:15px;"
+              (click)="filterClicked(fil)" >{{fil}}
+            </button>
+          </div>
+          <div class="vid-page-numbers AC">
+          <button 
+            class="btn"
+            (click)="currentPage = i - 1" 
+            *ngFor="let i of ((items | async | imageFilter:filterBy)?.length / pageSize) |timesPipe">
+            {{i}}
+          </button>
+          </div>
+          <div class="vid-wrapper" style="display:flex; flex-flow:row wrap; justify-content:center;">
+            <div class="vid-item" *ngFor="let item of items | async | imageFilter:filterBy:filterMetadata; let i = index">
+              <app-video-item 
+                *ngIf="i >= (currentPage * pageSize) && i < (currentPage * pageSize + 10)"
+                [videoId]="item.videoId" 
+                [title]="item.title" 
+                [caption]="item.caption"
+                [tileSize]="'small'"
+                (click)="setSelectedItem(item)">
+              </app-video-item>
+            </div>
+          </div>
+
       </div>
     </div>
   </div>

@@ -3,16 +3,18 @@
   <div class="col-lg-4">
     <div class="faq-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewFAQ()">New</button>
-      <!-- <div class="faq-container">
-        <div class="faq" (click)="setSelectedFAQ(faq)" *ngFor="let faq of faqs | async">
-          <span>{{ (faq.question.length > 15) ? (faq.question | slice:0:15) + '...' : (faq.question) }}</span>
-        </div>
-      </div> -->
-        <mat-grid-list cols="1" [rowHeight]="20">
-          <mat-grid-tile (click)="setSelectedFAQ(faq)" *ngFor="let faq of faqs | async"> 
-              <span>{{ (faq.question.length > 25) ? (faq.question | slice:0:25) + '...' : (faq.question) }}</span>
-          </mat-grid-tile>
-        </mat-grid-list>
+      <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
+      <div [ngClass]="{'list-view': view === 'list', 'tile-view': view === 'tile'}">
+        <app-tile-list-viewswitch-item
+        *ngFor="let faq of faqs | async; let i = index"
+          [view]="view"
+          [title]="(faq.question.length > 45) ? (faq.question | slice:0:45) + '...' : (faq.question) "
+          [desc]=""
+          [leftNote]="faq.createdAt | date:'mediumDate'"
+          [rightNote]=""
+          (click)="setSelectedFAQ(faq)">
+        </app-tile-list-viewswitch-item>
+      </div>
     </div>
   </div>
   <div class="col-lg-8">
