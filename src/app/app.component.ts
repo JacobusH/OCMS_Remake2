@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { AdvertComponent } from 'app/components/advert/advert.component';
 import { Observable } from 'rxjs';
 import "rxjs/add/observable/of";
 
@@ -7,13 +9,13 @@ import "rxjs/add/observable/of";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   itemArr: Array<RaveTodoItem> = new Array;
   itemObby: Observable<RaveTodoItem[]>;
   emittedName;
 
-  constructor() {
+  constructor(public dialog: MatDialog) {
     let item1:RaveTodoItem = {
       title: "title1",
       description: "desc1",
@@ -34,6 +36,29 @@ export class AppComponent {
 
     this.itemObby = Observable.of(this.itemArr);
     
+  }
+
+  ngOnInit() {
+    // first time
+    if(!localStorage.getItem("OCMSNoAdvert"))
+    {
+      this.showAdvert();
+    } 
+    else { // been here before
+      let expirationDate = new Date(localStorage.getItem("OCMSNoAdvert"));
+      if(new Date() > expirationDate) 
+      {
+        this.showAdvert();
+      }
+    }
+  }
+
+  showAdvert() {
+    const dialogRef = this.dialog.open(AdvertComponent, {
+      // height: '350px'
+    }).afterClosed().subscribe(result => {
+      localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 7) + ''); // one week expiration
+    });
   }
 
 }

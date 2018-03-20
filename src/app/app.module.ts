@@ -122,6 +122,7 @@ import { DisplayTeacherComponent } from './components/display-teacher/display-te
 import { ItemComponent } from './components/tile-list-viewswitch/item/item.component';
 import { FormDynamicComponent } from './components/forms/form-dynamic/form-dynamic.component';
 import { AdminAdvertComponent } from './components/forms/admin-advert/admin-advert.component';
+import { AdvertComponent } from './components/advert/advert.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -186,7 +187,8 @@ const routes: Routes = [
 
 @NgModule({
   entryComponents: [
-    CalendoerEventModalComponent
+    CalendoerEventModalComponent,
+    AdvertComponent
   ],
   declarations: [
     // ToDoComponent,
@@ -261,7 +263,8 @@ const routes: Routes = [
     DisplayTeacherComponent,
     ItemComponent,
     FormDynamicComponent,
-    AdminAdvertComponent, 
+    AdminAdvertComponent,
+    AdvertComponent, 
   ],
   imports: [ 
     // ArithmeticModule,
