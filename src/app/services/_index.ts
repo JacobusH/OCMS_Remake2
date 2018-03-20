@@ -1,3 +1,4 @@
+export * from './advert.service';
 export * from './alert.service';
 export * from './announcement.service';
 export * from './alert-multi.service';

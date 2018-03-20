@@ -93,7 +93,7 @@ import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.
 import { AdminTodoComponent } from './pages/administration/todo/todo.component';
 
 // Services
-import { AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
+import { AdvertService, AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
   , TeacherService, UserService, UploadService, VisualizerService, VideoItemService } from 'app/services/_index';
 
@@ -120,6 +120,8 @@ import { VideoItemComponent } from './components/video-item/video-item.component
 import { VideosComponent } from './pages/videos/videos.component';
 import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
 import { ItemComponent } from './components/tile-list-viewswitch/item/item.component';
+import { FormDynamicComponent } from './components/forms/form-dynamic/form-dynamic.component';
+import { AdminAdvertComponent } from './components/forms/admin-advert/admin-advert.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -135,6 +137,7 @@ var firebaseConfig = {
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
+    { path: "adverts", component: AdminAdvertComponent},
     { path: "announcements", component: AdminFormAnnouncementsComponent},
     { path: "messages", component: AdminContactMessagesComponent},
     { path: "chat", component: LiveChatManagerComponent},
@@ -150,7 +153,7 @@ const routes: Routes = [
   ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent }, 
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   // { path: 'gallery/image/:id', component: ImageGalleryDetailComponent },
@@ -256,7 +259,9 @@ const routes: Routes = [
     VideoItemComponent,
     VideosComponent,
     DisplayTeacherComponent,
-    ItemComponent, 
+    ItemComponent,
+    FormDynamicComponent,
+    AdminAdvertComponent, 
   ],
   imports: [ 
     // ArithmeticModule,
@@ -300,6 +305,7 @@ const routes: Routes = [
   ],
   providers: [
     // SumService,
+    AdvertService,
     AnnouncementService,
     AdminGuard,
     AuthGuard,

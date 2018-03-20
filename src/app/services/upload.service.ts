@@ -3,8 +3,8 @@ import * as firebase from 'firebase/app';
 import "firebase/storage";
 import {AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-import { Upload, Teacher, GalleryItem } from 'app/models/_index';
-import { TeacherService, GalleryService } from 'app/services/_index';
+import { Upload, Teacher, GalleryItem, Advert } from 'app/models/_index';
+import { TeacherService, GalleryService, AdvertService } from 'app/services/_index';
 
 @Injectable()
 export class UploadService {
@@ -15,7 +15,9 @@ export class UploadService {
   storageRef = this.storage.ref();
 
 
-  constructor(private teacherService: TeacherService, private galleryService: GalleryService) { 
+  constructor(private teacherService: TeacherService
+    , private galleryService: GalleryService
+    , private advertService:AdvertService) { 
 
   }
   
@@ -64,6 +66,30 @@ export class UploadService {
       model.imgUrl = 'gallery/' + fileName;
       
       this.galleryService.save(model, upload);
+    }});
+  }
+
+  pushAdvertUpload(upload: Upload, location: string, model: any) {
+    let storageRef = firebase.storage().ref();
+    let uploadTask = storageRef.child(`${location}/${upload.file.name}`).put(upload.file);
+    
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, {
+      next : (snapshot) => {
+      // upload in progress
+      upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    }, error: (error) => {
+      // upload failed
+      console.log(error)
+    }, complete: () => {
+      // upload success
+      upload.url = uploadTask.snapshot.downloadURL;
+      upload.name = upload.file.name;
+      // this.saveGalleryFileData(upload);
+
+      let fileName = upload.name;
+      model.imgUrl = 'adverts/' + fileName;
+      
+      this.advertService.save(model, upload);
     }});
   }
 

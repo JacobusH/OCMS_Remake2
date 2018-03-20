@@ -1,3 +1,4 @@
+export * from './advert.model';
 export * from './alert.model';
 export * from './announcement.model';
 export * from './calendoer/calendoer.model';

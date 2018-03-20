@@ -18,3 +18,9 @@ export interface FAQ {
     createdAt: Date,
     updatedAt: Date
   }
+
+export interface FAQForm {
+  question: {required: true, controlType: 'textarea'};
+  answer: {required: true, controlType: 'textarea'};
+  isActive: {required: true, controlType: 'checkbox'};
+}

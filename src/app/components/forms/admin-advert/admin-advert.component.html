@@ -1,0 +1,67 @@
+<div class="row">
+  <!-- Select Teacher to Edit -->
+  <div class="col-lg-6">
+    <div class="item-select-container">
+      <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
+      <div class="item-container">
+        <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
+          <img src="{{item.imgUrl}}" alt="teacher">
+          <span>{{item.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+      <!-- Teacher Picture -->
+      <div class="item">
+        <img *ngIf="selectedItem" #imgItemSelected [src]="selectedItem.imgUrl" />
+      </div>
+    
+      <!-- Teacher Upload File -->
+      <div *ngIf="currentUpload" class="AC">
+        <div class="progress">
+          <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+        </div>
+        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+      </div>
+      <label  class="AC">
+          <input #fileUpload type="file" (change)="detectFiles($event)">
+      </label>
+    <!-- SAVE FORM -->
+  <form (ngSubmit)="saveItem(itemForm)" #itemForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required
+          [(ngModel)]="model.name" name="name"
+          #name="ngModel"
+          [ngClass]="{
+            'has-success': name.valid,
+            'has-danger': !name.pristine && !name.valid
+          }">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="isActive">Active</label>
+        <input [checked]="model.isActive" 
+        [(ngModel)]="model.isActive" 
+        type="checkbox" 
+        name="isActive" 
+        id="isActive" 
+        #isActive
+        >      
+          <!-- <div [hidden]="isActive.valid || isActive.pristine"
+              class="alert alert-danger">
+              isActive is required
+        </div> -->
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Save</button>
+    </form> 
+  </div>
+</div>
+
+
+
+
+
