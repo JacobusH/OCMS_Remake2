@@ -56,19 +56,9 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  // emailLogin() {
-  //   this.af.loginWithEmail(this.model.email, this.model.password)
-  //   .then(authData => {
-  //     console.log("Email auth data");
-  //     console.log(authData);
-  //     this.router.navigate(['']);
-  //   })
-  //   .catch(err => {
-  //     console.log(err.message);
-  //     // this.alertService.error(err.message);
-  //     this.alertMultiService.error(err.message);
-  //   });
-  // }
+  emailLogin() {
+    this.authService.emailLogin(this.model.email, this.model.password);
+  }
 
   logout() {
     this.authService.logout();

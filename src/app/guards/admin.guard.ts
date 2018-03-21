@@ -15,14 +15,28 @@ export class AdminGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | boolean {
     // ROLE BASED CHECK
-    return this.auth.user.take(1)
-      .map(user => _.has(_.get(user, 'roles'), 'admin'))
-      .do(authorized => {
-        if(!authorized)   {
-          console.log('access denied')
-          this.router.navigate(['/login']);
-        }
-      })
+    // return this.auth.user.take(1)
+    //   .map(user => _.has(_.get(user, 'roles'), 'admin'))
+    //   .do(authorized => {
+    //     if(!authorized)   {
+    //       console.log('access denied')
+    //       this.router.navigate(['/login']);
+    //     }
+    //   })
+
+    // console.log(this.auth.user)
+    this.auth.user.subscribe(x => console.log(x))
+   
+
+    return true;
+
+      // return this.auth.user.take(1).map(user => user.role_admin).do(authorized => {
+      //   if(!authorized)   {
+      //     console.log('access denied')
+      //     this.router.navigate(['/login']);
+      //   }
+      // })
+      
   }
 
   // BASIC CHECK FOR IS LOGGED IN

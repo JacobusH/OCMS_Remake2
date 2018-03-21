@@ -1,6 +1,6 @@
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
-import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'app/models/user.model';
@@ -13,6 +13,7 @@ import { provideForRootGuard } from '@angular/router/src/router_module';
 
 @Injectable()
 export class AuthService {
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   user: Observable<User>;
   behUser: BehaviorSubject<User> = new BehaviorSubject(null);
   authstate: any;
@@ -40,6 +41,18 @@ export class AuthService {
 
     get isAdmin() {
       return true;
+    }
+
+    emailLogin(username, pass) {
+      const provider = new firebase.auth.EmailAuthProvider()
+      this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(username, pass).then(x => {
+        if(x) {
+          console.log("TERST");
+          console.log(x);
+          this.user = x.user;
+          this.getLoggedInName.emit('in');
+        }
+      })
     }
 
     googleLogin() {
@@ -73,6 +86,7 @@ export class AuthService {
         email: userAuthCreds.email,
         password: '',
         roles: ['student'],
+        role_admin: false,
         isActive: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -87,7 +101,8 @@ export class AuthService {
 
     logout() {
       this.afAuth.auth.signOut().then(() => {
-          this.router.navigate(['/']);
+        this.getLoggedInName.emit('out');  
+        this.router.navigate(['/']);
       });
     }
 

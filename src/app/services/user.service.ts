@@ -25,6 +25,7 @@ export class UserService {
       email: '',
       password: '',
       roles: new Array,
+      role_admin: false,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

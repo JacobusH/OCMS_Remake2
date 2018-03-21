@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService, private userService: UserService, private route: Router) { 
     this.user = this.authService.user; // not logged in = null
+    authService.getLoggedInName.subscribe(name => this.isLoggedIn = true);
     if(this.user) {
       this.isLoggedIn = true;
       this.user.subscribe(u => {

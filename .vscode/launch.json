@@ -41,7 +41,7 @@
     "url": "http://localhost:4200",
     "port": 9222,
     "sourceMaps": true,
-    "diagnosticLogging": true,
+    "trace": true,
     "webRoot": "${workspaceRoot}",
     "userDataDir": "${workspaceRoot}/.vscode/chrome"
     }
