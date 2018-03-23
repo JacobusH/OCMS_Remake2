@@ -24,6 +24,7 @@ export class AdminFormAnnouncementsComponent implements OnInit {
   model = this.announcementService.createNew();
   selectedAnnouncement: Announcement;
   announcements: Observable<{}[]>;
+  view: any;
 
   constructor(private announcementService: AnnouncementService) { 
     this.announcements = this.announcementService.announcements.valueChanges();

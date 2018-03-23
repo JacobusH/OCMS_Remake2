@@ -23,6 +23,7 @@ export class AdminFormResourceComponent implements OnInit {
   model = this.resourceService.createNew();
   selectedResource: Resource;
   resources: Observable<{}[]>;
+  view: any;
 
   constructor(private resourceService: ResourceService) { 
     this.resources = this.resourceService.resources.valueChanges();

@@ -15,6 +15,7 @@ export interface Resource {
   key: string,
   title: string,
   category: string,
+  url: string,
   isActive: boolean,
   createdAt: Date,
   updatedAt: Date

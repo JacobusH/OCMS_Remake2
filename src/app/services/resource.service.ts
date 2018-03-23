@@ -19,6 +19,7 @@ export class ResourceService {
       key: '',
       title: '',
       category: '',
+      url: '',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

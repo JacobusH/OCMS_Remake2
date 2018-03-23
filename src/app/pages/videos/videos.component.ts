@@ -13,6 +13,7 @@ export class VideosComponent implements OnInit, OnChanges {
   @Input() filterBy?: string = 'all';
   videosActive: Observable<VideoItem[]>;
   filterOptions: Array<string> = [];
+  filterMetadata: any;
 
   currentPage: number = 0;
   totalPages: number = 1;
