@@ -7,7 +7,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class TileDisplayComponent implements OnInit {
-
+  items: any;
+  
   constructor() { }
 
   ngOnInit() {

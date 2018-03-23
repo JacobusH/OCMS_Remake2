@@ -13,45 +13,32 @@ import { provideForRootGuard } from '@angular/router/src/router_module';
 
 @Injectable()
 export class AuthService {
-  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   user: Observable<User>;
-  behUser: BehaviorSubject<User> = new BehaviorSubject(null);
-  authstate: any;
+  isAdmin = false;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(public afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private userService: UserService,
     private router: Router) { 
-      this.authstate = this.afAuth.authState;
-
-       //// Get auth data, then get firestore user document || null
-       this.user = this.afAuth.authState
-       .switchMap(user => {
-         if (user) {
-           return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-          //  return this.userService.users.doc(user.uid).valueChanges()
-         } else {
-           return Observable.of(null)
-         }
-       })
-
-       console.log(this.router.url);
-
-    }
-
-    get isAdmin() {
-      return true;
+      // this.authstate = this.afAuth.authState; // set this if afAuth is not public
+      this.user = this.afAuth.authState.switchMap(user => {
+        if (user) {
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+        } else {
+          return Observable.of(null)
+        }
+      })
     }
 
     emailLogin(username, pass) {
       const provider = new firebase.auth.EmailAuthProvider()
       this.afAuth.auth.signInAndRetrieveDataWithEmailAndPassword(username, pass).then(x => {
-        if(x) {
-          console.log("TERST");
-          console.log(x);
-          this.user = x.user;
-          this.getLoggedInName.emit('in');
-        }
+        // worked, afAuth.authState will change now
+        this.router.navigate(['/']);
+      })
+      .catch(err => {
+        console.log("EMAIL LOGIN ERROR");
+        console.log(err);
       })
     }
 
@@ -84,9 +71,8 @@ export class AuthService {
         key: userAuthCreds.uid,
         name: userAuthCreds.displayName,
         email: userAuthCreds.email,
-        password: '',
-        roles: ['student'],
         role_admin: false,
+        roles: {'admin': false, 'student': false},
         isActive: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -101,7 +87,6 @@ export class AuthService {
 
     logout() {
       this.afAuth.auth.signOut().then(() => {
-        this.getLoggedInName.emit('out');  
         this.router.navigate(['/']);
       });
     }

@@ -11,32 +11,17 @@ import * as _ from 'lodash';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
-  constructor(private auth: AuthService, private router: Router, private userService: UserService) {}
+  constructor(private authService: AuthService, private router: Router, private userService: UserService) {}
 
   canActivate(): Observable<boolean> | boolean {
     // ROLE BASED CHECK
-    // return this.auth.user.take(1)
-    //   .map(user => _.has(_.get(user, 'roles'), 'admin'))
-    //   .do(authorized => {
-    //     if(!authorized)   {
-    //       console.log('access denied')
-    //       this.router.navigate(['/login']);
-    //     }
-    //   })
+    return this.authService.user.take(1).map(user => user.roles['admin'] === true).do(isAdmin => {
+      if(!isAdmin) {
+        console.log('access denied')
+        this.router.navigate(['/login']);
+      }
+    })
 
-    // console.log(this.auth.user)
-    this.auth.user.subscribe(x => console.log(x))
-   
-
-    return true;
-
-      // return this.auth.user.take(1).map(user => user.role_admin).do(authorized => {
-      //   if(!authorized)   {
-      //     console.log('access denied')
-      //     this.router.navigate(['/login']);
-      //   }
-      // })
-      
   }
 
   // BASIC CHECK FOR IS LOGGED IN

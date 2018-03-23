@@ -27,15 +27,15 @@ import {
 })
 export class WindowComponent extends LiveChatComponent implements OnInit, AfterViewChecked {
   @ViewChild('scrollMe') private myScrollContainer: ElementRef;
-  private model: LiveChat = this.liveChatService.createNewLiveChat();
-  private windowLiveChatMessages: Observable<{}[]>; 
-  private slideState = 'up';
-  private currentChatKey: string;
-  private presence: string;
-  private sessionRunning: boolean = false;
-  private userEmail: string;
-  private userName: string;
-  private switch;
+  model: LiveChat = this.liveChatService.createNewLiveChat();
+  windowLiveChatMessages: Observable<{}[]>; 
+  slideState = 'up';
+  currentChatKey: string;
+  presence: string;
+  sessionRunning: boolean = false;
+  userEmail: string;
+  userName: string;
+  switch;
 
   constructor(protected liveChatService: LiveChatService) { 
     super(liveChatService);

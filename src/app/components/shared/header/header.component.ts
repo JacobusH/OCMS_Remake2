@@ -15,7 +15,6 @@ import * as _ from 'lodash';
 export class HeaderComponent implements OnInit {
   isAdmin: boolean = false;
   isLoggedIn: boolean = false;
-  user: Observable<User>;
 
   isIn = false;
   state: string = 'in';
@@ -23,38 +22,22 @@ export class HeaderComponent implements OnInit {
 
 
   constructor(private authService: AuthService, private userService: UserService, private route: Router) { 
-    this.user = this.authService.user; // not logged in = null
-    authService.getLoggedInName.subscribe(name => this.isLoggedIn = true);
-    if(this.user) {
-      this.isLoggedIn = true;
-      this.user.subscribe(u => {
-        if(u.roles['admin']) {
-          this.isAdmin = true;
-        }
-      })
-    }
+   
   }
 
   ngOnInit() {
-    this.authService.authstate.subscribe(user => {
+    this.authService.afAuth.authState.subscribe(user => {
       if(user) {
-          this.user = user;
           this.userService.users.doc(user.uid).valueChanges().subscribe(x => {
+            this.isLoggedIn = true;
             var us = x as User;
-            if(us.roles['admin']) {
-              this.isLoggedIn = true;
+            if(us.roles['admin'] === true) {
+              this.isAdmin = true;
             }
           })
-
-          
-          // this.isAdmin = this.af.getUserRoles(user);
-          // console.log("Logged in user is: " + user.email);
-          // console.log("User photo: " + user.providerData[0].photoURL);
-          // console.log("User name: " + user.providerData[0].displayName);
-          // console.log(user);
       }
       else {
-        this.user = null;
+        this.isAdmin = false;
         this.isLoggedIn = false;
       }
     });

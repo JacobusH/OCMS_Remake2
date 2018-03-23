@@ -8,7 +8,7 @@ import * as firebase from 'firebase/app';
 
 @Injectable()
 export class LiveChatService {
-  private switchKey = 'dlpByXHMG3HEKvuh6r5c';
+  switchKey = 'dlpByXHMG3HEKvuh6r5c';
   liveChats: AngularFirestoreCollection<{}>;
   liveChatsByDate: AngularFirestoreCollection<{}>;
   switchy: AngularFirestoreDocument<{'isActive': boolean}>;

@@ -19,6 +19,7 @@ export class ContactMessageService {
       key: '',
       name: '',
       email: '',
+      phone: '',
       message: '',
       isActive: true,
       read: false,

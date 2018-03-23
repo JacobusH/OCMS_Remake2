@@ -63,18 +63,11 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { AppComponent } from './app.component';
 import { LiveChatComponent } from './components/live-chat/live-chat.component';
 import { LiveChatManagerComponent } from './components/live-chat/manager/manager.component';
-import { TodoerComponent } from './components/todoer/todoer.component';
 import { WindowComponent } from './components/live-chat/window/window.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
-// CALENDOER
-import { CalendarHeaderComponent } from './components/calendar/calendar-header/calendar-header.component';
-import { CalendoerComponent } from './components/calendoer/calendoer.component';
-import { CalendarNoteDayViewComponent } from './components/calendar/calendar-note-day-view/calendar-note-day-view.component';
-import { CalendoerEventModalComponent } from './components/modals/calendoer-event-modal/calendoer-event-modal.component';
-import { DateTimePickerComponent } from './components/calendar/date-time-picker/date-time-picker.component';
 // FORMS
 import { AdminFormFaqComponent } from './components/forms/admin-faq/admin-faq.component';
 import { AdminFormGalleryComponent } from './components/forms/admin-gallery/admin-gallery.component';
@@ -104,7 +97,6 @@ import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
 import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
 import { TimesPipe } from 'app/filters/times-filter.pipe';
 import { RoundUpPipe } from 'app/filters/roundUp-filter.pipe';
-import { DateRangePickerComponent } from './components/calendar/date-range-picker/date-range-picker.component';
 import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
@@ -123,6 +115,7 @@ import { ItemComponent } from './components/tile-list-viewswitch/item/item.compo
 import { FormDynamicComponent } from './components/forms/form-dynamic/form-dynamic.component';
 import { AdminAdvertComponent } from './components/forms/admin-advert/admin-advert.component';
 import { AdvertComponent } from './components/advert/advert.component';
+import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -187,7 +180,7 @@ const routes: Routes = [
 
 @NgModule({
   entryComponents: [
-    CalendoerEventModalComponent,
+    // CalendoerEventModalComponent,
     AdvertComponent
   ],
   declarations: [
@@ -198,6 +191,7 @@ const routes: Routes = [
     AdminTodoComponent,
     AdminFormUserComponent,
     AdminFormGalleryComponent,
+    AdminFormHomepageComponent,
     AdminFormTeacherComponent,
     AdminFormTestimonialComponent,
     AdminFormFaqComponent,
@@ -207,12 +201,7 @@ const routes: Routes = [
     AdminHomepageComponent,
     TestimonialsComponent,
     AdminContactMessagesComponent,
-    CalendarHeaderComponent,
-    CalendoerComponent,
-    CalendarNoteDayViewComponent,
-    CalendoerEventModalComponent,
     ContactComponent,
-    DateTimePickerComponent,
     FaqComponent,
     FooterComponent,
     GalleryComponent,
@@ -238,12 +227,10 @@ const routes: Routes = [
     TimesPipe,
     TeacherDetailComponent,
     TeachersComponent,
-    TodoerComponent,
     ThanksComponent,
     TileDisplayComponent,
     UserProfileComponent,
     WindowComponent,
-    DateRangePickerComponent,
     SelectorSingleComponent,
     PageHeaderComponent,
     BaseTilesComponent,
@@ -264,7 +251,8 @@ const routes: Routes = [
     ItemComponent,
     FormDynamicComponent,
     AdminAdvertComponent,
-    AdvertComponent, 
+    AdvertComponent,
+    DateRangePickerComponent, 
   ],
   imports: [ 
     // ArithmeticModule,

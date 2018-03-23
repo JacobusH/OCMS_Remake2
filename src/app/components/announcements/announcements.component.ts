@@ -9,11 +9,11 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AnnouncementsComponent implements OnInit {
-  private announcements: Observable<{}[]>;
-  private announcementsLastDay: Observable<{}[]>;
-  private announcementsActive: Observable<{}[]>;
-  private isVisible:boolean = false;
-  private doPulse: boolean = false;
+  announcements: Observable<{}[]>;
+  announcementsLastDay: Observable<{}[]>;
+  announcementsActive: Observable<{}[]>;
+  isVisible:boolean = false;
+  doPulse: boolean = false;
 
 
   constructor(private announcementService: AnnouncementService) { 

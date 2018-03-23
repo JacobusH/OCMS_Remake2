@@ -21,9 +21,10 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormFaqComponent implements OnInit {
-  private model = this.faqService.createNew();
+  model = this.faqService.createNew();
   selectedFAQ: FAQ;
-  private faqs: Observable<{}[]>;
+  faqs: Observable<{}[]>;
+  view: any;
 
   constructor(private faqService: FAQService) { 
     this.faqs = this.faqService.faqs.valueChanges();

@@ -6,8 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-advert',
   templateUrl: './advert.component.html',
-  styleUrls: ['./advert.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated
+  styleUrls: ['./advert.component.scss']
 })
 export class AdvertComponent implements OnInit {
   activeAdvertImgUrl: string;

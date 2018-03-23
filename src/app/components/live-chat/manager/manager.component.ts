@@ -10,12 +10,12 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class LiveChatManagerComponent implements OnInit {
-  private liveChatsByDate;
-  private liveChatSwitch;
-  private currentLiveChat;
-  private currentLiveChatKey;
-  private currentLiveChatMessages;
-  private tileOrList = 'tile';
+  liveChatsByDate;
+  liveChatSwitch;
+  currentLiveChat;
+  currentLiveChatKey;
+  currentLiveChatMessages;
+  tileOrList = 'tile';
 
   constructor(private liveChatService: LiveChatService) { 
     this.liveChatsByDate = this.liveChatService.liveChatsByDate.valueChanges();

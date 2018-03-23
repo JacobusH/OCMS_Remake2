@@ -55,9 +55,9 @@ export class AppComponent implements OnInit {
 
   showAdvert() {
     const dialogRef = this.dialog.open(AdvertComponent, {
-      // height: '350px'
+      height: '80%'
     }).afterClosed().subscribe(result => {
-      localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 7) + ''); // one week expiration
+      localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 1) + ''); // one day expiration
     });
   }
 

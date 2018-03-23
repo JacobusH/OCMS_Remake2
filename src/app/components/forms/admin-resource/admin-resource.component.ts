@@ -20,9 +20,9 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./admin-resource.component.scss']
 })
 export class AdminFormResourceComponent implements OnInit {
-  private model = this.resourceService.createNew();
+  model = this.resourceService.createNew();
   selectedResource: Resource;
-  private resources: Observable<{}[]>;
+  resources: Observable<{}[]>;
 
   constructor(private resourceService: ResourceService) { 
     this.resources = this.resourceService.resources.valueChanges();

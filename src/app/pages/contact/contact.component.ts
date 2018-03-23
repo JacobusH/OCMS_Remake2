@@ -24,7 +24,7 @@ import {
   encapsulation: ViewEncapsulation.Emulated
 })
 export class ContactComponent implements OnInit {
-  private model = this.contactService.createNew();
+  model = this.contactService.createNew();
 
   constructor(private contactService: ContactMessageService, private router: Router, private route:ActivatedRoute) { 
     

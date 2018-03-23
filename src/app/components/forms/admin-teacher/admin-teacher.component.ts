@@ -21,17 +21,17 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormTeacherComponent implements OnInit {
-  private model = this.teacherService.createNew();
+  model = this.teacherService.createNew();
   @ViewChild('fileUpload') fileUploadVar: any;
   @ViewChild('imgTeacherSelected') imgTeacherSelected: any;
   selectedTeacher: Teacher;
   selectedFiles: FileList;
   selectedPicture: string;
   currentUpload: Upload;
-  private teachers: Observable<Teacher[]>;
-  private firebaseUrl: string = 'gs://ocmusicschool-11817.appspot.com/';
-  private basePathGallery:string = '/gallery';
-  private basePathTeachers:string = '/teachers';
+  teachers: Observable<Teacher[]>;
+  firebaseUrl: string = 'gs://ocmusicschool-11817.appspot.com/';
+  basePathGallery:string = '/gallery';
+  basePathTeachers:string = '/teachers';
 
   storage = firebase.storage();
   storageRef = this.storage.ref();

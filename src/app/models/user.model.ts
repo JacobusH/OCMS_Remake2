@@ -24,9 +24,8 @@ export interface User {
   key: string,
   name: string,
   email: string,
-  password: string,
-  roles: Array<string>,
   role_admin: boolean,
+  roles: {'admin': boolean, 'student': boolean},
   isActive: boolean,
   createdAt: Date,
   updatedAt: Date

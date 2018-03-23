@@ -66,7 +66,7 @@ export class AdminSignUpsComponent implements OnInit {
     this.readFilterBy = sel; 
   }
 
-  private selectedDate(event) {
+  selectedDate(event) {
     this.signups = this.afs.collection('signups', 
       ref => ref.where('createdAt', '>=', new Date(event.start))
         .where('createdAt', '<=', new Date(event.end))).valueChanges();

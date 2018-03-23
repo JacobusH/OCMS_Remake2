@@ -27,23 +27,23 @@
     "version": "0.2.0",
     "configurations": [
     {
-    "name": "Launch localhost with sourcemaps",
-    "type": "chrome",
-    "request": "launch",
-    "url": "http://localhost:4200/",
-    "webRoot": "${workspaceRoot}/app/files",
-    "sourceMaps": true
+      "name": "Launch localhost with sourcemaps",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceRoot}/src",
+      "sourceMaps": true
     },
     {
-    "name": "Launch",
-    "type": "chrome",
-    "request": "launch",
-    "url": "http://localhost:4200",
-    "port": 9222,
-    "sourceMaps": true,
-    "trace": true,
-    "webRoot": "${workspaceRoot}",
-    "userDataDir": "${workspaceRoot}/.vscode/chrome"
+      "name": "Launch",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:4200",
+      "port": 9222,
+      "sourceMaps": true,
+      "trace": true,
+      "webRoot": "${workspaceRoot}",
+      "userDataDir": "${workspaceRoot}/.vscode/chrome"
     }
     ]
     }

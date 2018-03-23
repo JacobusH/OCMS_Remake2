@@ -23,9 +23,8 @@ export class UserService {
       key: '',
       name: '',
       email: '',
-      password: '',
-      roles: new Array,
       role_admin: false,
+      roles: {'admin': false, 'student': false},
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -40,6 +39,10 @@ export class UserService {
     });
 
     return promise;
+  }
+
+  getByAuthId(authId: string) {
+    return this.afs.collection('users', ref => ref.where('authId', '==', authId)).valueChanges();
   }
 
   edit(item: User): Promise<void> {

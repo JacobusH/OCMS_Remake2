@@ -8,8 +8,8 @@ import { TeacherService, GalleryService, AdvertService } from 'app/services/_ind
 
 @Injectable()
 export class UploadService {
-  private basePathGallery:string = '/gallery';
-  private basePathTeachers:string = '/teachers';
+  basePathGallery:string = '/gallery';
+  basePathTeachers:string = '/teachers';
   
   storage = firebase.storage();
   storageRef = this.storage.ref();

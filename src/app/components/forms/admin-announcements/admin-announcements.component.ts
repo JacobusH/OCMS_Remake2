@@ -21,9 +21,9 @@ import * as firebase from 'firebase/app';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormAnnouncementsComponent implements OnInit {
-  private model = this.announcementService.createNew();
+  model = this.announcementService.createNew();
   selectedAnnouncement: Announcement;
-  private announcements: Observable<{}[]>;
+  announcements: Observable<{}[]>;
 
   constructor(private announcementService: AnnouncementService) { 
     this.announcements = this.announcementService.announcements.valueChanges();

@@ -20,9 +20,9 @@ import {
   encapsulation: ViewEncapsulation.Emulated
 })
 export class LearntoplayComponent implements OnInit {
-  private model = this.signupService.createNew();
+  model = this.signupService.createNew();
   id: string;
-  private sub: any;
+  sub: any;
   ltpForm: FormGroup;
 
   constructor(private signupService: SignupService, private route: ActivatedRoute) { }

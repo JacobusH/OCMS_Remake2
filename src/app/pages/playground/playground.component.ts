@@ -15,9 +15,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./playground.component.scss']
 })
 export class PlaygroundComponent implements OnInit {
-  private testNumber1:number = 1;
-  private testNumber2:number = 11;
-  private dispNumber:number;
+  testNumber1:number = 1;
+  testNumber2:number = 11;
+  dispNumber:number;
 
   // constructor(private route: ActivatedRoute, private sumService:SumService) { }
   constructor(private route: ActivatedRoute) { }

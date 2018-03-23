@@ -21,18 +21,18 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminAdvertComponent implements OnInit {
-  private model = this.advertService.createNew();
+  model = this.advertService.createNew();
   @ViewChild('fileUpload') fileUploadVar: any;
   @ViewChild('imgItemSelected') imgItemSelected: any;
   selectedItem: Advert;
   selectedFiles: FileList;
   selectedPicture: string;
   currentUpload: Upload;
-  private items: Observable<Advert[]>;
-  private firebaseUrl: string = 'gs://ocmusicschool-11817.appspot.com/';
-  private basePathGallery:string = '/gallery';
-  private basePathTeachers:string = '/teachers';
-  private basePathAdverts:string = '/adverts';
+  items: Observable<Advert[]>;
+  firebaseUrl: string = 'gs://ocmusicschool-11817.appspot.com/';
+  basePathGallery:string = '/gallery';
+  basePathTeachers:string = '/teachers';
+  basePathAdverts:string = '/adverts';
 
   storage = firebase.storage();
   storageRef = this.storage.ref();

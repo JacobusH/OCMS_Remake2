@@ -13,9 +13,9 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TeacherDetailComponent implements OnInit, OnDestroy {
   key: string;
-  private sub: any;
-  private teacherObj: any;
-  private teacher: Observable<any>;
+  sub: any;
+  teacherObj: any;
+  teacher: Observable<any>;
 
   constructor(private router: Router, private route: ActivatedRoute, private teacherService: TeacherService) { 
 

@@ -24,11 +24,11 @@ export class AdminFormUserComponent implements OnInit {
   @ViewChild('admin') isAdmin: any;
   @ViewChild('student') student: any;
   @ViewChild('teacher') teacher: any;
-  private model = this.userService.createNew();
+  model = this.userService.createNew();
   selectedUser: User;
-  private users: Observable<User[]>;
+  users: Observable<User[]>;
 
-  private roles = ['admin', 'student', 'teacher'];
+  roles = ['admin', 'student', 'teacher'];
 
   constructor(private userService: UserService, private upsvc: UploadService) { 
     this.users = this.userService.users.valueChanges();

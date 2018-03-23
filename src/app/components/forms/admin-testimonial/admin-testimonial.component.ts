@@ -21,9 +21,10 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormTestimonialComponent implements OnInit {
-  private model = this.testimonialService.createNew();
+  model = this.testimonialService.createNew();
   selectedTestimonial: Testimonial;
-  private testimonials: Observable<{}[]>;
+  testimonials: Observable<{}[]>;
+  view: any;
 
   constructor(private testimonialService: TestimonialService) { 
     this.testimonials = this.testimonialService.testimonials.valueChanges();

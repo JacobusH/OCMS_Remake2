@@ -35,7 +35,7 @@ export class AdminContactMessagesComponent implements OnInit {
     this.readFilterBy = sel; 
   }
 
-  private selectedDate(event) {
+  selectedDate(event) {
     this.messages = this.afs.collection('contactMessages', 
       ref => ref.where('createdAt', '>=', new Date(event.start))
         .where('createdAt', '<=', new Date(event.end))).valueChanges();

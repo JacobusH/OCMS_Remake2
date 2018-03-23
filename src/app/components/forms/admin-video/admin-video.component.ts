@@ -22,9 +22,10 @@ import { Observable } from 'rxjs/Observable';
   encapsulation: ViewEncapsulation.Emulated
 })
 export class AdminFormVideoComponent implements OnInit {
-  private model = this.videoService.createNew();
+  model = this.videoService.createNew();
   selectedItem: VideoItem;
-  private items: Observable<VideoItem[]>;
+  items: Observable<VideoItem[]>;
+  filterMetadata: any;
 
   @Input() filterBy?: string = 'all';
   filterOptions: Array<string> = [];
