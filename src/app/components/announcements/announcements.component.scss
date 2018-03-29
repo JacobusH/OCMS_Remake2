@@ -1,13 +1,9 @@
-:host {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-}
-
-:host /deep/ .mat-expansion-panel {
-  width: 90px;
-  border-radius:5px;
-  background:pink;
+.announcement-top > p {
+  white-space: pre-wrap;
+  // border: 1px solid #d3d3d3;
+  padding: 8px;
+  color: black;
+  border-radius: 5px;
 }
 
 .pulse {

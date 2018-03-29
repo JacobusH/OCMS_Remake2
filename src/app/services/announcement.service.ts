@@ -15,7 +15,7 @@ export class AnnouncementService {
   
   constructor(private afs: AngularFirestore) { 
     this.announcements = this.afs.collection('announcements');
-    this.announcementsActive = this.afs.collection('announcements', ref => ref.where('isActive', '==', 'true'));
+    this.announcementsActive = this.afs.collection('announcements', ref => ref.where('isActive', '==', true));
     this.announcementsLastDay = this.afs.collection('announcements', ref => ref.where('createdAt', '>=', new Date(Date.now() - 8.64e7)));
   }
 

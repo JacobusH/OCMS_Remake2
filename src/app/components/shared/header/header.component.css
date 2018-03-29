@@ -1,3 +1,13 @@
+.ann-ann {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  color: #FF4500;
+  border-radius: 2px;
+  box-shadow: 0px 1px 7px 0px #d3d3d3;
+  cursor: pointer;
+}
+
 #header-bar, .site-logo {
   text-align: center;
 }

@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService, UserService } from 'app/services/_index';
 import { Observable } from 'rxjs/Observable';
 import { User } from 'app/models/user.model';
 import { isDefaultChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AnnouncementsComponent } from 'app/components/announcements/announcements.component';
 import * as _ from 'lodash';
 
 @Component({
@@ -21,7 +23,10 @@ export class HeaderComponent implements OnInit {
   currentUser: any;
 
 
-  constructor(private authService: AuthService, private userService: UserService, private route: Router) { 
+  constructor(private authService: AuthService
+    , private userService: UserService
+    , private route: Router
+    , public dialog: MatDialog) { 
    
   }
 
@@ -41,15 +46,20 @@ export class HeaderComponent implements OnInit {
         this.isLoggedIn = false;
       }
     });
-
-    
-    
   }
 
   toggleState() {
     // this.isIn = !this.isIn;
     let bool = this.isIn;
     this.isIn = bool === false ? true : false; 
+  }
+
+  showAnnouncements() {
+    const dialogRef = this.dialog.open(AnnouncementsComponent, {
+      height: '80%'
+    }).afterClosed().subscribe(result => {
+      // localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 1) + ''); // one day expiration
+    });
   }
 
   logout() {

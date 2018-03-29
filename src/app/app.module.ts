@@ -181,7 +181,8 @@ const routes: Routes = [
 @NgModule({
   entryComponents: [
     // CalendoerEventModalComponent,
-    AdvertComponent
+    AdvertComponent,
+    AnnouncementsComponent
   ],
   declarations: [
     // ToDoComponent,
