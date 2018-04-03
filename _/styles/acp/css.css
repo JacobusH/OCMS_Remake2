@@ -1,0 +1,138 @@
+#PopupBoxWrapper {
+	Z-INDEX: 20; LEFT: 0px; VISIBILITY: hidden; WIDTH: 300px; FONT-FAMILY: Tahoma, Verdana, Arial, Helvetica, sans-serif; POSITION: absolute; TOP: 0px; HEIGHT: 300px; TEXT-ALIGN: left; FONT-VARIANT: small-caps
+}
+
+#PopupBoxHeader {
+	/*CURSOR: move;*/ POSITION: relative;
+}
+
+#PopupBoxHeader #PopupBoxCloseButton {
+	WIDTH: 16px; CURSOR: pointer; POSITION: absolute; HEIGHT: 18px; right:0; margin:-23px 15px 0px 0; padding:0;
+	
+}
+
+#PopupBoxHeader #PopupBoxCloseButton IMG {
+	border:0; margin:0; padding:0; position:absolute; right:0; z-index:100;
+}
+
+#PopupBoxHeader .left{
+	width:8px;
+	height:32px;
+	position:absolute;
+	left:0;
+	z-index:50;
+	background:url(../../images/acp/topleft.gif) no-repeat left;
+}
+
+#PopupBoxHeader .right{
+	width:8px;
+	height:32px;
+	position:absolute;
+	right:0;
+	top:3px;
+	z-index:50;
+	background:url(../../images/acp/topright.gif) no-repeat right;
+}
+
+#PopupBoxBody {
+	BORDER-RIGHT: #bbbbbb 1px solid; BORDER-TOP: #d3d3d3 1px solid; OVERFLOW: hidden; BORDER-LEFT: #bbbbbb 1px solid; BORDER-BOTTOM: #bbbbbb 0px solid;BACKGROUND-COLOR: #FFFFFF;
+	margin-top:-1px;
+}
+
+#PopupBoxWrapper .bottom{
+	display:block;
+	height:20px;
+	position:relative;
+}
+
+#PopupBoxWrapper .bottomleft{
+	background:url(../../images/acp/bottomleft.gif) no-repeat top;
+	position:absolute;
+	height:20px;
+	width:8px;
+	left:0;
+}
+
+#PopupBoxWrapper .bottomright{
+	background:url(../../images/acp/bottomright.gif) no-repeat top;
+	position:absolute;
+	height:20px;
+	width:8px;
+	right:0;
+	top:0;
+}
+
+#PopupBoxWrapper .middle{
+	background:url(../../images/acp/bottombg.gif) repeat-x;
+	display:block;
+	height:20px;
+	margin-right:8px;
+	margin-left:8px;
+}
+
+#PopupBoxBody IFRAME {
+	WIDTH: auto;HEIGHT: auto;
+}
+
+.MainContentBoxHeaderTab {
+	 MARGIN: 0px; WIDTH: auto; TEXT-INDENT: 10px; HEIGHT: 32px;
+}
+
+.MainContentBoxHeaderTab span{
+	background:url(../../images/acp/titlebg.gif) repeat-x;
+	height:23px;
+	display:block;
+	margin-left:8px;
+	padding-top:10px;
+	margin-right:8px;
+}
+
+.MainContentBoxHeaderTab {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #d60e45;  font-family:Arial, Helvetica, sans-serif; padding-top:3px;
+	text-transform: uppercase;
+}
+
+.MainContentBoxHeaderTab TABLE {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; TEXT-TRANSFORM:none; COLOR: #000000; TEXT-INDENT: 20px; font-family:Verdana, Arial, Helvetica, sans-serif;  padding-top:3px;
+}
+
+.MainContentBoxHeaderTab TD {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; TEXT-TRANSFORM:none; COLOR: #000000; TEXT-INDENT: 20px; font-family:Verdana, Arial, Helvetica, sans-serif;  padding-top:3px;
+}
+
+
+/**************************************************/
+/**********pop up forms****************************/
+/**************************************************/
+
+body.popup{
+	color:#4b4b4b;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:0.84em;
+	
+}
+
+.normalform{
+	display:block;
+	clear:both;
+	padding-left:10px;
+}
+.normalform div{
+	clear:both;
+	margin-bottom:8px;
+
+}
+.normalform div label{
+	float:left;
+	padding-right:5px;
+	width:120px;
+}
+
+input.submitbtn{
+	background:#607cc0;
+	border:0;
+	color:#FFFFFF;
+	font-weight:bold;
+	font-size:.8em;
+	cursor:pointer;
+}

@@ -1,7 +1,7 @@
 // Modules
 // import { ArithmeticModule, SumService } from '../../node_modules/todo-module/dist';
 // import { HeaderModule } from 'my-component-library';
-import { TodoModule } from 'rave-todo';
+// import { TodoModule } from 'rave-todo';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
@@ -147,7 +147,7 @@ const routes: Routes = [
   ] },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
-  { path: 'contact', component: ContactComponent }, 
+  { path: 'contact/:id', component: ContactComponent }, 
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   // { path: 'gallery/image/:id', component: ImageGalleryDetailComponent },
@@ -258,7 +258,7 @@ const routes: Routes = [
   imports: [ 
     // ArithmeticModule,
     // HeaderModule, 
-    TodoModule,
+    // TodoModule,
     SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule, 

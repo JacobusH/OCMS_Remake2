@@ -25,12 +25,23 @@ import {
 })
 export class ContactComponent implements OnInit {
   model = this.contactService.createNew();
+  sub: any;
+  id: any;
 
-  constructor(private contactService: ContactMessageService, private router: Router, private route:ActivatedRoute) { 
+  constructor(private contactService: ContactMessageService
+    , private router: Router
+    , private route:ActivatedRoute) { 
     
   }
 
   ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+      if(this.id == 'summercamp') {
+        this.model = this.contactService.createNew();
+        this.model.message = 'I am interested in coming to Summer Boot Camp!';
+      }
+   });
   }
 
   saveContactMessage(form: NgForm) {
@@ -43,5 +54,9 @@ export class ContactComponent implements OnInit {
     this.router.navigate(['thanks'], {relativeTo: this.route});
   }
 
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 
+  
 }

@@ -47,7 +47,7 @@ export class AdminSignUpsComponent implements OnInit {
   ];
 
   constructor(private signupService: SignupService, private afs: AngularFirestore) { 
-    this.signups = this.signupService.signups.valueChanges();
+    this.signups = this.signupService.signupsRecentFirst.valueChanges();
   }
 
   ngOnInit() {

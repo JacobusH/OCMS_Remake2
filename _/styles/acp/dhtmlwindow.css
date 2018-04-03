@@ -1,0 +1,70 @@
+.dhtmlwindow{
+position: absolute;
+visibility: hidden;
+border: 5px solid #125887;
+height:auto;
+background:#FFF;
+}
+.popupbg{
+border-left:#125887 solid 1px;
+border-right:#125887 solid 1px;
+margin:0 25px; background:#FFF;
+width:auto;
+height:400px;
+}
+
+.drag-handle{ /*CSS for Drag Handle*/
+padding: 1px;
+text-indent: 3px;
+font: bold 14px  Arial, Helvetica, sans-serif;
+text-transform: uppercase;
+line-height:22px;
+background-color: #DFDFF4;
+color: #FFF;
+cursor: move;
+overflow: hidden;
+width: auto;
+text-align:left;
+background:url(../../images/acp/right_menu_bg.gif) repeat-x;
+}
+
+.drag-handle .drag-controls{ /*CSS for controls (min, close etc) within Drag Handle*/
+position: absolute;
+right: 1px;
+top: 2px;
+cursor: hand;
+cursor: pointer;
+}
+
+
+.drag-contentarea{ /*CSS for Content Display Area div*/
+border-top: 2px solid #307aae;
+background-color: #FFF;
+color: black;
+font: Arial, Helvetica, sans-serif;
+font-size:12px;
+height: auto;
+padding: 0px;
+cursor:pointer;
+overflow: auto;
+position:relative;
+}
+.drag-contentarea p{ /*CSS for Content Display Area div*/
+padding:8px;
+margin:0;
+}
+
+.drag-statusarea{ /*CSS for Status Bar div (includes resizearea)*/
+border-top: 1px solid #307aae;
+background-color: #F8F8F8;
+height: 13px; /*height of resize image*/
+}
+
+
+.drag-resizearea{ /*CSS for Resize Area itself*/
+float: right;
+width: 13px; /*width of resize image*/
+height: 13px; /*height of resize image*/
+cursor: nw-resize;
+font-size: 0;
+}

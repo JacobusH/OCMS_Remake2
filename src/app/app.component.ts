@@ -11,31 +11,10 @@ import "rxjs/add/observable/of";
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  itemArr: Array<RaveTodoItem> = new Array;
-  itemObby: Observable<RaveTodoItem[]>;
   emittedName;
 
   constructor(public dialog: MatDialog) {
-    let item1:RaveTodoItem = {
-      title: "title1",
-      description: "desc1",
-      state: RaveTodoItemEnum.InProgress,
-      priority: 10,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-    let item2:RaveTodoItem = {
-      title: "title2",
-      description: "desc2",
-      state: RaveTodoItemEnum.Testing,
-      priority: 9,
-      createdAt: new Date(),
-      updatedAt: new Date()
-    };
-    this.itemArr.push(item1, item2);
 
-    this.itemObby = Observable.of(this.itemArr);
-    
   }
 
   ngOnInit() {
@@ -56,25 +35,16 @@ export class AppComponent implements OnInit {
   showAdvert() {
     const dialogRef = this.dialog.open(AdvertComponent, {
       height: '80%'
-    }).afterClosed().subscribe(result => {
+    }); 
+    
+    dialogRef.afterClosed().subscribe(result => {
       localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 1) + ''); // one day expiration
+    });
+
+    dialogRef.backdropClick().subscribe(event => {
+      console.log(event);
+      console.log("button clicked");
     });
   }
 
-}
-
-export interface RaveTodoItem {
-  title: string;
-  description?: string;
-  state: RaveTodoItemEnum;
-  priority: number;
-  createdAt: Date;
-  updatedAt: Date;
-}
-export enum RaveTodoItemEnum {
-  NotStarted = 0,
-  InProgress = 1,
-  UnderReview = 2,
-  Testing = 3,
-  Finished = 4,
 }

@@ -1,0 +1,36 @@
+/* CSS Document */
+
+/* ================================================================ 
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/flyoutt.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the assocaited (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+table {border-collapse:collapse; border:0; margin:0; padding:0;}
+
+.navigation ul li a.hide, .menu ul li a:visited.hide {display:none; }
+.navigation ul li a:hover ul li a.hide {display:none;}
+
+.navigation ul li ul li ul li ul, .navigation ul li a:hover ul li a:hover ul li ul{ visibility:hidden;}
+
+
+.navigation ul li a{ line-height:15px; }
+.navigation ul li a:hover {color:#fff; }
+
+.navigation ul li a:hover ul {display:block; position:absolute; top:33px; left:0; background:#5a5453; border:#54a614 1px solid; border-top:none;   margin-left:0; z-index:1000;}
+.navigation ul li a:hover ul li{ background:none;}
+.navigation ul li a:hover ul li a.sub {background:#FFF; color:#000;}
+.navigation ul li a:hover ul li a {display:block; background:none;  color:#ffffff; font-size:11px; border-bottom:#54a614 solid 1px; width:140px; clear:both; font-weight:normal;  padding:6px 13px 6px 13px; letter-spacing:normal;}
+.navigation ul li a:hover ul li a ul {visibility:hidden;}
+.navigation ul li a:hover ul li a:hover {background:#92bd6e; color:#000;}
+.navigation ul li a:hover ul li a:hover ul {visibility:visible; position:absolute; left:186px; top:-4px; color:#000; z-index:1500; border:#7E530E solid 1px; }
+.navigation ul li a:hover ul li a:hover ul li a {display:block; width:160px;  color:#000;}
+.navigation ul li a:hover ul li a:hover ul li a:hover { color:#7E530E;}
+
+.navigation ul li a:hover ul li a:hover ul li a:hover ul{ visibility:visible;}
+
+
+

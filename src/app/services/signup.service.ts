@@ -9,9 +9,11 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class SignupService {
   signups: AngularFirestoreCollection<Signup>;
+  signupsRecentFirst: AngularFirestoreCollection<Signup>;
   
   constructor(private afs: AngularFirestore) { 
     this.signups = this.afs.collection('signups');
+    this.signupsRecentFirst = this.afs.collection('signups', ref => ref.orderBy('createdAt', 'desc'));
   }
 
   createNew(): Signup {

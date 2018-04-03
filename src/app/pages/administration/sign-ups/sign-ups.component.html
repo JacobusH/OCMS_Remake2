@@ -1,21 +1,22 @@
-<div class="filter-options container AC">
-  <app-selector-single 
-    [placeHolder]="'Filter Read'" 
-    [displayValues]="readFilter"
-    (valueSelected)="readFilterClicked($event)">
-  </app-selector-single>
-  <app-selector-single 
-    [placeHolder]="'Select Instrument'" 
-    [displayValues]="instruments"
-    (valueSelected)="instrumentFilterClicked($event)">
-  </app-selector-single>
+<div class="filter-options container">
+  <div>
+    <app-selector-single 
+      [placeHolder]="'Filter Read'" 
+      [displayValues]="readFilter"
+      (valueSelected)="readFilterClicked($event)">
+    </app-selector-single>
+    <app-selector-single 
+      [placeHolder]="'Select Instrument'" 
+      [displayValues]="instruments"
+      (valueSelected)="instrumentFilterClicked($event)">
+    </app-selector-single>
+  </div>
   <app-date-range-picker (dateRangeSelection)="selectedDate($event)"></app-date-range-picker>
 </div>
 
 <div *ngFor="let signup of signups | async | signupFilter:filterBy | readFilter:readFilterBy"
-[style.borderColor]="signup.read ? 'green' : 'red'"
-(click)="readClicked($event, signup)" 
-class="signup-card">
+  [style.borderColor]="signup.read ? 'green' : 'red'"
+  class="signup-card">
   <div class="top">
       <div class="name">{{signup.name}}</div>
       <div class="email">{{signup.email}}</div>
@@ -23,6 +24,6 @@ class="signup-card">
   </div>
   <div class="bottom">
       <div class="left createdAt">{{signup.createdAt | date:'medium'}}</div>
-      <!-- <div class="right read">{{signup.read }}</div> -->
+      <div class="right read" (click)="readClicked($event, signup)">{{signup.read == true ? 'Read' : 'UnRead'  }}</div>
   </div>
 </div>
