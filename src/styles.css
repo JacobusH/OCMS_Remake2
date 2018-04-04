@@ -179,7 +179,7 @@ h2.content-section-subtitle{
 	padding-bottom:0px;
 }
 
-.icon-box-link a {
+.icon-box-link a, .icon-box-link span {
     font-family: 'Lato',Arial !important;
     font-size: 14px;
     line-height: 24px;
@@ -190,19 +190,20 @@ h2.content-section-subtitle{
     letter-spacing: 1px;
 }
 
-.icon-box-link a {
+.icon-box-link a, .icon-box-link span {
     background-color: #3498db;
     color: white;
     border: 1px solid #3498db;
     box-shadow: 0px 0px 0px rgba(0,0,0,0.1);
 }
 
-.icon-box-link a:hover {
+.icon-box-link a:hover, .icon-box-link span:hover {
     background-color: #3498db;
     color: white;
     border: 1px solid #3498db;
     box-shadow: 0px 0px 0px rgba(0,0,0,0.1);
-	text-decoration: none;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* icon type image */

@@ -12,11 +12,13 @@ export class AnnouncementService {
   announcements: AngularFirestoreCollection<Announcement>;
   announcementsActive: AngularFirestoreCollection<Announcement>;
   announcementsLastDay: AngularFirestoreCollection<Announcement>;
+  announcementsMostRecent1: AngularFirestoreCollection<Announcement>;
   
   constructor(private afs: AngularFirestore) { 
     this.announcements = this.afs.collection('announcements');
     this.announcementsActive = this.afs.collection('announcements', ref => ref.where('isActive', '==', true));
     this.announcementsLastDay = this.afs.collection('announcements', ref => ref.where('createdAt', '>=', new Date(Date.now() - 8.64e7)));
+    this.announcementsMostRecent1 = this.afs.collection('announcements', ref => ref.limit(1).orderBy('createdAt', 'desc') );
   }
 
   createNew(): Announcement {

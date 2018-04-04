@@ -1,10 +1,5 @@
-#cont {
-  // display:flex;
-
-  #inner {
-    // align-items: center;
-    // max-width:
-  }
+h2 {
+  text-align: center;
 }
 
 :host {
@@ -14,11 +9,25 @@
 :host /deep/ .video-cont {
   margin: 0 auto !important;
   max-width: 100% !important;
-  width:33% !important;
+  width:70% !important;
 
   iframe {
     width: 100% !important;
   }
+}
+
+.content-section-heading {
+  margin-top:0px;
+  margin-bottom:10px;
+}
+
+.ann {
+  font-size: 17px;
+}
+
+.icon-box-link {
+  text-align: center;
+  margin-top:5px;
 }
 
 @media (max-width: 768px) {
