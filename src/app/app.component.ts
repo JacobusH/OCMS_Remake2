@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       this.showAdvert();
     } 
     else { // been here before
-      let expirationDate = new Date(localStorage.getItem("OCMSNoAdvert"));
+      let expirationDate = new Date(+localStorage.getItem("OCMSNoAdvert"));
       if(new Date() > expirationDate) 
       {
         this.showAdvert();
