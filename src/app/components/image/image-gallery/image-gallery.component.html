@@ -24,9 +24,21 @@
       (click)="filterClicked(fil)" >{{fil}}
     </button>
   </div>
-  <div class="AC">
-    <div class="gallery-img" *ngFor="let img of loadedImagesTest | async | imageFilter:filterBy">
-      <img [src]="img.imgUrl" />
+  <div class="gal-page-numbers AC">
+  <button 
+    class="btn"
+    (click)="currentPage = i - 1" 
+    *ngFor="let i of ((loadedImagesTest | async | imageFilter:filterBy)?.length / pageSize) |timesPipe">
+    {{i}}
+  </button>
+  </div>
+  <div style="display:flex; flex-wrap: wrap; justify-content: center;">
+    <div  *ngFor="let img of loadedImagesTest | async | imageFilter:filterBy; let i = index">
+      <div 
+        *ngIf="i >= (currentPage * pageSize) && i < (currentPage * pageSize + pageSize)"
+        class="gallery-img">
+        <img [src]="img.imgUrl" />
+      </div>
     </div>
   </div>
 

@@ -4,28 +4,6 @@
       (change)="onStateChange($event)"
     ></youtube-player> -->
 
-    
-<div class="row">
-  <div class="col-lg-6">
-      <app-video-item [videoId]="'8HpQ9k634Mk'" [tileSize]="'full'"></app-video-item>
-  </div>
-  <div class="col-lg-6">
-    <div class="content-section-heading">
-        <h1 class="content-section-title">
-          <span>News</span>
-        </h1>
-        <div class="content-section-line">
-          <span >
-          </span>
-        </div>
-      </div>
-    <div class="ann" *ngFor="let ann of announcements | async">
-      {{ann.announcement}}
-    </div>
-    <div class="icon-box-link">
-      <span href='#' (click)="showAnnouncements()">	
-        More					
-      </span>
-     </div>
-  </div>
-</div>  
+<div class="container">
+  <app-video-item [videoId]="'8HpQ9k634Mk'" [tileSize]="'full'"></app-video-item>
+</div>

@@ -14,13 +14,11 @@ import { Observable } from 'rxjs';
 export class HomeVideoComponent implements OnInit {
   player: YT.Player;
   ids: Array<string> = ['WxVIYxE9CEI', 'DIIbPp6j12I'];
-  announcements: Observable<{}[]>;
 
-  constructor(private announcementService: AnnouncementService
-    , public dialog: MatDialog) { }
+  constructor() { }
 
   ngOnInit() {
-    this.announcements = this.announcementService.announcementsMostRecent1.valueChanges();
+    
   }
 
   savePlayer (player) {
@@ -32,12 +30,6 @@ export class HomeVideoComponent implements OnInit {
     console.log('player state', event.data);
   }
 
-  showAnnouncements() {
-    const dialogRef = this.dialog.open(AnnouncementsComponent, {
-      height: '80%'
-    }).afterClosed().subscribe(result => {
-      // localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 1) + ''); // one day expiration
-    });
-  }
+  
 
 }

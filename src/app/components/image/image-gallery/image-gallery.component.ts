@@ -7,7 +7,7 @@ import { GalleryService } from 'app/services/gallery.service';
 @Component({
   selector: 'app-image-gallery',
   templateUrl: './image-gallery.component.html',
-  styleUrls: ['./image-gallery.component.css'],
+  styleUrls: ['./image-gallery.component.scss'],
   animations: [
     apparateTrigger
   ],
@@ -27,6 +27,8 @@ export class ImageGalleryComponent implements OnInit, OnChanges {
   filterOptions: Array<string> = [];
 
   loadedImagesTest;
+  currentPage: number = 0;
+  pageSize: number = 4;
 
   constructor(private galleryService: GalleryService) { 
     // this.visibleImages = this.galleryService.gallery;

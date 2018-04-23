@@ -13,10 +13,12 @@ export class AdvertService {
   advertsActive: AngularFirestoreCollection<Advert>;
   storage = firebase.storage();
   storageRef = this.storage.ref();
+  forceAdvert;
   
   constructor(private afs: AngularFirestore) { 
     this.adverts = this.afs.collection('adverts');
     this.advertsActive = this.afs.collection('adverts', ref => ref.where('isActive', '==', true));
+    this.forceAdvert = this.afs.collection('!advertSwitch');
   }
 
   createNew(): Advert {
@@ -55,6 +57,11 @@ export class AdvertService {
 
   delete(item: Advert): Promise<void> {
     return this.adverts.doc(item.key).delete();
+  }
+
+  flipSwitch(currentState: boolean) {
+    let newState = !currentState;
+    this.afs.doc('adverts/!advertSwitch').update({'forceShow': newState});
   }
 
 }

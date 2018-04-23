@@ -37,11 +37,18 @@ export class AdminAdvertComponent implements OnInit {
   storage = firebase.storage();
   storageRef = this.storage.ref();
 
+  forceAdvert;
+
   constructor(private advertService: AdvertService, private upsvc: UploadService) { 
     this.items = this.advertService.adverts.valueChanges();
+    this.forceAdvert = this.advertService.forceAdvert.valueChanges();
   }
 
   ngOnInit() {
+  }
+
+  flipSwitch() {
+    this.advertService.flipSwitch(this.forceAdvert);
   }
 
   saveItem(form: NgForm) {

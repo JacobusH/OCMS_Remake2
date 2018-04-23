@@ -116,6 +116,7 @@ import { FormDynamicComponent } from './components/forms/form-dynamic/form-dynam
 import { AdminAdvertComponent } from './components/forms/admin-advert/admin-advert.component';
 import { AdvertComponent } from './components/advert/advert.component';
 import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
+import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -253,7 +254,8 @@ const routes: Routes = [
     FormDynamicComponent,
     AdminAdvertComponent,
     AdvertComponent,
-    DateRangePickerComponent, 
+    DateRangePickerComponent,
+    HomeNewsComponent, 
   ],
   imports: [ 
     // ArithmeticModule,

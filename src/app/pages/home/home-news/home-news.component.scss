@@ -1,0 +1,36 @@
+.ann {
+  font-size: 18px;
+  line-height: 2;
+
+  .created-at {
+    font-style: italic;
+    color: #b1b1b1;
+  }
+}
+
+.icon-box-link {
+  text-align: center;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+@media screen and (min-width: 1200px) /* Desktop */ {
+  .news-cont {
+    display:flex;
+    align-items: center;
+  }
+}
+
+@media screen  and (max-width: 1199px) /* Tablet */ {
+  .news-cont {
+    display:block;
+    // align-items: center;
+  }
+}
+
+@media screen and (max-width: 720px) /* Mobile */ {
+  .news-cont {
+    display:block;
+    // align-items: center;
+  }
+}
