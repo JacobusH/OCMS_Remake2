@@ -2,6 +2,7 @@
 // import { ArithmeticModule, SumService } from '../../node_modules/todo-module/dist';
 // import { HeaderModule } from 'my-component-library';
 // import { TodoModule } from 'rave-todo';
+import { SharedModule } from './modules/shared/shared.module';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
@@ -11,7 +12,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
-import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
@@ -64,8 +64,6 @@ import { AppComponent } from './app.component';
 import { LiveChatComponent } from './components/live-chat/live-chat.component';
 import { LiveChatManagerComponent } from './components/live-chat/manager/manager.component';
 import { WindowComponent } from './components/live-chat/window/window.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
-import { HeaderComponent } from './components/shared/header/header.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
 // FORMS
@@ -98,24 +96,20 @@ import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
 import { TimesPipe } from 'app/filters/times-filter.pipe';
 import { RoundUpPipe } from 'app/filters/roundUp-filter.pipe';
 import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
-import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
 import { VisualizerComponent } from './components/visualizer/visualizer.component';
-import { TileListViewswitchComponent } from './components/tile-list-viewswitch/tile-list-viewswitch.component';
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
 import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
 import { VideoItemComponent } from './components/video-item/video-item.component';
 import { VideosComponent } from './pages/videos/videos.component';
 import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
-import { ItemComponent } from './components/tile-list-viewswitch/item/item.component';
 import { FormDynamicComponent } from './components/forms/form-dynamic/form-dynamic.component';
 import { AdminAdvertComponent } from './components/forms/admin-advert/admin-advert.component';
 import { AdvertComponent } from './components/advert/advert.component';
-import { DateRangePickerComponent } from './components/date-range-picker/date-range-picker.component';
 import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
 
 // Initialize Firebase
@@ -205,9 +199,7 @@ const routes: Routes = [
     AdminContactMessagesComponent,
     ContactComponent,
     FaqComponent,
-    FooterComponent,
     GalleryComponent,
-    HeaderComponent,
     HomeComponent,
     HomeLearntoplayComponent,
     HomeSplashComponent,
@@ -234,7 +226,6 @@ const routes: Routes = [
     UserProfileComponent,
     WindowComponent,
     SelectorSingleComponent,
-    PageHeaderComponent,
     BaseTilesComponent,
     TileTestimonialComponent,
     AdminFormResourceComponent,
@@ -242,7 +233,6 @@ const routes: Routes = [
     BubbleComponent,
     MenuPlusComponent,
     VisualizerComponent,
-    TileListViewswitchComponent,
     TileCarouselComponent,
     HomeVideoComponent,
     AdminFormAnnouncementsComponent,
@@ -250,17 +240,16 @@ const routes: Routes = [
     VideoItemComponent,
     VideosComponent,
     DisplayTeacherComponent,
-    ItemComponent,
     FormDynamicComponent,
     AdminAdvertComponent,
     AdvertComponent,
-    DateRangePickerComponent,
     HomeNewsComponent, 
   ],
   imports: [ 
     // ArithmeticModule,
     // HeaderModule, 
     // TodoModule,
+    SharedModule,
     SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule, 
@@ -270,7 +259,6 @@ const routes: Routes = [
     ButtonModule,
     CalendarModule.forRoot(),
     ContextMenuModule,
-    Daterangepicker, 
     DialogModule,
     DragAndDropModule.forRoot(),
     // EmptyTextModule,
