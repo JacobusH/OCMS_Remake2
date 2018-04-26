@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
 import { Daterangepicker, DaterangepickerConfig } from 'ng2-daterangepicker';
 
 // Components
@@ -9,19 +11,39 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
+import { VideoItemComponent } from './video-item/video-item.component';
+
+// Filters
+import { ImageFilterPipe } from './filters/image-filter.pipe';
+import { ReadFilterPipe } from './filters/read-filter.pipe';
+import { ResourceCategoryPipe } from './filters/resource-category-filter.pipe';
+import { RoundUpPipe } from './filters/roundUp-filter.pipe';
+import { SignupFilterPipe } from './filters/signup-filter.pipe';
+import { TimesPipe } from './filters/times-filter.pipe';
+
 
 @NgModule({
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     DateRangePickerComponent,
     FooterComponent,
     HeaderComponent,
     ItemComponent,
     PageHeaderComponent,
     TileListViewswitchComponent,
+    VideoItemComponent,
+    ImageFilterPipe,
+    ReadFilterPipe,
+    ResourceCategoryPipe,
+    RoundUpPipe,
+    SignupFilterPipe,
+    TimesPipe
   ],
   imports: [
     CommonModule,
-    Daterangepicker
+    Daterangepicker,
+    YoutubePlayerModule,
   ],
   declarations: [
     DateRangePickerComponent,
@@ -30,9 +52,23 @@ import { DateRangePickerComponent } from './date-range-picker/date-range-picker.
     ItemComponent,
     PageHeaderComponent,
     TileListViewswitchComponent,
+    VideoItemComponent,
+    ImageFilterPipe,
+    ReadFilterPipe,
+    ResourceCategoryPipe,
+    RoundUpPipe,
+    SignupFilterPipe,
+    TimesPipe
   ],
   providers: [
-
+    ImageFilterPipe,
+    ReadFilterPipe,
+    ResourceCategoryPipe,
+    RoundUpPipe,
+    SignupFilterPipe,
+    TimesPipe
   ]
 })
-export class SharedModule { }
+export class SharedModule { 
+  
+}

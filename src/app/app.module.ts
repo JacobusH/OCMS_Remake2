@@ -3,18 +3,27 @@
 // import { HeaderModule } from 'my-component-library';
 // import { TodoModule } from 'rave-todo';
 import { SharedModule } from './modules/shared/shared.module';
+import { AdminModule } from './modules/admin/admin.module';
+import { LiveChatModule } from './modules/live-chat/live-chat.module';
 import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
 import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgModule } from '@angular/core';
+import { NgxGraphModule } from '@swimlane/ngx-graph'
+import { NgxCarouselModule } from 'ngx-carousel';
+import { ContextMenuModule } from 'ngx-contextmenu';
+import { Routes, RouterModule } from '@angular/router';
+import { TreeModule } from 'angular-tree-component';
 import { MatButtonModule, MatCheckboxModule   
   , MatDialogModule, MatMenuModule 
   , MatFormFieldModule, MatSidenavModule
@@ -23,14 +32,6 @@ import { MatButtonModule, MatCheckboxModule
   , MatGridListModule, MatCardModule
   , MatExpansionModule
 } from '@angular/material';
-import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgModule } from '@angular/core';
-import { NgxGraphModule } from '@swimlane/ngx-graph'
-import { NgxCarouselModule } from 'ngx-carousel';
-import { ContextMenuModule } from 'ngx-contextmenu';
-import { Routes, RouterModule } from '@angular/router';
-import { TreeModule } from 'angular-tree-component';
-import { YoutubePlayerModule } from 'ngx-youtube-player';
 import 'hammerjs';
 
 // Guards
@@ -61,27 +62,12 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 
 // Components
 import { AppComponent } from './app.component';
-import { LiveChatComponent } from './components/live-chat/live-chat.component';
-import { LiveChatManagerComponent } from './components/live-chat/manager/manager.component';
-import { WindowComponent } from './components/live-chat/window/window.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
 // FORMS
-import { AdminFormFaqComponent } from './components/forms/admin-faq/admin-faq.component';
-import { AdminFormGalleryComponent } from './components/forms/admin-gallery/admin-gallery.component';
-import { AdminFormHomepageComponent } from './components/forms/admin-homepage/admin-homepage.component';
-import { AdminFormResourceComponent } from './components/forms/admin-resource/admin-resource.component';
-import { AdminFormTeacherComponent } from './components/forms/admin-teacher/admin-teacher.component';
-import { AdminFormTestimonialComponent } from './components/forms/admin-testimonial/admin-testimonial.component';
-import { AdminFormUserComponent } from './components/forms/admin-user/admin-user.component';
-import { AdminFormAnnouncementsComponent } from './components/forms/admin-announcements/admin-announcements.component';
-import { AdminFormVideoComponent } from './components/forms/admin-video/admin-video.component';
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
-import { AdminContactMessagesComponent } from './pages/administration/contact-messages/contact-messages.component';
 import { AdminHomepageComponent } from './pages/administration/homepage/homepage.component';
-import { AdminSignUpsComponent } from './pages/administration/sign-ups/sign-ups.component';
-import { AdminTodoComponent } from './pages/administration/todo/todo.component';
 
 // Services
 import { AdvertService, AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
@@ -89,26 +75,16 @@ import { AdvertService, AnnouncementService, AuthService, AlertMultiService, Ale
   , TeacherService, UserService, UploadService, VisualizerService, VideoItemService } from 'app/services/_index';
 
 // pipes
-import { ResourceCategoryPipe } from 'app/filters/resource-category-filter.pipe';
-import { ImageFilterPipe } from 'app/filters/image-filter.pipe';
-import { SignupFilterPipe } from 'app/filters/signup-filter.pipe';
-import { ReadFilterPipe } from 'app/filters/read-filter.pipe';
-import { TimesPipe } from 'app/filters/times-filter.pipe';
-import { RoundUpPipe } from 'app/filters/roundUp-filter.pipe';
 import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
-import { BubbleComponent } from './components/live-chat/bubble/bubble.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
 import { VisualizerComponent } from './components/visualizer/visualizer.component';
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
 import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
-import { VideoItemComponent } from './components/video-item/video-item.component';
 import { VideosComponent } from './pages/videos/videos.component';
 import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
-import { FormDynamicComponent } from './components/forms/form-dynamic/form-dynamic.component';
-import { AdminAdvertComponent } from './components/forms/admin-advert/admin-advert.component';
 import { AdvertComponent } from './components/advert/advert.component';
 import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
 
@@ -125,21 +101,7 @@ var firebaseConfig = {
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'admin', canActivate: [AdminGuard], component: AdministrationComponent, children: [
-    { path: "adverts", component: AdminAdvertComponent},
-    { path: "announcements", component: AdminFormAnnouncementsComponent},
-    { path: "messages", component: AdminContactMessagesComponent},
-    { path: "chat", component: LiveChatManagerComponent},
-    { path: "faq", component: AdminFormFaqComponent},
-    { path: "media", component: AdminFormGalleryComponent},
-    { path: "resources", component: AdminFormResourceComponent},
-    { path: "signups", component: AdminSignUpsComponent},
-    { path: "testimonials", component: AdminFormTestimonialComponent},
-    { path: "teachers", component: AdminFormTeacherComponent},
-    { path: "todo", component: AdminTodoComponent},
-    { path: "users", component: AdminFormUserComponent},
-    { path: "videos", component: AdminFormVideoComponent},
-  ] },
+  // { path: 'admin', canActivate: [AdminGuard], loadChildren: './modules/admin/admin.module#AdminModule' },
   { path: 'about', component: AboutComponent },
   // { path: 'announcements', component: AnnouncementsComponent },
   { path: 'contact/:id', component: ContactComponent }, 
@@ -184,19 +146,9 @@ const routes: Routes = [
     AppComponent,
     AboutComponent,
     AdministrationComponent,
-    AdminTodoComponent,
-    AdminFormUserComponent,
-    AdminFormGalleryComponent,
-    AdminFormHomepageComponent,
-    AdminFormTeacherComponent,
-    AdminFormTestimonialComponent,
-    AdminFormFaqComponent,
-    AdminFormVideoComponent,
     AdminHomepageComponent,
-    AdminSignUpsComponent,
     AdminHomepageComponent,
     TestimonialsComponent,
-    AdminContactMessagesComponent,
     ContactComponent,
     FaqComponent,
     GalleryComponent,
@@ -207,41 +159,26 @@ const routes: Routes = [
     HomeTestimonialsComponent,
     HomeTilesComponent,
     ImageGalleryComponent,
-    ImageFilterPipe,
-    ResourceCategoryPipe,
     LearntoplayComponent,
-    LiveChatComponent,
-    LiveChatManagerComponent,
     LoginComponent,
     PageNotFoundComponent,
     PlaygroundComponent,
-    ReadFilterPipe,
-    RoundUpPipe,
-    SignupFilterPipe,
-    TimesPipe,
     TeacherDetailComponent,
     TeachersComponent,
     ThanksComponent,
     TileDisplayComponent,
     UserProfileComponent,
-    WindowComponent,
     SelectorSingleComponent,
     BaseTilesComponent,
     TileTestimonialComponent,
-    AdminFormResourceComponent,
     ResourcesComponent,
-    BubbleComponent,
     MenuPlusComponent,
     VisualizerComponent,
     TileCarouselComponent,
     HomeVideoComponent,
-    AdminFormAnnouncementsComponent,
     AnnouncementsComponent,
-    VideoItemComponent,
     VideosComponent,
     DisplayTeacherComponent,
-    FormDynamicComponent,
-    AdminAdvertComponent,
     AdvertComponent,
     HomeNewsComponent, 
   ],
@@ -250,6 +187,8 @@ const routes: Routes = [
     // HeaderModule, 
     // TodoModule,
     SharedModule,
+    AdminModule,
+    LiveChatModule,
     SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule, 
@@ -264,6 +203,15 @@ const routes: Routes = [
     // EmptyTextModule,
     FormsModule,
     HttpClientModule,
+    MenuModule,
+    NgbModule.forRoot(),
+    NgbModalModule.forRoot(),
+    NgxGraphModule,
+    NgxCarouselModule,
+    OrderListModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes),
+    TreeModule,
     MatDialogModule,
     MatFormFieldModule,
     MatSelectModule,
@@ -274,16 +222,6 @@ const routes: Routes = [
     MatMenuModule,
     MatExpansionModule,
     MatSidenavModule,
-    MenuModule,
-    NgbModule.forRoot(),
-    NgbModalModule.forRoot(),
-    NgxGraphModule,
-    NgxCarouselModule,
-    OrderListModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    TreeModule,
-    YoutubePlayerModule 
   ],
   providers: [
     // SumService,
@@ -313,7 +251,5 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { 
-  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer){
-    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg')); // Or whatever path you placed mdi.svg at
-  }
+  
 }

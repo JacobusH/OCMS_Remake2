@@ -1,7 +1,7 @@
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { AfterViewChecked, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { DatePipe} from '@angular/common';
-import { LiveChatComponent } from 'app/components/live-chat/live-chat.component';  
+import { LiveChatComponent } from '../live-chat.component';  
 import { LiveChat, LiveChatMessage } from 'app/models/_index';
 import { LiveChatService } from 'app/services/_index';
 import { slideUpDownAnimation } from 'app/animations/slide-up-down.animation';
