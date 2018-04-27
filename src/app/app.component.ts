@@ -18,6 +18,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    localStorage.removeItem("OCMSNoAdvert");
+
     // first time
     if(!localStorage.getItem("OCMSNoAdvert"))
     {
@@ -34,7 +37,9 @@ export class AppComponent implements OnInit {
 
   showAdvert() {
     const dialogRef = this.dialog.open(AdvertComponent, {
-      height: '80%'
+      height: '98%',
+      width: 'unset',
+      panelClass: 'ad-pane'
     }); 
     
     dialogRef.afterClosed().subscribe(result => {

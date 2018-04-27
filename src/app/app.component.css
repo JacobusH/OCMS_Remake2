@@ -15,3 +15,7 @@
   display:flex;
   flex-direction: column;
 }
+
+.ad-pane .mat-dialog-container {
+  overflow: hidden;
+}
