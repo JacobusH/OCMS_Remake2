@@ -70,6 +70,7 @@ export class AuthService {
         authPhotoUrl: userAuthCreds.photoURL,
         key: userAuthCreds.uid,
         name: userAuthCreds.displayName,
+        phone: userAuthCreds.phone,
         email: userAuthCreds.email,
         role_admin: false,
         roles: {'admin': false, 'student': false},

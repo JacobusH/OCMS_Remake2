@@ -26,13 +26,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" class="form-control" id="email" required
-            [(ngModel)]="model.email" name="email"
-            #email="ngModel">
-            <div [hidden]="email.valid || email.pristine"
+          <label for="phone">Phone Number</label>
+          <input type="text" class="form-control" id="phone" required
+            [(ngModel)]="model.phone" name="phone"
+            #phone="ngModel">
+            <div [hidden]="phone.valid || phone.pristine"
                 class="alert alert-danger">
-            Email is required
+            Phone is required
           </div>
         </div>
         <div class="form-group">

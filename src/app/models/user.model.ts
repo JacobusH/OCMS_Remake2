@@ -24,6 +24,7 @@ export interface User {
   key: string,
   name: string,
   email: string,
+  phone: string,
   role_admin: boolean,
   roles: {'admin': boolean, 'student': boolean},
   isActive: boolean,
