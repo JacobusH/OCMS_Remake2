@@ -17,6 +17,7 @@ export interface Signup {
   key: string,
   name: string,
   email: string,
+  phone: string,
   about: string,
   instrument: string,
   read: boolean,

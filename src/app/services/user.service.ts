@@ -23,6 +23,7 @@ export class UserService {
       key: '',
       name: '',
       email: '',
+      phone: '',
       role_admin: false,
       roles: {'admin': false, 'student': false},
       isActive: true,
