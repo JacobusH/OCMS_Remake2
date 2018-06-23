@@ -15,13 +15,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'angular-calendar';
 import { DragAndDropModule } from 'angular-draggable-droppable';
-import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem } from 'primeng/primeng';
+import { ButtonModule, DialogModule, OrderListModule, MenuModule, MenuItem, Footer } from 'primeng/primeng';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { NgxGraphModule } from '@swimlane/ngx-graph'
 import { NgxCarouselModule } from 'ngx-carousel';
-import { ContextMenuModule } from 'ngx-contextmenu';
 import { Routes, RouterModule } from '@angular/router';
 import { TreeModule } from 'angular-tree-component';
 import { MatButtonModule, MatCheckboxModule   
@@ -30,7 +29,7 @@ import { MatButtonModule, MatCheckboxModule
   , MatSelectModule, MatInputModule
   , MatIconModule, MatIconRegistry  
   , MatGridListModule, MatCardModule
-  , MatExpansionModule
+  , MatExpansionModule, MatOptionModule
 } from '@angular/material';
 import 'hammerjs';
 
@@ -59,11 +58,15 @@ import { ResourcesComponent } from './pages/resources/resources.component';
 import { TeachersComponent } from './pages/teachers/teachers.component';
 import { TeacherDetailComponent } from './pages/teachers/detail/detail.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { VideosComponent } from './pages/videos/videos.component';
 
 // Components
 import { AppComponent } from './app.component';
 import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
 import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 // FORMS
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
@@ -72,21 +75,21 @@ import { AdminHomepageComponent } from './pages/administration/homepage/homepage
 // Services
 import { AdvertService, AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
   , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
-  , TeacherService, UserService, UploadService, VisualizerService, VideoItemService } from 'app/services/_index';
+  , TeacherService, UserService, UploadService, VideoItemService } from 'app/services/_index';
 
 // pipes
-import { SelectorSingleComponent } from './components/selector-single/selector-single.component';
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
-import { VisualizerComponent } from './components/visualizer/visualizer.component';
 import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
 import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
-import { VideosComponent } from './pages/videos/videos.component';
 import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
 import { AdvertComponent } from './components/advert/advert.component';
 import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
+
+// Routing
+import { routing } from './app.routing';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -99,41 +102,6 @@ var firebaseConfig = {
 };
 
 
-const routes: Routes = [
-  { path: '', component: HomeComponent },
-  // { path: 'admin', canActivate: [AdminGuard], loadChildren: './modules/admin/admin.module#AdminModule' },
-  { path: 'about', component: AboutComponent },
-  // { path: 'announcements', component: AnnouncementsComponent },
-  { path: 'contact/:id', component: ContactComponent }, 
-  { path: 'faq', component: FaqComponent },
-  { path: 'gallery', component: GalleryComponent },
-  // { path: 'gallery/image/:id', component: ImageGalleryDetailComponent },
-  { path: 'home', component: HomeComponent },
-  // { path: 'home/:id', component: HomeComponent },
-  { path: 'learntoplay', component: LearntoplayComponent },
-  { path: 'learntoplay/:id', component: LearntoplayComponent },
-  { path: 'playground', component: PlaygroundComponent },
-  { path: 'login', component: LoginComponent },
-  // { path: 'profile', component: ProfileComponent },
-  { path: 'resources', component: ResourcesComponent },
-  // { path: 'register', component: RegisterComponent },
-  { path: 'teachers', component: TeachersComponent },
-  { path: 'teachers/:id', component: TeacherDetailComponent },
-  //   // children: [
-  //   //   { path: '', redirectTo: 'overview', pathMatch: 'full' },
-  //     // { path: 'overview', component: Overview },
-  //     // { path: 'specs', component: Specs }
-  //   // ]
-  // },
-  { path: 'testimonials', component: TestimonialsComponent },
-  // { path: 'testing/youtube', component: YoutubeComponent },
-  // { path: 'testing/upload', component: UploadComponent },
-  // { path: 'testing/tree', component: TreeComponent },
-  { path: 'videos', component: VideosComponent },
-  { path: 'contact/thanks', component: ThanksComponent },
-  { path: '**', component: PageNotFoundComponent }
-  
-];
 
 @NgModule({
   entryComponents: [
@@ -168,12 +136,10 @@ const routes: Routes = [
     ThanksComponent,
     TileDisplayComponent,
     UserProfileComponent,
-    SelectorSingleComponent,
     BaseTilesComponent,
     TileTestimonialComponent,
     ResourcesComponent,
     MenuPlusComponent,
-    VisualizerComponent,
     TileCarouselComponent,
     HomeVideoComponent,
     AnnouncementsComponent,
@@ -181,11 +147,14 @@ const routes: Routes = [
     DisplayTeacherComponent,
     AdvertComponent,
     HomeNewsComponent, 
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [ 
     // ArithmeticModule,
     // HeaderModule, 
     // TodoModule,
+    routing,
     SharedModule,
     AdminModule,
     LiveChatModule,
@@ -197,7 +166,6 @@ const routes: Routes = [
     BrowserAnimationsModule,
     ButtonModule,
     CalendarModule.forRoot(),
-    ContextMenuModule,
     DialogModule,
     DragAndDropModule.forRoot(),
     // EmptyTextModule,
@@ -210,7 +178,7 @@ const routes: Routes = [
     NgxCarouselModule,
     OrderListModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
+    // RouterModule.forRoot(routes),
     TreeModule,
     MatDialogModule,
     MatFormFieldModule,
@@ -221,6 +189,7 @@ const routes: Routes = [
     MatIconModule,
     MatMenuModule,
     MatExpansionModule,
+    MatOptionModule,
     MatSidenavModule,
   ],
   providers: [
@@ -235,7 +204,6 @@ const routes: Routes = [
     AngularFireAuth,
     ContactMessageService,
     FAQService,
-    FormsModule,
     GalleryService,
     LiveChatService,
     ProjectService,
@@ -245,7 +213,6 @@ const routes: Routes = [
     TeacherService,
     UserService,
     UploadService,
-    VisualizerService,
     VideoItemService
   ],
   bootstrap: [AppComponent]

@@ -16,7 +16,7 @@
 <div class="news-cont">
   <div class="col-lg-6">
     <div class="ann" *ngFor="let ann of announcements | async">
-      <div class="created-at">{{ann.createdAt | date:medium}}</div>
+      <!-- <div class="created-at">{{ann.createdAt | date:medium}}</div> -->
       {{ann.announcement}}
     </div>
     <div class="icon-box-link">
@@ -29,4 +29,6 @@
       <app-image-gallery></app-image-gallery>
   </div>
 </div>
+
+
 

@@ -1,0 +1,7 @@
+<mat-form-field>
+  <mat-select placeholder="placeHolder" [(ngModel)]="selectedValue" name="selectedValue">
+    <mat-option *ngFor="let dis of displayValues" [value]="dis.value" (click)="myValueSelected(selectedValue)">
+      {{dis.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

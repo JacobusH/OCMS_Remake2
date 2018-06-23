@@ -17,20 +17,23 @@ import { AdminSignUpsComponent } from './sign-ups/sign-ups.component';
 import { AdminTodoComponent } from './todo/todo.component';
 
 export const routes: Routes = [
-  { path: '', component: AdminSignUpsComponent }, // default route of the module
-  { path: "adverts", component: AdminAdvertComponent},
-  { path: "announcements", component: AdminFormAnnouncementsComponent},
-  { path: "messages", component: AdminContactMessagesComponent},
-  // { path: "chat", component: LiveChatManagerComponent},AdminContactMessagesComponent
-  { path: "faq", component: AdminFormFaqComponent},
-  { path: "media", component: AdminFormGalleryComponent},
-  { path: "resources", component: AdminFormResourceComponent},
-  { path: "signups", component: AdminSignUpsComponent},
-  { path: "testimonials", component: AdminFormTestimonialComponent},
-  { path: "teachers", component: AdminFormTeacherComponent},
-  { path: "todo", component: AdminTodoComponent},
-  { path: "users", component: AdminFormUserComponent},
-  { path: "videos", component: AdminFormVideoComponent},
+  { path: 'admin', component: AdminSignUpsComponent,
+  children: [
+    { path: '', redirectTo: 'admin', pathMatch: 'full' },
+    { path: 'adverts', component: AdminAdvertComponent},
+    { path: "announcements", component: AdminFormAnnouncementsComponent},
+    { path: "messages", component: AdminContactMessagesComponent},
+    // { path: "chat", component: LiveChatManagerComponent},
+    { path: "faq", component: AdminFormFaqComponent},
+    { path: "media", component: AdminFormGalleryComponent},
+    { path: "resources", component: AdminFormResourceComponent},
+    { path: "signups", component: AdminSignUpsComponent},
+    { path: "testimonials", component: AdminFormTestimonialComponent},
+    { path: "teachers", component: AdminFormTeacherComponent},
+    { path: "todo", component: AdminTodoComponent},
+    { path: "users", component: AdminFormUserComponent},
+    { path: "videos", component: AdminFormVideoComponent},
+  ]}
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

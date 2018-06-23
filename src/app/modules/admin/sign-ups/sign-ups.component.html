@@ -24,7 +24,7 @@
       <div class="instrument">{{signup.instrument}}</div>
   </div>
   <div class="bottom">
-      <div class="left createdAt">{{signup.createdAt | date:'medium'}}</div>
+      <div class="left createdAt">{{signup.createdAt.toDate() | date:'medium'}}</div>
       <div class="right read" (click)="readClicked($event, signup)">{{signup.read == true ? 'Read' : 'UnRead'  }}</div>
   </div>
 </div>

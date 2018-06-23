@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
-    localStorage.removeItem("OCMSNoAdvert");
+    // localStorage.removeItem("OCMSNoAdvert");
 
     // first time
     if(!localStorage.getItem("OCMSNoAdvert"))
