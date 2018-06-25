@@ -17,6 +17,8 @@ import { AdminSignUpsComponent } from './sign-ups/sign-ups.component';
 import { AdminTodoComponent } from './todo/todo.component';
 import { AdminComponent } from './admin.component';
 
+import { LiveChatManagerComponent } from '../live-chat/manager/manager.component';
+
 export const routes: Routes = [
   { path: 'admin', component: AdminComponent,
   children: [
@@ -24,7 +26,7 @@ export const routes: Routes = [
     { path: 'adverts', component: AdminAdvertComponent},
     { path: "announcements", component: AdminFormAnnouncementsComponent},
     { path: "messages", component: AdminContactMessagesComponent},
-    // { path: "chat", component: LiveChatManagerComponent},
+    { path: "chat", component: LiveChatManagerComponent },
     { path: "faq", component: AdminFormFaqComponent},
     { path: "media", component: AdminFormGalleryComponent},
     { path: "resources", component: AdminFormResourceComponent},

@@ -4,7 +4,7 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 .row {
-  margin: 0px;
+  margin: 0px !important;
 }
 
 .tile-view {
