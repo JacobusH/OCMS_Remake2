@@ -90,6 +90,7 @@ import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
 
 // Routing
 import { routing } from './app.routing';
+import { HomeGalleryComponent } from './pages/home/home-gallery/home-gallery.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -148,7 +149,8 @@ var firebaseConfig = {
     AdvertComponent,
     HomeNewsComponent, 
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    HomeGalleryComponent
   ],
   imports: [ 
     // ArithmeticModule,

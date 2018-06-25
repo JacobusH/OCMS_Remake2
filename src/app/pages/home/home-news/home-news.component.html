@@ -13,22 +13,19 @@
   </div>
 </div>
 
-<div class="news-cont">
-  <div class="col-lg-6">
-    <div class="ann" *ngFor="let ann of announcements | async">
-      <!-- <div class="created-at">{{ann.createdAt | date:medium}}</div> -->
-      {{ann.announcement}}
-    </div>
-    <div class="icon-box-link">
-      <span href='#' (click)="showAnnouncements()">	
-        More					
-      </span>
-    </div>
+<div class="container">
+  <div class="ann" *ngFor="let ann of announcements | async">
+    <div class="created-at">{{ann.createdAt.toDate() | date:medium}}</div>
+    {{ann.announcement}}
+    <hr>
   </div>
-  <div class="col-lg-6">
-      <app-image-gallery></app-image-gallery>
+  <div class="icon-box-link">
+    <span href='#' (click)="showAnnouncements()">	
+      More					
+    </span>
   </div>
 </div>
+
 
 
 

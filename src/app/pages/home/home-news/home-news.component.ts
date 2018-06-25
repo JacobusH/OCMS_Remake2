@@ -18,7 +18,7 @@ export class HomeNewsComponent implements OnInit {
     , public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.announcements = this.announcementService.announcementsMostRecent1.valueChanges();
+    this.announcements = this.announcementService.announcementsMostRecent2.valueChanges();
   }
 
   showAnnouncements() {
