@@ -12,7 +12,7 @@
           [view]="view"
           [title]="(res.title.length > 45) ? (res.title | slice:0:45) + '...' : (res.title) "
           [desc]="res.category"
-          [leftNote]="res.createdAt | date:'mediumDate'"
+          [leftNote]="res.createdAt.toDate() | date:'mediumDate'"
           [rightNote]=""
           (click)="setSelectedResource(res)">
         </app-tile-list-viewswitch-item>

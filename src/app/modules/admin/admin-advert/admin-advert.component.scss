@@ -1,3 +1,26 @@
+.item-container {
+  display: flex;
+  flex-flow: row wrap;
+
+  .item {
+    display: flex;
+    flex-flow: column;
+    max-height: 200px;
+
+    img {
+      max-width: 200px;
+      border: 1px solid black;
+      border-radius: 5px;
+      margin: 3px;
+      max-height: 200px;
+    }
+
+    span {
+      text-align: center;
+    }
+  }
+}
+
 .item {
   display: inline-block;
 }
@@ -15,4 +38,13 @@
 
 .btn.away {
   background-color: #A22123;
+}
+
+.col-lg-6 .ad-btns {
+  display:flex;
+  justify-content: center;
+
+  button {
+    margin-right:15px;
+  }
 }

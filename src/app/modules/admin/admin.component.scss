@@ -1,0 +1,41 @@
+.row  {
+  margin:0;
+}
+
+.child-nav {
+
+  nav {
+    width:85%;
+    background-color: #efefef;
+    border: 1px solid #efefef;
+    border-top: none;
+    border-radius: 5px;
+    font-family: 'Abril Fatface', cursive;
+    color: #000;
+    display: flex;
+    justify-content: space-evenly;
+    padding:5px;
+    margin:0px auto 15px auto;
+    flex-flow: row wrap;
+    
+  
+    a {
+        color: #000;
+        width:100%;
+        text-align:center;
+        text-decoration: none;
+        flex-basis: 5%;
+        margin-right: 15px;
+    }
+  }
+
+  .arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #efefef;
+    display:flex;
+    margin:0 auto;
+  }
+}

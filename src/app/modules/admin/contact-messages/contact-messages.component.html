@@ -18,7 +18,7 @@ class="message-card">
       <div class="message">{{message.message}}</div>
   </div>
   <div class="bottom">
-      <div class="left createdAt">{{message.createdAt | date:'medium'}}</div>
+      <div class="left createdAt">{{message.createdAt.toDate() | date:'medium'}}</div>
   </div>
 </div>
 

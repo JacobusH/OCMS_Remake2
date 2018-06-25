@@ -1,22 +1,35 @@
-.teacher {
-  text-align: center;
-  max-width: 200px;
-  display: inline-block;
-  cursor: pointer;
-  margin:8px;
+:host {
+  width:100%;
 }
 
-.teacher img {
-  border:1px solid black;
-  border-radius: 5px;
-  max-width: 200px;
-  max-height: 130px;
+.teachers-container {
+  display: flex;
+  flex-flow: row wrap;
+
+  .teacher {
+    cursor: pointer;
+    margin: 8px;
+    display: flex;
+    flex-flow: column;
+
+    img {
+      border:1px solid black;
+      border-radius: 5px;
+      max-width: 200px;
+      max-height: 130px;
+    }
+
+    span {
+      text-align: center;
+    }
+  }
 }
+
+
+
+.teacher 
 
 .new-btn {
   margin-bottom:7px;
 }
 
-:host {
-  width:100%;
-}

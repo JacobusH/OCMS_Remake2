@@ -1,11 +1,13 @@
 <div class="row">
   <!-- Select Teacher to Edit -->
   <div class="col-lg-6">
+    <div class="ad-btns">
+        <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
+        <button class="btn btn-success" (click)="flipSwitch()"
+          [ngClass]="forceAdvert ?'here': 'away'">{{forceAdvert == true ? 'Force Show' : 'Normal'}}
+        </button>
+    </div>
     <div class="item-select-container">
-      <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
-      <button class="btn btn-success" (click)="flipSwitch()"
-        [ngClass]="forceAdvert ?'here': 'away'">{{forceAdvert == true ? 'Force Show' : 'Normal'}}
-      </button>
       <div class="item-container">
         <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
           <img src="{{item.imgUrl}}" alt="teacher">

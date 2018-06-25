@@ -12,7 +12,7 @@
             [view]="view"
             [title]="(test.text.length > 45) ? (test.text | slice:0:45) + '...' : (test.text) "
             [desc]="test.author"
-            [leftNote]="test.createdAt | date:'mediumDate'"
+            [leftNote]="test.createdAt.toDate() | date:'mediumDate'"
             [rightNote]=""
             (click)="setSelectedTestimonial(test)">
           </app-tile-list-viewswitch-item>

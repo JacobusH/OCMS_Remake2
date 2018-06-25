@@ -1,6 +1,6 @@
 <div class="row">
   <!-- Select FAQ to Edit -->
-  <div class="col-lg-4">
+  <div class="col-lg-6">
     <div class="faq-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewFAQ()">New</button>
       <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
@@ -10,14 +10,14 @@
           [view]="view"
           [title]="(faq.question.length > 45) ? (faq.question | slice:0:45) + '...' : (faq.question) "
           [desc]=""
-          [leftNote]="faq.createdAt | date:'mediumDate'"
+          [leftNote]="faq.createdAt.toDate() | date:'mediumDate'"
           [rightNote]=""
           (click)="setSelectedFAQ(faq)">
         </app-tile-list-viewswitch-item>
       </div>
     </div>
   </div>
-  <div class="col-lg-8">
+  <div class="col-lg-6">
     <!-- SAVE FORM -->
   <form (ngSubmit)="saveFAQ(faqForm)" #faqForm="ngForm">
       <div class="form-group">

@@ -15,11 +15,12 @@ import { AdminFormUserComponent } from './admin-user/admin-user.component';
 import { AdminFormVideoComponent } from './admin-video/admin-video.component';
 import { AdminSignUpsComponent } from './sign-ups/sign-ups.component';
 import { AdminTodoComponent } from './todo/todo.component';
+import { AdminComponent } from './admin.component';
 
 export const routes: Routes = [
-  { path: 'admin', component: AdminSignUpsComponent,
+  { path: 'admin', component: AdminComponent,
   children: [
-    { path: '', redirectTo: 'admin', pathMatch: 'full' },
+    { path: '', redirectTo: 'signups', pathMatch: 'full' },
     { path: 'adverts', component: AdminAdvertComponent},
     { path: "announcements", component: AdminFormAnnouncementsComponent},
     { path: "messages", component: AdminContactMessagesComponent},

@@ -16,7 +16,7 @@
         [view]="view"
         [title]="ann.announcement"
         [desc]=""
-        [leftNote]="ann.createdAt | date:'mediumDate'"
+        [leftNote]="ann.createdAt.toDate() | date:'mediumDate'"
         [rightNote]=""
         (click)="setSelectedAnnouncement(ann)">
       </app-tile-list-viewswitch-item>

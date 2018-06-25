@@ -3,6 +3,10 @@
 @import '~angular-tree-component/dist/angular-tree-component.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+.row {
+  margin: 0px;
+}
+
 .tile-view {
     display: flex;
     flex-basis: 200px;
