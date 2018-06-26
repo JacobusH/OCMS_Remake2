@@ -36,6 +36,16 @@
           </div>
         </div>
         <div class="form-group">
+            <label for="phone">Email</label>
+            <input type="email" class="form-control" id="email" required
+              [(ngModel)]="model.email" name="email"
+              #email="ngModel">
+              <div [hidden]="email.valid || email.pristine"
+                  class="alert alert-danger">
+              Email is required
+            </div>
+          </div>
+        <div class="form-group">
           <label for="about">About You</label>
           <textarea class="form-control" id="about" required
             [(ngModel)]="model.about" name="about"

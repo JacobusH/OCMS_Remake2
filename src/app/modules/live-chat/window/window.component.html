@@ -7,7 +7,7 @@
       <div #scrollMe class="chat-messages-container">
         <div *ngFor="let msg of windowLiveChatMessages | async">
           <app-bubble 
-            [time]="msg.createdAt" 
+            [time]="msg.createdAt.toDate() | date:'shortTime'" 
             [message]="msg.message" 
             [bubbleClass]="msg.fromAdmin ? 'right' : 'left'">
           </app-bubble>

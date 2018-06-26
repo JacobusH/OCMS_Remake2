@@ -237,20 +237,20 @@ h2.content-section-subtitle{
 	display:inline-block;
 }
 
-.icon-box-icon .icon-box-image-hover,
+/* .icon-box-icon .icon-box-image-hover,
 .icon-box-name .icon-box-image-hover{
 	display:none;
-}
+} */
 
-.icon-box-icon:hover .icon-box-image-hover,
+/* .icon-box-icon:hover .icon-box-image-hover,
 .icon-box-name:hover .icon-box-image-hover{
 	display:inline-block;
-}
+} */
 
-.icon-box-icon:hover .icon-box-image,
+/* .icon-box-icon:hover .icon-box-image,
 .icon-box-name:hover .icon-box-image{
 	display:none;
-}
+} */
 
 /* icon size big */
 .icon-box-icon{

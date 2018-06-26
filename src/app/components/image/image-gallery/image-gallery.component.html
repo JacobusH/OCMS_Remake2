@@ -37,7 +37,7 @@
       <div 
         *ngIf="i >= (currentPage * pageSize) && i < (currentPage * pageSize + pageSize)"
         class="gallery-img">
-        <img [src]="img.imgUrl" />
+        <img appLazyLoad [src]="img.imgUrl" />
       </div>
     </div>
   </div>

@@ -67,6 +67,9 @@ import { TileDisplayComponent } from './components/image/tile-display/tile-displ
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+// Directives
+import { LazyLoadDirective } from './directives/lazy-load-image';
+
 // FORMS
 // ADMIN
 import { AdministrationComponent } from './pages/administration/administration.component';
@@ -112,6 +115,7 @@ var firebaseConfig = {
   ],
   declarations: [
     // ToDoComponent,
+    LazyLoadDirective,
     AppComponent,
     AboutComponent,
     AdministrationComponent,
