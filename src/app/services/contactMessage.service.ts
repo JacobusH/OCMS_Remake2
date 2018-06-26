@@ -1,7 +1,5 @@
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { ContactMessage } from 'app/models/_index';
 import 'rxjs/add/operator/switchMap'
 import * as firebase from 'firebase/app';
@@ -11,7 +9,7 @@ export class ContactMessageService {
   contactMessages: AngularFirestoreCollection<ContactMessage>;
   
   constructor(private afs: AngularFirestore) { 
-    this.contactMessages = this.afs.collection('contactMessages');
+    this.contactMessages = this.afs.collection('contactMessages', ref => ref.orderBy("createdAt", "desc"));
   }
 
   createNew(): ContactMessage {
