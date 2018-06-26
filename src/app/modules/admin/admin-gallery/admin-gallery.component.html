@@ -5,7 +5,8 @@
       <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
       <div class="item-container">
         <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
-          <img src="{{item.imgUrl}}" alt="teacher">
+          <img *ngIf="item" src="{{item.imgUrl}}" alt="teacher">
+          <div *ngIf="!item">hello</div>
           <span>{{item.name}}</span>
         </div>
       </div>
