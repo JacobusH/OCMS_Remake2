@@ -10,17 +10,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./advert.component.scss']
 })
 export class AdvertComponent implements OnInit {
-  activeAdvertImgUrl: string;
+  activeAdvertImgUrl: string = "";
 
   constructor(private advertService: AdvertService
   , public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.advertService.advertsActive.valueChanges().subscribe(advert => {
-      if(advert) {
-        this.activeAdvertImgUrl = advert[0].imgUrl;
+
+    this.advertService.advertsActive.valueChanges().subscribe(adverts => {
+      if(adverts.length > 0) {
+        this.activeAdvertImgUrl = adverts[0].imgUrl;
       }
     })
+
   }
 
   closeDialog() {

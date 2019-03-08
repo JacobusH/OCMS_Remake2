@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { AdvertComponent } from 'app/components/advert/advert.component';
+import { AdvertService } from 'app/services/advert.service';
 import { Observable } from 'rxjs';
 import "rxjs/add/observable/of";
 
@@ -13,7 +14,8 @@ export class AppComponent implements OnInit {
   title = 'app';
   emittedName;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog
+          , public advertService: AdvertService) {
 
   }
 
@@ -36,20 +38,27 @@ export class AppComponent implements OnInit {
   }
 
   showAdvert() {
-    const dialogRef = this.dialog.open(AdvertComponent, {
-      height: '98%',
-      width: 'unset',
-      panelClass: 'ad-pane'
-    }); 
-    
-    dialogRef.afterClosed().subscribe(result => {
-      localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 1) + ''); // one day expiration
-    });
+    this.advertService.advertsActive.valueChanges().subscribe(adverts => {
+      if(adverts.length > 0) {
 
-    dialogRef.backdropClick().subscribe(event => {
-      console.log(event);
-      console.log("button clicked");
-    });
+        console.log("advert", adverts)
+
+        const dialogRef = this.dialog.open(AdvertComponent, {
+          height: '98%',
+          width: 'unset',
+          panelClass: 'ad-pane'
+        }); 
+        
+        dialogRef.afterClosed().subscribe(result => {
+          localStorage.setItem("OCMSNoAdvert", new Date().setDate(new Date().getDate() + 1) + ''); // one day expiration
+        });
+    
+        dialogRef.backdropClick().subscribe(event => {
+          console.log(event);
+          console.log("button clicked");
+        });
+      }
+    })
   }
 
 }
