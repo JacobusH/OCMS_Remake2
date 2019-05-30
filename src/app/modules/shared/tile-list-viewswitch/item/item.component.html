@@ -1,7 +1,7 @@
 <div *ngIf="view === 'tile'; else list">
   <div class="tile">
     <div class="top">
-      <div class="title">{{ title }}</div>
+      <div class="title">{{ (title.length > 45) ? (title| slice:0:45) + '...' : (title)  }}</div>
       <div class="desc">{{ desc }}</div>
     </div>
     <div class="bottom">
@@ -15,5 +15,7 @@
 <!-- TEMPLATES -->
 <ng-template #list>
   <div class="list">
-      <span class="left">{{ title }}</span> {{ desc }} <span class="right">{{ leftNote }} {{ rightNote }}</span></div>
+      <span class="left">{{ (title.length > 30) ? (title| slice:0:30) + '...' : (title)  }}</span> 
+      <span class="desc">{{ desc }}</span> 
+      <span class="right">{{ leftNote }} {{ rightNote }}</span></div>
 </ng-template>

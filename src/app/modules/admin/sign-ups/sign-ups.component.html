@@ -11,10 +11,11 @@
       (valueSelected)="instrumentFilterClicked($event)">
     </app-selector-single>
   </div>
+  <input type="number" [value]="numSignups" (change)="getNumSignups($event.target.value)">
   <app-date-range-picker (dateRangeSelection)="selectedDate($event)"></app-date-range-picker>
 </div>
 
-<div *ngFor="let signup of signups | async | signupFilter:filterBy | readFilter:readFilterBy"
+<div *ngFor="let signup of visSignups | signupFilter:filterBy | readFilter:readFilterBy"
   [style.borderColor]="signup.read ? 'green' : 'red'"
   class="signup-card">
   <div class="top">

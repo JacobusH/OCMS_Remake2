@@ -27,6 +27,22 @@ export class ContactMessageService {
       return data;
   }
 
+  getNumMsgs(howMany: number) {
+    return this.afs.collection('contactMessages', ref => 
+      ref
+      .orderBy("createdAt", "desc")
+      .limit(howMany)
+    );
+  }
+
+  getMsgsRange(start: Date, end: Date) {
+    return this.afs.collection('contactMessages', ref => 
+      ref
+        .where('createdAt', '>=', start)
+        .where('createdAt', '<=', end)
+      );
+  }
+
   save(t: ContactMessage): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.contactMessages.add(t);
     promise.then(x => {

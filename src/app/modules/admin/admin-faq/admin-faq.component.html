@@ -8,7 +8,7 @@
         <app-tile-list-viewswitch-item
         *ngFor="let faq of faqs | async; let i = index"
           [view]="view"
-          [title]="(faq.question.length > 45) ? (faq.question | slice:0:45) + '...' : (faq.question) "
+          [title]="faq.question"
           [desc]=""
           [leftNote]="faq.createdAt.toDate() | date:'mediumDate'"
           [rightNote]=""

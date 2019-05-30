@@ -1,19 +1,24 @@
 <div class="manager-container">
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="top-row">
     <button class="btn btn-success" (click)="flipSwitch()"
-        [ngClass]="liveChatSwitch ?'here': 'away'">{{liveChatSwitch == true ? 'Here' : 'Away'}}
+      [ngClass]="liveChatSwitch ?'here': 'away'">
+      {{liveChatSwitch == true ? 'Here' : 'Away'}}
     </button>
+    <input mat-input type="number" [value]="numVisChats" (change)="getVisChats($event.target.value)">
     <app-tile-list-viewswitch (viewSelected)="selectedView($event)"></app-tile-list-viewswitch>
-
-    <div *ngIf="tileOrList == 'tile'">
-      <div class="tile" *ngFor="let lc of liveChatsByDate | async"
+  </div>
+  <div class="col-lg-6">
+    <div class="tile-cont" *ngIf="tileOrList == 'tile'">
+      <!-- <div class="tile" *ngFor="let lc of liveChatsByDate | async"
+        (click)="setCurrentLiveChat(lc.key); markNoNewMessages();"> -->
+      <div class="tile" *ngFor="let lc of visChats"
         (click)="setCurrentLiveChat(lc.key); markNoNewMessages();">
         <div class="top">
-            <button class="action-btn-tile" [matMenuTriggerFor]="menu" (onMenuOpen)="setCurrentLiveChat(lc.key)">
+            <!-- <button class="action-btn-tile" [matMenuTriggerFor]="menu" (onMenuOpen)="setCurrentLiveChat(lc.key)">
                 <mat-icon class="md-14" svgIcon="dots-vertical"></mat-icon>
-            </button>  
+            </button>   -->
           <div class="top-left">{{lc.name}}</div>
           <div class="top-right">{{lc.email}}</div>
         </div>
@@ -24,10 +29,11 @@
       </div>
     </div>
     <div *ngIf="tileOrList == 'list'" >
-      <div class="tile-view" *ngFor="let lc of liveChatsByDate | async">
-        <button class="action-btn-list" [matMenuTriggerFor]="menu" (onMenuOpen)="setCurrentLiveChat(lc.key)">
+      <!-- <div class="tile-view" *ngFor="let lc of liveChatsByDate | async"> -->
+      <div class="tile-view" *ngFor="let lc of visChats">
+        <!-- <button class="action-btn-list" [matMenuTriggerFor]="menu" (onMenuOpen)="setCurrentLiveChat(lc.key)">
             <mat-icon class="md-14" svgIcon="dots-vertical"></mat-icon>
-        </button>  
+        </button>   -->
         <div (click)="setCurrentLiveChat(lc.key); markNoNewMessages();">
             <span>{{ lc.name }}</span>
             <span>{{ lc.email }}</span>
@@ -40,7 +46,7 @@
         <div #scrollMe class="chat-messages-container">
         <div *ngFor="let msg of currentLiveChatMessages | async">
           <app-bubble 
-            [time]="msg.createdAt" 
+            [time]="msg.createdAt.toDate() | date:'shortTime'" 
             [message]="msg.message" 
             [bubbleClass]="msg.fromAdmin ? 'left' : 'right'">
           </app-bubble>

@@ -2,15 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Announcement } from 'app/models/_index';
 import { AnnouncementService } from 'app/services/_index';
-import {
-  ReactiveFormsModule,
-  FormsModule,
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-  NgForm
-} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import * as firebase from 'firebase/app';
 
@@ -25,6 +17,7 @@ export class AdminFormAnnouncementsComponent implements OnInit {
   selectedAnnouncement: Announcement;
   announcements: Observable<{}[]>;
   view: any;
+  showForm: boolean = false;
 
   constructor(private announcementService: AnnouncementService) { 
     this.announcements = this.announcementService.announcements.valueChanges();
@@ -50,11 +43,13 @@ export class AdminFormAnnouncementsComponent implements OnInit {
   setNewAnnouncement() {
     this.selectedAnnouncement = null;
     this.model = this.announcementService.createNew();
+    this.showForm = true;
   }
 
   setSelectedAnnouncement(announcement: Announcement) {
     this.selectedAnnouncement = announcement;
     this.model = announcement;
+    this.showForm = true;
   }
 
   deleteAnnouncement(form: NgForm) {

@@ -4,11 +4,16 @@
     [displayValues]="readFilter"
     (valueSelected)="readFilterClicked($event)">
   </app-selector-single>
+  <input mat-input type="number" [value]="numMsgs" (change)="getNumMsgs($event.target.value)">
   <app-date-range-picker (dateRangeSelection)="selectedDate($event)"></app-date-range-picker>
 </div>
 
 
-<div *ngFor="let message of messages | async | readFilter:readFilterBy"
+<!-- <div *ngFor="let message of messages | async | readFilter:readFilterBy"
+[style.borderColor]="message.read ? 'green' : 'red'"
+(click)="readClicked($event, message)" 
+class="message-card"> -->
+<div *ngFor="let message of visMsgs | readFilter:readFilterBy"
 [style.borderColor]="message.read ? 'green' : 'red'"
 (click)="readClicked($event, message)" 
 class="message-card">

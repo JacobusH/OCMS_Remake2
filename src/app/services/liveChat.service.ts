@@ -11,6 +11,7 @@ export class LiveChatService {
   switchKey = 'dlpByXHMG3HEKvuh6r5c';
   liveChats: AngularFirestoreCollection<{}>;
   liveChatsByDate: AngularFirestoreCollection<{}>;
+  liveChatsRecent5: AngularFirestoreCollection<{}>;
   switchy: AngularFirestoreDocument<{'isActive': boolean}>;
   
   constructor(private afs: AngularFirestore) { 
@@ -18,6 +19,9 @@ export class LiveChatService {
     this.liveChatsByDate = this.afs.collection('liveChats', ref => 
       ref.orderBy("createdAt", "desc")
       .where("isActive", "==", true));
+    this.liveChatsRecent5 = this.afs.collection('liveChats', ref => 
+      ref.orderBy("createdAt", "desc")
+      .where("isActive", "==", true).limit(5));
 
     this.switchy = this.afs.doc('liveChatSwitch/' + this.switchKey);
   }
@@ -47,6 +51,11 @@ export class LiveChatService {
       return data;
   }
 
+  getNumLiveChats(howMany: number) {
+    return this.afs.collection('liveChats', ref => 
+      ref.orderBy("createdAt", "desc")
+      .where("isActive", "==", true).limit(howMany));
+  }
 
   getLiveChatByKey(key: string) {
     return this.afs.doc('liveChats/' + key);

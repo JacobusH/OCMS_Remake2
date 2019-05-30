@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'app-live-chat-manager',
   templateUrl: './manager.component.html',
-  styleUrls: ['./manager.component.css'],
+  styleUrls: ['./manager.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class LiveChatManagerComponent implements OnInit {
@@ -17,14 +17,27 @@ export class LiveChatManagerComponent implements OnInit {
   currentLiveChatMessages;
   tileOrList = 'tile';
 
+  visChats; 
+  numVisChats = 5;
+
   constructor(private liveChatService: LiveChatService) { 
-    this.liveChatsByDate = this.liveChatService.liveChatsByDate.valueChanges();
+    this.liveChatsByDate = this.liveChatService.liveChatsRecent5.valueChanges();
     this.liveChatService.switchy.valueChanges().subscribe(x => {
       this.liveChatSwitch = x.isActive;
     });
   }
 
   ngOnInit() {
+    this.getVisChats(5);
+  }
+
+  getVisChats(howMany: number) {
+    howMany = +howMany;
+    this.numVisChats = howMany;
+    this.liveChatService.getNumLiveChats(howMany).valueChanges().subscribe(x => {
+      console.log('chatty', x)
+      this.visChats = x; 
+    })
   }
 
   selectedView(sel: string) {

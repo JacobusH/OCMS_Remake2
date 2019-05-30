@@ -25,6 +25,8 @@ export class AdminSignUpsComponent implements OnInit {
   @Input() filterBy?: string = 'all';
   @Input() readFilterBy?: string = 'all';
   signups: Observable<{}[]>;
+  visSignups;
+  numSignups = 8;
   instruments = [
     {value: 'all', viewValue: 'All'},  
     {value: 'Bass', viewValue: 'Bass'},  
@@ -51,6 +53,14 @@ export class AdminSignUpsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getNumSignups(8);
+  }
+
+  getNumSignups(howMany: number) {
+    howMany = +howMany;
+    this.signupService.getNumSignups(howMany).valueChanges().subscribe(x => {
+      this.visSignups = x;
+    })
   }
 
   readClicked(event, msg: Signup) {
@@ -67,10 +77,9 @@ export class AdminSignUpsComponent implements OnInit {
   }
 
   selectedDate(event) {
-    this.signups = this.afs.collection('signups', 
-      ref => ref.where('createdAt', '>=', new Date(event.start))
-        .where('createdAt', '<=', new Date(event.end))).valueChanges();
-
+    let start = new Date(event.start);
+    let end = new Date(event.end);
+    this.signupService.getSignupsRange(start, end);
   }
 
 }

@@ -32,6 +32,21 @@ export class SignupService {
       return data;
   }
 
+  getNumSignups(howMany: number) {
+    return this.afs.collection('signups', ref => 
+      ref
+        .orderBy('createdAt', 'desc')
+        .limit(howMany)
+    );
+  }
+
+  getSignupsRange(start: Date, end: Date) {
+    return this.afs.collection('signups', ref => 
+      ref
+        .where('createdAt', '>=', start)
+        .where('createdAt', '<=', end));
+  }
+
   save(t: Signup): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.signups.add(t);
     promise.then(x => {

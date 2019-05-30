@@ -9,7 +9,10 @@
         </div>
       </div>
     </div> -->
-    <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
+    <div class="top">
+      <app-tile-list-viewswitch (viewSelected)="view = $event"></app-tile-list-viewswitch>
+      <button class="new-btn btn btn-info mB15" (click)="setNewAnnouncement()">New</button>
+    </div>
     <div [ngClass]="{'list-view': view === 'list', 'tile-view': view === 'tile'}">
       <app-tile-list-viewswitch-item
         *ngFor="let ann of announcements | async; let i = index" 
@@ -24,38 +27,40 @@
     
   </div>
   <div class="col-lg-6">
+    <div class="form-cont" *ngIf="showForm">
     <!-- SAVE FORM -->
-  <form (ngSubmit)="saveAnnouncement(annForm)" #annForm="ngForm">
-      <div class="form-group">
-        <label for="announcement">Announcement</label>
-        <textarea rows="3" class="form-control" id="text" required
-          [(ngModel)]="model.announcement" name="announcement"
-          #announcement="ngModel"
-          [ngClass]="{
-            'has-success': announcement.valid,
-            'has-danger': !announcement.pristine && !announcement.valid
-          }">
-        </textarea>
-          <div [hidden]="announcement.valid || announcement.pristine" class="alert alert-danger">
-            Question is required
+    <form (ngSubmit)="saveAnnouncement(annForm)" #annForm="ngForm">
+        <div class="form-group">
+          <label for="announcement">Announcement</label>
+          <textarea rows="3" class="form-control" id="text" required
+            [(ngModel)]="model.announcement" name="announcement"
+            #announcement="ngModel"
+            [ngClass]="{
+              'has-success': announcement.valid,
+              'has-danger': !announcement.pristine && !announcement.valid
+            }">
+          </textarea>
+            <div [hidden]="announcement.valid || announcement.pristine" class="alert alert-danger">
+              Question is required
+          </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="isActive">Active</label>
-        <input [checked]="model.isActive" 
-        [(ngModel)]="model.isActive" 
-        type="checkbox" 
-        name="isActive" 
-        id="isActive" 
-        #isActive
-        >      
-          <!-- <div [hidden]="isActive.valid || isActive.pristine"
-              class="alert alert-danger">
-              isActive is required
-        </div> -->
-      </div>
-      <button type="submit" class="btn btn-success" [disabled]="!annForm.form.valid">Save</button>
-    </form> 
+        <div class="form-group">
+          <label for="isActive">Active</label>
+          <input [checked]="model.isActive" 
+          [(ngModel)]="model.isActive" 
+          type="checkbox" 
+          name="isActive" 
+          id="isActive" 
+          #isActive
+          >      
+            <!-- <div [hidden]="isActive.valid || isActive.pristine"
+                class="alert alert-danger">
+                isActive is required
+          </div> -->
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!annForm.form.valid">Save</button>
+      </form> 
+    </div>
   </div>
 </div>
 

@@ -13,6 +13,8 @@ import { Observable } from 'rxjs/Observable';
 export class AdminContactMessagesComponent implements OnInit {
   @Input() readFilterBy?: string = 'all';
   messages: Observable<{}[]>;
+  visMsgs; 
+  numMsgs = 5;
   readFilter = [
     {value: 'all', viewValue: 'All'},  
     {value: 'Read', viewValue: 'Read'},  
@@ -24,6 +26,14 @@ export class AdminContactMessagesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getNumMsgs(5);
+  }
+
+  getNumMsgs(howMany: number) {
+    howMany = +howMany;
+    this.contactMessageService.getNumMsgs(howMany).valueChanges().subscribe(x => {
+      this.visMsgs = x;
+    })
   }
 
   readClicked(event, msg: ContactMessage) {
@@ -36,10 +46,11 @@ export class AdminContactMessagesComponent implements OnInit {
   }
 
   selectedDate(event) {
-    this.messages = this.afs.collection('contactMessages', 
-      ref => ref.where('createdAt', '>=', new Date(event.start))
-        .where('createdAt', '<=', new Date(event.end))).valueChanges();
-
+    let start = new Date(event.start);
+    let end = new Date(event.end);
+    this.contactMessageService.getMsgsRange(start, end).valueChanges().subscribe(x => {
+      this.visMsgs = x;
+    })
   }
 
 }
