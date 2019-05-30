@@ -2,15 +2,7 @@ import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Advert, Upload } from 'app/models/_index';
 import { AdvertService, UploadService } from 'app/services/_index';
-import {
-  ReactiveFormsModule,
-  FormsModule,
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder,
-  NgForm
-} from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
 
@@ -24,6 +16,7 @@ export class AdminAdvertComponent implements OnInit {
   model = this.advertService.createNew();
   @ViewChild('fileUpload') fileUploadVar: any;
   @ViewChild('imgItemSelected') imgItemSelected: any;
+  showForm: boolean = false;
   selectedItem: Advert;
   selectedFiles: FileList;
   selectedPicture: string;
@@ -37,11 +30,14 @@ export class AdminAdvertComponent implements OnInit {
   storage = firebase.storage();
   storageRef = this.storage.ref();
 
-  forceAdvert;
+  forceAdvert: boolean;
 
   constructor(private advertService: AdvertService, private upsvc: UploadService) { 
     this.items = this.advertService.adverts.valueChanges();
-    this.forceAdvert = this.advertService.forceAdvert.valueChanges();
+    this.advertService.forceAdvert.valueChanges().subscribe(x => {
+      console.log('forecy', x.forceShow)
+      this.forceAdvert = x.forceShow;
+    });
   }
 
   ngOnInit() {
@@ -83,6 +79,7 @@ export class AdminAdvertComponent implements OnInit {
     this.selectedItem = null;
     this.model = this.advertService.createNew();
     this.imgItemSelected.nativeElement.src = "";
+    this.showForm = true;
   }
 
   setSelectedItem(item: Advert) {
@@ -97,6 +94,7 @@ export class AdminAdvertComponent implements OnInit {
       console.log(err);
     });
    
+    this.showForm = true;
   }
 
   deleteItem(form: NgForm) {

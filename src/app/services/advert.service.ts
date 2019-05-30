@@ -13,12 +13,12 @@ export class AdvertService {
   advertsActive: AngularFirestoreCollection<Advert>;
   storage = firebase.storage();
   storageRef = this.storage.ref();
-  forceAdvert;
+  forceAdvert: AngularFirestoreDocument<{'forceShow': boolean, 'isAdvert': boolean}>;
   
   constructor(private afs: AngularFirestore) { 
-    this.adverts = this.afs.collection('adverts');
+    this.adverts = this.afs.collection('adverts', ref => ref.where('isAdvert', '==', true));
     this.advertsActive = this.afs.collection('adverts', ref => ref.where('isActive', '==', true));
-    this.forceAdvert = this.afs.collection('!advertSwitch');
+    this.forceAdvert = this.afs.collection('adverts').doc('!advertSwitch');
   }
 
   createNew(): Advert {
@@ -28,7 +28,8 @@ export class AdvertService {
       imgUrl: '',
       isActive: true,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      isAdvert: true
       };
       return data;
   }

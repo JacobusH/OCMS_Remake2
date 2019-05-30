@@ -4,5 +4,6 @@ export interface Advert {
   imgUrl: string,
   isActive: boolean,
   createdAt: Date,
-  updatedAt: Date
+  updatedAt: Date,
+  isAdvert: boolean
 }

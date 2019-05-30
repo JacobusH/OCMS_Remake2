@@ -1,10 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService, UserService } from 'app/services/_index';
-import { Observable } from 'rxjs/Observable';
 import { User } from 'app/models/user.model';
-import { isDefaultChangeDetectionStrategy } from '@angular/core/src/change_detection/constants';
 import { AnnouncementsComponent } from 'app/components/announcements/announcements.component';
 import * as _ from 'lodash';
 

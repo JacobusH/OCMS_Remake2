@@ -1,6 +1,8 @@
 .item-container {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 5px 0px;
 
   .item {
     display: flex;
@@ -15,8 +17,11 @@
       max-height: 200px;
     }
 
-    span {
+    span.ad-blip {
       text-align: center;
+      border: 1px solid #FF4500;
+      border-radius: 5px;
+      padding: 2px;
     }
   }
 }

@@ -44,9 +44,9 @@
     <div class="collapse navbar-collapse" [ngClass]="{ 'in': isIn }">
       <ul class="nav navbar-nav" *ngIf="isIn">
       <li><a routerLink="/home" (click)="toggleState()">Home</a></li>
-      <li><a routerLink="/videos">Videos</a></li>
+      <li><a routerLink="/videos" (click)="toggleState()">Videos</a></li>
       <li><a routerLink="/teachers" (click)="toggleState()">Teachers</a></li>
-      <li *ngIf="false; else showExplore_content"><a routerLink="/about">Explore</a></li>
+      <li *ngIf="false; else showExplore_content"><a routerLink="/about" (click)="toggleState()">Explore</a></li>
       <li *ngIf="isAdmin"><a routerLink="/admin" (click)="toggleState()">Administration</a></li>
       <!-- <li *ngIf="!isLoggedIn; else showProfile_content"><a routerLink="/login">Login</a></li> -->
     </ul>

@@ -63,10 +63,19 @@
 }
 
 @media screen and (min-device-width: 1200px) /* Desktop */ {
+  .teacher {
+    flex-basis: 12%;
+  }
 }
 
 @media screen  and (max-device-width: 1199px) /* Tablet */ {
+  // .teacher {
+  //   flex-basis: 12%;
+  // }
 }
 
 @media screen and (max-device-width: 720px) /* Mobile */ {
+  .teacher {
+
+  }
 }

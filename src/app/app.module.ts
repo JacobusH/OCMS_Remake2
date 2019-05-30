@@ -5,7 +5,6 @@
 import { SharedModule } from './modules/shared/shared.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { LiveChatModule } from './modules/live-chat/live-chat.module';
-import { SampleModule } from 'yocalendoer';
 import { AccordionModule } from 'ngx-accordion'; 
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
@@ -164,7 +163,6 @@ var firebaseConfig = {
     SharedModule,
     AdminModule,
     LiveChatModule,
-    SampleModule.forRoot(),
     AccordionModule, 
     BrowserModule, 
     AngularFireModule.initializeApp(firebaseConfig), 

@@ -7,3 +7,23 @@
 .photo img {
   max-height: 300px;
 }
+
+@media screen and (min-device-width: 1200px) /* Desktop */ {
+  // .container {
+  //   border: 3px solid blue;
+  // }
+}
+
+@media screen  and (max-device-width: 1199px) /* Tablet */ {
+  // .container {
+  //   border: 3px solid pink;
+  // }
+}
+
+@media screen and (max-device-width: 720px) /* Mobile */ {
+  .container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+}

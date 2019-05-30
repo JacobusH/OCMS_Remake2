@@ -4,19 +4,20 @@
     <div class="ad-btns">
         <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
         <button class="btn btn-success" (click)="flipSwitch()"
-          [ngClass]="forceAdvert ?'here': 'away'">{{forceAdvert == true ? 'Force Show' : 'Normal'}}
+          [ngClass]="!forceAdvert ? 'here': 'away'">{{forceAdvert == true ? 'Show Every Visit' : 'Show Weekly'}}
         </button>
     </div>
     <div class="item-select-container">
       <div class="item-container">
         <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
-          <img src="{{item.imgUrl}}" alt="teacher">
-          <span>{{item.name}}</span>
+          <!-- <img src="{{item.imgUrl}}" alt="advert"> -->
+          <span class='ad-blip'>{{item.name}}</span>
         </div>
       </div>
     </div>
   </div>
   <div class="col-lg-6">
+  <div class="form-cont" *ngIf="showForm">
       <!-- Teacher Picture -->
       <div class="item">
         <img *ngIf="selectedItem" #imgItemSelected [src]="selectedItem.imgUrl" />
@@ -64,6 +65,8 @@
       <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Save</button>
     </form> 
   </div>
+  </div>
+
 </div>
 
 
