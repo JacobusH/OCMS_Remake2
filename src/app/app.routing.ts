@@ -8,8 +8,10 @@ import { AdminGuard } from 'app/guards/admin.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ThanksComponent } from './pages/contact/thanks/thanks.component';
+import { JoinThanksComponent } from './pages/join-us/thanks/thanks.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { JoinUsComponent } from './pages/join-us/join-us.component';
 import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LearntoplayComponent } from './pages/learntoplay/learntoplay.component';
@@ -28,6 +30,8 @@ export const routes: Routes = [
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'join-us', component: JoinUsComponent },
+  { path: 'join-us/thanks', component: JoinThanksComponent },
   { path: 'learntoplay', component: LearntoplayComponent },
   { path: 'learntoplay/:id', component: LearntoplayComponent },
   { path: 'playground', component: PlaygroundComponent },
@@ -38,8 +42,8 @@ export const routes: Routes = [
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'contact', component: ContactComponent}, 
+  { path: 'contact/thanks', component: ThanksComponent}, 
   { path: 'contact/:id', component: ContactComponent }, 
-  // { path: 'contactt/thanks', component: ThanksComponent },
   { path: 'admin', canActivate: [AdminGuard], loadChildren: './modules/admin/admin.module#AdminModule' },
   { path: '**', component: PageNotFoundComponent }
   ];

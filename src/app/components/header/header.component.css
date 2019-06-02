@@ -152,6 +152,7 @@ li > a {
 
 .dropdown:hover > .dropdown-menu {
   display: block !important;
+  z-index: 1000;
 }
 
 .dropdown-menu {

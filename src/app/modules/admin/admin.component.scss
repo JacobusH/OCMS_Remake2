@@ -18,7 +18,6 @@
     margin:0px auto 15px auto;
     flex-flow: row wrap;
     
-  
     a {
         color: #000;
         width:100%;
@@ -26,6 +25,7 @@
         text-decoration: none;
         flex-basis: 5%;
         margin-right: 15px;
+        cursor: pointer;
     }
   }
 

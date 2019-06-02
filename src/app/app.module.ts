@@ -40,6 +40,7 @@ import { AdminGuard } from 'app/guards/admin.guard';
 import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ThanksComponent } from './pages/contact/thanks/thanks.component';
+import { JoinThanksComponent } from './pages/join-us/thanks/thanks.component';
 import { FaqComponent } from './pages/faq/faq.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { TestimonialsComponent } from './pages/testimonials/testimonials.component';
@@ -76,7 +77,7 @@ import { AdminHomepageComponent } from './pages/administration/homepage/homepage
 
 // Services
 import { AdvertService, AnnouncementService, AuthService, AlertMultiService, AlertService, ContactMessageService, FAQService, GalleryService
-  , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
+  , JoinUsService , LiveChatService, ProjectService, ResourceService, SignupService, TestimonialService
   , TeacherService, UserService, UploadService, VideoItemService } from 'app/services/_index';
 
 // pipes
@@ -93,6 +94,7 @@ import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
 // Routing
 import { routing } from './app.routing';
 import { HomeGalleryComponent } from './pages/home/home-gallery/home-gallery.component';
+import { JoinUsComponent } from './pages/join-us/join-us.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -138,6 +140,7 @@ var firebaseConfig = {
     TeacherDetailComponent,
     TeachersComponent,
     ThanksComponent,
+    JoinThanksComponent,
     TileDisplayComponent,
     UserProfileComponent,
     BaseTilesComponent,
@@ -153,7 +156,8 @@ var firebaseConfig = {
     HomeNewsComponent, 
     HeaderComponent,
     FooterComponent,
-    HomeGalleryComponent
+    HomeGalleryComponent,
+    JoinUsComponent
   ],
   imports: [ 
     // ArithmeticModule,
@@ -209,6 +213,7 @@ var firebaseConfig = {
     ContactMessageService,
     FAQService,
     GalleryService,
+    JoinUsService,
     LiveChatService,
     ProjectService,
     ResourceService,

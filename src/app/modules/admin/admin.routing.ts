@@ -13,6 +13,7 @@ import { AdminFormTeacherComponent } from './admin-teacher/admin-teacher.compone
 import { AdminFormTestimonialComponent } from './admin-testimonial/admin-testimonial.component';
 import { AdminFormUserComponent } from './admin-user/admin-user.component';
 import { AdminFormVideoComponent } from './admin-video/admin-video.component';
+import { AdminJoinUsComponent } from './admin-join-us/admin-join-us.component';
 import { AdminSignUpsComponent } from './sign-ups/sign-ups.component';
 import { AdminTodoComponent } from './todo/todo.component';
 import { AdminComponent } from './admin.component';
@@ -28,6 +29,7 @@ export const routes: Routes = [
     { path: "messages", component: AdminContactMessagesComponent},
     { path: "chat", component: LiveChatManagerComponent },
     { path: "faq", component: AdminFormFaqComponent},
+    { path: "join-us", component: AdminJoinUsComponent},
     { path: "media", component: AdminFormGalleryComponent},
     { path: "resources", component: AdminFormResourceComponent},
     { path: "signups", component: AdminSignUpsComponent},

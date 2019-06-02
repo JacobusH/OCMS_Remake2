@@ -19,6 +19,7 @@ import { ResourceCategoryPipe } from './filters/resource-category-filter.pipe';
 import { RoundUpPipe } from './filters/roundUp-filter.pipe';
 import { SignupFilterPipe } from './filters/signup-filter.pipe';
 import { TimesPipe } from './filters/times-filter.pipe';
+import { ReadMoreComponent } from './read-more/read-more.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { TimesPipe } from './filters/times-filter.pipe';
     VideoItemComponent,
     ImageFilterPipe,
     ReadFilterPipe,
+    ReadMoreComponent,
     ResourceCategoryPipe,
     RoundUpPipe,
     SignupFilterPipe,
@@ -53,7 +55,8 @@ import { TimesPipe } from './filters/times-filter.pipe';
     ResourceCategoryPipe,
     RoundUpPipe,
     SignupFilterPipe,
-    TimesPipe
+    TimesPipe,
+    ReadMoreComponent
   ],
   providers: [
     ImageFilterPipe,

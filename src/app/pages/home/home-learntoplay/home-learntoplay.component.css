@@ -1,3 +1,9 @@
+.ltp-cont {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
 .icon-box-image {
   width: 255px;
   border-radius: 5px;
@@ -11,4 +17,8 @@
 
 .icon-box-content {
   font-size: 18px;
+}
+
+.icon-box-icon {
+  margin-bottom: 6px;
 }

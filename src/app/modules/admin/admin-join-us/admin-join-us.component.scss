@@ -1,0 +1,13 @@
+.joins-cont {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+
+  .join {
+    border: 1px solid #FF4500;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    max-width: 20%;
+  }
+}

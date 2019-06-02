@@ -30,6 +30,7 @@ import { SelectorSingleComponent } from './selector-single/selector-single.compo
 // Routing
 import { routing } from './admin.routing';
 import { AdminComponent } from './admin.component';
+import { AdminJoinUsComponent } from './admin-join-us/admin-join-us.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,7 @@ import { AdminComponent } from './admin.component';
     MatMenuModule,
     MatExpansionModule,
     MatOptionModule,
-    MatSidenavModule,
+    MatSidenavModule
   ],
   declarations: [
     AdminAdvertComponent,
@@ -66,6 +67,7 @@ import { AdminComponent } from './admin.component';
     AdminTodoComponent,
     SelectorSingleComponent,
     AdminComponent,
+    AdminJoinUsComponent
   ],
   exports: [
     AdminAdvertComponent,

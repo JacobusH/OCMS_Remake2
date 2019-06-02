@@ -10,6 +10,7 @@ export * from './faq.model';
 export * from './galleryItem.model';
 export * from './graphLink.model';
 export * from './graphNode.model';
+export * from './join-us.model';
 export * from './liveChat.model';
 export * from './liveChatMessage.model';
 export * from './note.model';

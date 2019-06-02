@@ -1,0 +1,15 @@
+<div class="top">
+  <div class="joins-cont">
+    <div class="join" *ngFor="let join of items | async">
+      <div class="name">{{join.name}}</div>
+      <div class="email">{{join.email}}</div>
+      <div class="phone">{{join.phone}}</div>
+      <app-read-more [text]="join.message"></app-read-more>
+      <br/>
+      <a href="{{join.imgUrl}}" download="{{join.name + '_CV'}}">Download CV</a>
+    </div>
+  </div>
+</div>
+<div class="bottom">
+
+</div> 

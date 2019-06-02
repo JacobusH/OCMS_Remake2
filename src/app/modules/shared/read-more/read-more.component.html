@@ -1,0 +1,9 @@
+<div class="read-cont">
+  <div *ngIf="text.length <= 30">{{text}}</div>
+  <div *ngIf="text.length > 30 && isCollapsed">{{ (text | slice:0:30) }} 
+    <div class="collapse-text" (click)="isCollapsed = !isCollapsed">Read more</div>
+  </div>
+  <div *ngIf="text.length > 30 && !isCollapsed">{{text}}
+    <div class="collapse-text" (click)="isCollapsed = !isCollapsed">Read less</div>
+  </div>
+</div>

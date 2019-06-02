@@ -68,7 +68,8 @@ export class AdminFormTeacherComponent implements OnInit {
     let file = this.selectedFiles.item(0);
     this.currentUpload = new Upload(file);
 
-    this.upsvc.pushTeacherUpload(this.currentUpload, 'teacher', this.model);
+    // this.upsvc.pushTeacherUpload(this.currentUpload, 'teachers', this.model);
+    this.upsvc.pushUpload(this.currentUpload, 'teacher', this.model);
 
     
   }
