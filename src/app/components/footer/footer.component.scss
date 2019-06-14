@@ -1,0 +1,31 @@
+.footer {
+	display: flex;
+	flex-flow: row nowrap;
+  justify-content: space-around;
+  margin-top: 8px;
+  
+  .footer-left {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .footer-right {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+
+    > a {
+      margin: 0 4px;
+    }
+  }
+  .footer-logos {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex-grow: 1;
+
+    > div > img {
+      width: 50px;
+      margin: 0 7px;
+    }
+  }
+}

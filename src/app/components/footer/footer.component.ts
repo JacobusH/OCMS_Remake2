@@ -6,7 +6,7 @@ import { User } from 'app/models/user.model';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
+  styleUrls: ['./footer.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
 })
 export class FooterComponent implements OnInit {
