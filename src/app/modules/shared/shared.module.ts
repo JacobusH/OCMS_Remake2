@@ -11,6 +11,8 @@ import { ItemComponent } from './tile-list-viewswitch/item/item.component';
 import { PageHeaderComponent } from './page-header/page-header.component';
 import { DateRangePickerComponent } from './date-range-picker/date-range-picker.component';
 import { VideoItemComponent } from './video-item/video-item.component';
+import { ImageGalleryComponent } from './image/image-gallery/image-gallery.component';
+import { TileDisplayComponent } from './image/tile-display/tile-display.component';
 
 // Filters
 import { ImageFilterPipe } from './filters/image-filter.pipe';
@@ -37,7 +39,9 @@ import { ReadMoreComponent } from './read-more/read-more.component';
     ResourceCategoryPipe,
     RoundUpPipe,
     SignupFilterPipe,
-    TimesPipe
+    TimesPipe,
+    ImageGalleryComponent,
+    TileDisplayComponent
   ],
   imports: [
     CommonModule,
@@ -46,17 +50,19 @@ import { ReadMoreComponent } from './read-more/read-more.component';
   ],
   declarations: [
     DateRangePickerComponent,
+    ImageFilterPipe,
+    ImageGalleryComponent,
     ItemComponent,
     PageHeaderComponent,
-    TileListViewswitchComponent,
-    VideoItemComponent,
-    ImageFilterPipe,
+    ReadMoreComponent,
     ReadFilterPipe,
     ResourceCategoryPipe,
     RoundUpPipe,
     SignupFilterPipe,
+    TileListViewswitchComponent,
+    TileDisplayComponent,
     TimesPipe,
-    ReadMoreComponent
+    VideoItemComponent
   ],
   providers: [
     ImageFilterPipe,

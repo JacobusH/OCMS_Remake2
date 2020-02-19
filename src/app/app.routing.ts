@@ -6,6 +6,7 @@ import { AdminGuard } from 'app/guards/admin.guard';
 
 // Pages
 import { AboutComponent } from './pages/about/about.component';
+import { BootcampComponent } from './pages/bootcamp/bootcamp.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ThanksComponent } from './pages/contact/thanks/thanks.component';
 import { JoinThanksComponent } from './pages/join-us/thanks/thanks.component';
@@ -27,6 +28,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   
   { path: 'about', component: AboutComponent },
+  { path: 'bootcamp', component: BootcampComponent },
   { path: 'faq', component: FaqComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'home', component: HomeComponent },

@@ -1,0 +1,22 @@
+<div *ngFor="let item of items | async">
+<div class="portfolio-cell ">
+  <div class="portfolio-cell-thumb">
+    <div class="portfolio-cell-bg"></div>
+    <a class="portfolio-cell-view">
+      <!-- <i class="fa fa-eye"></i> -->
+    </a>
+    <a>
+      <img src="{{item.imgUrl}}}" 
+      class="attachment-thumb-cell-small size-thumb-cell-small wp-post-image" alt="">																								
+    </a>
+  </div>
+  <div class="portfolio-cell-data">
+    <div class="portfolio-cell-title">
+      <a>{{item.name}}</a>
+    </div>
+    <div class="portfolio-cell-categories">
+      <a>{{teacher.instrument}}</a>
+    </div>
+  </div>
+</div>		
+</div>

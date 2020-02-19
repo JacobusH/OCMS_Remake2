@@ -16,7 +16,6 @@ export class GalleryService {
   constructor(private afs: AngularFirestore) { 
     this.gallery = this.afs.collection('gallery');
     this.galleryActive = this.afs.collection('gallery', ref => ref.where('isActive', '==', true));
-    
   }
 
   createNew(): GalleryItem {
@@ -32,12 +31,12 @@ export class GalleryService {
       return data;
   }
 
-  save(t: GalleryItem, up: Upload): Promise<firebase.firestore.DocumentReference>  {
+  save(t: GalleryItem, up: Upload, location = "gallery"): Promise<firebase.firestore.DocumentReference>  {
     let promise: Promise<firebase.firestore.DocumentReference> = this.gallery.add(t);
     promise.then(x => {
       x.update({key: x.id});
 
-      let itemRef = this.storageRef.child('gallery/' + up.name);
+      let itemRef = this.storageRef.child(location+'/' + up.name);
       itemRef.getDownloadURL().then((url) => {
         // this.selectedPicture = url;
         this.gallery.doc(x.id).update({imgUrl: url});

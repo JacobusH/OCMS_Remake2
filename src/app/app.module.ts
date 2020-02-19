@@ -62,8 +62,8 @@ import { VideosComponent } from './pages/videos/videos.component';
 
 // Components
 import { AppComponent } from './app.component';
-import { ImageGalleryComponent } from './components/image/image-gallery/image-gallery.component';
-import { TileDisplayComponent } from './components/image/tile-display/tile-display.component';
+// import { ImageGalleryComponent } from './modules/shared/image/image-gallery/image-gallery.component';
+// import { TileDisplayComponent } from './modules/shared/image/tile-display/tile-display.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
@@ -84,7 +84,7 @@ import { AdvertService, AnnouncementService, AuthService, AlertMultiService, Ale
 import { BaseTilesComponent } from './components/tiles/base-tiles/base-tiles.component';
 import { TileTestimonialComponent } from './components/tiles/tile-testimonial/tile-testimonial.component';
 import { MenuPlusComponent } from './components/menus/menu-plus/menu-plus.component';
-import { TileCarouselComponent } from './components/image/tile-carousel/tile-carousel.component';
+import { TileCarouselComponent } from './modules/shared/image/tile-carousel/tile-carousel.component';
 import { HomeVideoComponent } from './pages/home/home-video/home-video.component';
 import { AnnouncementsComponent } from './components/announcements/announcements.component';
 import { DisplayTeacherComponent } from './components/display-teacher/display-teacher.component';
@@ -95,6 +95,7 @@ import { HomeNewsComponent } from './pages/home/home-news/home-news.component';
 import { routing } from './app.routing';
 import { HomeGalleryComponent } from './pages/home/home-gallery/home-gallery.component';
 import { JoinUsComponent } from './pages/join-us/join-us.component';
+import { BootcampComponent } from './pages/bootcamp/bootcamp.component';
 
 // Initialize Firebase
 var firebaseConfig = {
@@ -132,7 +133,7 @@ var firebaseConfig = {
     HomeTeachersComponent,
     HomeTestimonialsComponent,
     HomeTilesComponent,
-    ImageGalleryComponent,
+    // ImageGalleryComponent,
     LearntoplayComponent,
     LoginComponent,
     PageNotFoundComponent,
@@ -141,7 +142,7 @@ var firebaseConfig = {
     TeachersComponent,
     ThanksComponent,
     JoinThanksComponent,
-    TileDisplayComponent,
+    // TileDisplayComponent,
     UserProfileComponent,
     BaseTilesComponent,
     TileTestimonialComponent,
@@ -157,7 +158,8 @@ var firebaseConfig = {
     HeaderComponent,
     FooterComponent,
     HomeGalleryComponent,
-    JoinUsComponent
+    JoinUsComponent,
+    BootcampComponent
   ],
   imports: [ 
     // ArithmeticModule,

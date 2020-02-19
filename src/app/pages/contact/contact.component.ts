@@ -41,6 +41,10 @@ export class ContactComponent implements OnInit {
         this.model = this.contactService.createNew();
         this.model.message = 'I am interested in coming to Summer Boot Camp!';
       }
+      else if(this.id == 'bootcamp') {
+        this.model = this.contactService.createNew();
+        this.model.message = 'I am interested in joining a Boot Camp!';
+      }
    });
   }
 

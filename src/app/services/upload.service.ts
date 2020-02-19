@@ -4,7 +4,10 @@ import "firebase/storage";
 import {AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { Upload, Teacher, GalleryItem, Advert } from 'app/models/_index';
-import { TeacherService, GalleryService, AdvertService, JoinUsService } from 'app/services/_index';
+import { TeacherService } from './teacher.service';
+import { GalleryService } from './gallery.service';
+import { AdvertService } from './advert.service';
+import { JoinUsService } from './join-us.service';
 
 @Injectable()
 export class UploadService {

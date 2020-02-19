@@ -1,7 +1,7 @@
 <div class="row">
   <!-- Select Teacher to Edit -->
   <div class="col-lg-6">
-    <div class="item-select-container">
+    <!-- <div class="item-select-container">
       <button class="new-btn btn btn-info mB15" (click)="setNewItem()">New</button>
       <div class="item-container">
         <div class="item" (click)="setSelectedItem(item)" *ngFor="let item of items | async">
@@ -10,7 +10,8 @@
           <span>{{item.name}}</span>
         </div>
       </div>
-    </div>
+    </div> -->
+    <app-image-gallery (itemSelected)="setSelectedItem($event)"></app-image-gallery>
   </div>
   <div class="col-lg-6">
       <!-- Teacher Picture -->

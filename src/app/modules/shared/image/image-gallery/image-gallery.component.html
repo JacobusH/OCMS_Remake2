@@ -1,0 +1,121 @@
+<!-- <div class="load-container container AC" *ngIf="doneLoading === false">  
+   <h2>Hold on a Moment</h2>
+   <p>While we load the gallery</p> or just <button class="btn btn-lg btn-info" (click)="doneLoading = true">Show Anyway</button>
+   <p>{{loadingPercent | number : '1.2-2'}}</p>
+   <div>
+     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ 'width': loadingPercent + '%' }">
+       {{loadingPercent | number : '1.2-2'}}%
+     </div>
+   </div>
+ </div> -->
+
+ <div class="container">
+    <div class="filter-buttons AC" >
+        <button 
+        class="btn btn-lg btn-info" 
+        [class.active]="filterBy == 'All'" 
+        style="margin-right:15px;"
+        (click)="filterClicked('All')" >All
+        </button>
+        <button 
+        *ngFor="let fil of filterOptions" 
+        class="btn btn-lg btn-info" 
+        [class.active]="filterBy == fil" 
+        style="margin-right:15px;"
+        (click)="filterClicked(fil)" >{{fil}}
+        </button>
+    </div>
+    <div class="gal-page-numbers AC">
+    <button 
+        class="btn"
+        [ngClass]="{'active': currentPage === i-1}"
+        (click)="currentPage = i - 1" 
+        *ngFor="let i of ((loadedImagesTest | async | imageFilter:filterBy)?.length / pageSize) | timesPipe">
+        {{i}}
+    </button>
+    </div>
+    <div style="display:flex; flex-wrap: wrap; justify-content: center;">
+        <div  *ngFor="let img of loadedImagesTest | async | imageFilter:filterBy; let i = index">
+        <div 
+            *ngIf="i >= (currentPage * pageSize) && i < (currentPage * pageSize + pageSize)"
+            class="gallery-img">
+            <img appLazyLoad [src]="img.imgUrl" (load)="img.loaded = true;" (click)="setSelectedItem(img)" [hidden]="!img.loaded" />
+            <img src="../../../../../assets/img/placeholder.png" [hidden]="img.loaded">
+        </div>
+        </div>
+    </div>
+ </div>
+    
+
+ 
+ <!-- NEW Static approach | working with OCMS_1-->
+ <!-- <div class="gallery-container AC" [style.visibility]="(doneLoading == false) ? 'hidden' : 'visible' ">
+   <div class="filter-buttons" >
+     <button 
+     *ngFor="let fil of filterOptions" 
+     class="btn btn-lg btn-info" 
+     [class.active]="filterBy == fil" 
+     style="margin-right:15px;"
+     (click)="filterClicked(fil)" >{{fil}}</button>
+   </div>
+   <div *ngFor="let img of loadedImages">
+     <span *ngFor="let innerImg of img | imageFilter:filterBy">
+       <a [@apparateAnimation]='state' [routerLink]="['image', innerImg.id]">
+         <img  src="{{ innerImg.itemUrl }}" class="tn" (load)="isLoaded($event)" width="200" height="165" /> 
+       </a>
+     </span>
+   </div>   
+ </div> -->
+ 
+ <!-- Static approach, maintains imgs in memory for beter experience -->
+ <!-- <div class="gallery-container AC" [style.visibility]="(doneLoading == false) ? 'hidden' : 'visible' ">
+   <div class="filter-buttons">
+     <button class="btn btn-lg btn-info" [class.active]="filterBy == all" (click)="filterClicked('all')">All</button>
+     <button class="btn btn-lg btn-info" [class.active]="filterBy == piano" (click)="filterClicked('piano')">Piano</button>
+     <button class="btn btn-lg btn-info" [class.active]="filterBy == violin" (click)="filterClicked('violin')">Violin</button> 
+     <button class="btn btn-lg btn-info" [class.active]="filterBy == guitar" (click)="filterClicked('guitar')">Guitar</button> 
+     <button class="btn btn-lg btn-info" [class.active]="filterBy == recital" (click)="filterClicked('recital')">Recital</button> 
+   </div>
+   <div *ngFor="let img of loadedImages">
+     <div *ngFor="let img of loadedImages">
+       <span *ngFor="let innerImg of img | imageFilter:filterBy">
+           <a [@apparateAnimation]='state'>
+           <img  src="{{ innerImg.itemUrl }}" class="tn" (load)="isLoaded($event)" width="200" height="165" /> 
+         </a>
+       </span>
+     </div>
+   </div>   
+ </div> -->
+ 
+ 
+ 
+ <!-- Async approach, easy to code but requires reload for every filter applied -->
+ <!-- 
+ <div class="row">
+   <button class="btn btn-lg btn-info" [class.active]="filterBy == all" (click)="filterBy = 'all' ">All</button>
+   <button class="btn btn-lg btn-info" [class.active]="filterBy == piano" (click)="filterBy = 'piano' ">Piano</button>
+   <button class="btn btn-lg btn-info" [class.active]="filterBy == violin" (click)="filterBy = 'violin' ">Violin</button> 
+   <button class="btn btn-lg btn-info" [class.active]="filterBy == guitar" (click)="filterBy = 'guitar' ">Guitar</button> 
+   <button class="btn btn-lg btn-info" [class.active]="filterBy == recital" (click)="filterBy = 'recital' ">Recital</button> 
+   <ul id="thumbnailsList">
+     <li *ngFor="let image of (visibleImages | imageFilter:filterBy) | async">
+       <a [routerLink]="['image', image.id]">
+         <img src="{{ image.url }}" class="tn" (load)="isLoaded($event)" width="200" height="165" /> \
+       </a>
+     </li>
+   </ul>
+ </div> -->
+ 
+ 
+ <!-- AS A LIST 
+  <div *ngFor="let img of loadedImages">
+     <ul id="thumbnailsList">
+       <li *ngFor="let img of loadedImages">
+         <span *ngFor="let innerImg of img | imageFilter:filterBy">
+           <a [@apparateAnimation]='state' [routerLink]="['image', innerImg.id]">
+             <img  src="{{ innerImg.url }}" class="tn" (load)="isLoaded($event)" width="200" height="165" /> 
+           </a>
+         </span>
+       </li>
+     </ul>
+   </div>    -->
