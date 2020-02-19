@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AnnouncementService } from 'app/services/announcement.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { DatePipe } from '@angular/common';
 
 @Component({

@@ -1,14 +1,16 @@
+
+import {of as observableOf,  Observable ,  BehaviorSubject } from 'rxjs';
+
+import {map, switchMap} from 'rxjs/operators';
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { User } from 'app/models/user.model';
 import { UserService } from 'app/services/user.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as firebase from 'firebase/app';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
+
+
 import { provideForRootGuard } from '@angular/router/src/router_module';
 
 @Injectable()
@@ -21,13 +23,13 @@ export class AuthService {
     private userService: UserService,
     private router: Router) { 
       // this.authstate = this.afAuth.authState; // set this if afAuth is not public
-      this.user = this.afAuth.authState.switchMap(user => {
+      this.user = this.afAuth.authState.pipe(switchMap(user => {
         if (user) {
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
-          return Observable.of(null)
+          return observableOf(null)
         }
-      })
+      }))
     }
 
     emailLogin(username, pass) {
@@ -80,7 +82,7 @@ export class AuthService {
       }
 
       const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${userAuthCreds.uid}`);
-      userRef.snapshotChanges().map(action => action.payload.exists)
+      userRef.snapshotChanges().pipe(map(action => action.payload.exists))
         .subscribe(exists => exists 
           ? console.log('user exists')//userRef.update(data)
           : userRef.set(data))

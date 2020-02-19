@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation, OnChanges, Input } from '@angular/core';
 import { VideoItem, Upload } from 'app/models/_index';
 import { VideoItemService } from 'app/services/_index';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-videos',

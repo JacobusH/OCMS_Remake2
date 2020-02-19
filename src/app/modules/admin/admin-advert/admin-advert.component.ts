@@ -4,7 +4,7 @@ import { Advert, Upload } from 'app/models/_index';
 import { AdvertService, UploadService } from 'app/services/_index';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase/app';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-advert',

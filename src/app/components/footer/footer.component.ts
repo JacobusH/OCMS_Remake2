@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AuthService } from 'app/services/auth.service';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { User } from 'app/models/user.model';
 
 @Component({

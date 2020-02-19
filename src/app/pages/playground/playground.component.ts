@@ -3,7 +3,7 @@ import {
   CalendarEvent,
   CalendarEventTimesChangedEvent
 } from 'angular-calendar';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { addDays, differenceInDays, startOfDay } from 'date-fns';
 import { ActivatedRoute } from '@angular/router';
 // import { SumService } from '../../../../node_modules/todo-module/dist';

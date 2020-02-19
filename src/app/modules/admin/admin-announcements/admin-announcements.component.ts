@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection 
 import { Announcement } from 'app/models/_index';
 import { AnnouncementService } from 'app/services/_index';
 import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
 
 @Component({

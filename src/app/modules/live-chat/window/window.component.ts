@@ -5,7 +5,7 @@ import { LiveChatComponent } from '../live-chat.component';
 import { LiveChat, LiveChatMessage } from 'app/models/_index';
 import { LiveChatService } from 'app/services/_index';
 import { slideUpDownAnimation } from 'app/animations/slide-up-down.animation';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import {
   ReactiveFormsModule,
   FormsModule,

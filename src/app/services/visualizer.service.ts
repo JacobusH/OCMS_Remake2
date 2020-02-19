@@ -1,9 +1,9 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Visualizer, GraphNode, GraphLink, VisualizerOptions } from 'app/models/_index';
-import 'rxjs/add/operator/switchMap' 
+ 
 import * as firebase from 'firebase/app';
 import * as shape from 'd3-shape';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { LiveChat, LiveChatMessage } from 'app/models/_index';
 import { LiveChatService } from 'app/services/_index';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-live-chat-manager',

@@ -46,7 +46,7 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent}, 
   { path: 'contact/thanks', component: ThanksComponent}, 
   { path: 'contact/:id', component: ContactComponent }, 
-  { path: 'admin', canActivate: [AdminGuard], loadChildren: './modules/admin/admin.module#AdminModule' },
+  { path: 'admin', canActivate: [AdminGuard], loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
   { path: '**', component: PageNotFoundComponent }
   ];
   

@@ -14,7 +14,7 @@ import {
 } from '@angular/forms';
 import * as firebase from 'firebase/app';
 import * as moment from 'moment';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-admin-sign-ups',

@@ -6,9 +6,9 @@ import { DatePipe } from '@angular/common';
 import { LiveChat, LiveChatMessage } from 'app/models/_index';
 import { LiveChatService } from 'app/services/_index';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as firebase from 'firebase/app';
-import 'rxjs/add/operator/switchMap'
+
 
 @Component({
   selector: 'app-live-chat',

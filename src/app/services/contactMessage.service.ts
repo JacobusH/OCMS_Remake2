@@ -1,7 +1,7 @@
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Injectable } from '@angular/core';
 import { ContactMessage } from 'app/models/_index';
-import 'rxjs/add/operator/switchMap'
+
 import * as firebase from 'firebase/app';
 
 @Injectable()

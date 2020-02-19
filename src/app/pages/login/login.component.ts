@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'app/models/_index';
 import { UserService, AlertMultiService, AlertService, AuthService } from 'app/services/_index';
 import * as firebase from 'firebase/app';
-import 'rxjs/add/operator/switchMap'
+
 
 @Component({
   selector: 'app-login',
