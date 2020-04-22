@@ -30,8 +30,8 @@ export class ContactComponent implements OnInit {
 
   constructor(private contactService: ContactMessageService
     , private router: Router
-    , private route:ActivatedRoute) { 
-    
+    , private route:ActivatedRoute) {
+
   }
 
   ngOnInit() {
@@ -45,12 +45,16 @@ export class ContactComponent implements OnInit {
         this.model = this.contactService.createNew();
         this.model.message = 'I am interested in joining a Boot Camp!';
       }
+      else if(this.id == 'online') {
+        this.model = this.contactService.createNew();
+        this.model.message = 'I am interested in taking online lessons!';
+      }
    });
   }
 
   saveContactMessage(form: NgForm) {
     let mm: ContactMessage = this.model;
-    
+
     this.contactService.save(mm);
     this.model = this.contactService.createNew();
 
@@ -62,5 +66,5 @@ export class ContactComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  
+
 }
