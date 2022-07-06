@@ -70,7 +70,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "moment": "^2.20.1",
+    "moment": "^2.29.4",
     "ngx-youtube-player": "^0.1.0",
     "protractor": "^5.3.2",
     "rollup": "^0.52.0",
